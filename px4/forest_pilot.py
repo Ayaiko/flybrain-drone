@@ -61,6 +61,8 @@ class Pilot:
         self.haz = Hazards(P['haz_expire']); self.sac_end_wy = np.radians(P['sac_end_wy'])
         self.prev_h, self.loom_run, self.sac_target, self.brake_target, self.brake_t0 = None, 0, None, None, 0.0
         self.fencing, self.fence_events = False, 0
+        self.scan_count = self.scan_ticks = self.empty_scans = 0
+        self.bin_width = np.radians(10)
         self.rec = None                         # active recovery: dict(kind, phase, ...)
         self.bypass = None                      # (dx, until_y): route carrot shifted sideways after a detour
         self.v_scale = 1.0; self.t_settle = -1e9   # time the last turn / manoeuvre ended (look-then-go)
@@ -88,6 +90,65 @@ class Pilot:
         mode = self.P['brake']
         if mode == 'all' or (mode == 'loom' and big): self.brake_target, self.brake_t0 = target, now; self.n_brakes += 1
         else: self.sac_target = target
+
+    def _scan_detour(self, r, now, xy, h, wy, goal, tof, v_meas, info):
+        # Collect one scalar range at the measured heading. No world geometry enters the scan.
+        P = self.P
+        valid = tof is not None and np.isfinite(tof) and tof > 0
+        if r['phase'] == 'scan':
+            self.scan_ticks += 1
+            delta = wrap(h - r['last_heading'])
+            r['sweep'] += delta
+            r['last_heading'] = h
+            if valid:
+                slot = int(np.round(wrap(h) / self.bin_width)) % 36
+                r['bins'][slot] = min(r['bins'][slot], tof)
+                r['seen'][slot] = now
+            if r['sweep'] < 2*np.pi:
+                return 0.0, np.radians(50), info
+            # A 1.4 m lookahead and +/-20 degrees cover the 0.35 m body radius
+            # plus lateral margin. All five adjacent bins need recent observations.
+            clear = (now-r['seen'] < 15) & (r['bins'] > 1.4)
+            corridor = np.logical_and.reduce([np.roll(clear, k) for k in range(-2, 3)])
+            headings = np.arange(36) * self.bin_width
+            corridor &= np.abs(wrap(headings-r['blocked'])) > np.radians(25)
+            if not corridor.any():
+                r.update(phase='scan_wait', retry=now+1)
+                self.empty_scans += 1
+                return 0.0, 0.0, info
+            bearing = np.arctan2(goal[1]-xy[1], goal[0]-xy[0])
+            choices = headings[corridor]
+            target = choices[np.argmin(np.abs(wrap(choices-bearing)))]
+            r.update(phase='scan_align', target=target)
+        if r['phase'] == 'scan_wait':
+            if now >= r['retry']:
+                self._start_scan(r, h, r['blocked'])
+            return 0.0, 0.0, info
+        if r['phase'] == 'scan_align':
+            info['phase'] = 'scan_align'
+            _, yaw, done = self._turn(r['target'], h, wy, 0)
+            if not done:
+                return 0.0, yaw, info
+            r.update(phase='scan_move', start=xy.copy(), t1=now)
+        if r['phase'] == 'scan_move':
+            info['phase'] = 'scan_move'
+            if not valid or tof <= P['tof_stop'] + P['tof_t']*v_meas:
+                r.update(phase='side_brake')
+                return 0.0, 0.0, info
+            if np.linalg.norm(xy-r['start']) >= .8 or now-r['t1'] > 5:
+                r['phase'] = 'scan_end'
+            else:
+                probing = now-r['t1'] < P['scan_creep_s']
+                return (.2 if probing else .4), 0.0, info
+        info['phase'] = 'scan_end'
+        if v_meas <= P['brake_v']:
+            r['phase'] = 'turn2'
+        return 0.0, 0.0, info
+
+    def _start_scan(self, r, h, blocked):
+        r.update(phase='scan', sweep=0.0, last_heading=h, blocked=blocked,
+                 bins=np.full(36, np.inf), seen=np.full(36, -np.inf))
+        self.scan_count += 1
 
     def _side_choice(self, p2, h):
         """Detour side: the one whose sidestep point is farther from remembered hazards and nearer the route."""
@@ -155,7 +216,13 @@ class Pilot:
                     return 0.0, 0.0, info
                 # Abort this leg. Reorient toward the route before selecting a new leg.
                 self.bypass = None
-                r.update(phase='turn2')
+                if P.get('scan_after_brake'):
+                    self._start_scan(r, h, h)
+                else:
+                    r.update(phase='turn2')
+            if r['phase'].startswith('scan'):
+                info['phase'] = r['phase']
+                return self._scan_detour(r, now, p2, h, wy, goal, tof, v_meas, info)
             if r['phase'] == 'side':
                 info['phase'] = 'side'
                 if np.linalg.norm(p2 - r['start']) < P['rec_side_m'] and now - r['t1'] < 4.0: return 0.4, 0.0, info
@@ -215,5 +282,5 @@ class Pilot:
         return v, yaw, info
 
     def stats(self):
-        return dict(geofence_events=self.fence_events, hazards=len(self.hazards_log), turn_kinds=self.turn_kind,
+        return dict(scan_count=self.scan_count, scan_rotation_s=round(self.scan_ticks*self.dt, 2), empty_scans=self.empty_scans, geofence_events=self.fence_events, hazards=len(self.hazards_log), turn_kinds=self.turn_kind,
                     brakes=self.n_brakes, recoveries=self.n_recover)
