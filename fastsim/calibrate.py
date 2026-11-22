@@ -177,7 +177,8 @@ def main():
 def plot(rows, corr):
     import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
     fig, ax = plt.subplots(1, 2, figsize=(11, 4.6)); mk = {'easy': 'o', 'medium': 's', 'hard': '^'}
-    colr = dict(zip(CONFIGS, ['#7f7f7f', '#1f77b4', '#d62728', '#2ca02c', '#ff7f0e', '#9467bd']))
+    pal = ['#7f7f7f', '#1f77b4', '#d62728', '#2ca02c', '#ff7f0e', '#9467bd', '#8c564b', '#e377c2', '#17becf', '#bcbd22']
+    colr = {c: pal[i % len(pal)] for i, c in enumerate(CONFIGS)}
     for r in rows:
         p = r['world'].split('_')[1]
         ax[0].errorbar(r['px4_prog'], r['fs_prog'], yerr=r['fs_prog_sd'], fmt=mk[p], color=colr[r['config']], ms=6, alpha=.8, capsize=2)

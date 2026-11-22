@@ -14,7 +14,7 @@ CEM: candidates are Gaussian in [0, 1]^d (clipped), mapped to SPACE ranges (ints
 fraction; mean / std move toward the elite with smoothing `--alpha`; std floor `--min-std`.
 Fitness per episode = progress / exit_y + success - 0.05 x collisions (mean over the candidate's episodes).
 
-  .venv/bin/python -m fastsim.train_cem --base fix-all --pop 24 --gens 60 [--name run1] [--resume] [--workers N]
+  .venv/bin/python -m fastsim.train_cem [--base fix-all3] --pop 24 --gens 60 [--name run1] [--resume] [--workers N] [--dyn drift_sd=0.05]
 -> results/fastsim/cem/<name>/: log.jsonl (one line per generation), heldout.jsonl, state.json (resume), best.json
    (mean parameters as overrides: python -m fastsim.runner --configs fix-all --param k=v ... / PX4 forest_eval --param)"""
 import argparse, json, time
@@ -33,8 +33,12 @@ SPACE = {
     'cool': (0.5, 2.0, False), 'goal_gap': (0.0, 3.0, False), 'goal_thr': (5, 30, False), 'rot_gate': (8, 30, False),
     'sac_end_wy': (6, 30, False), 'persist': (1, 5, True), 'veto_r': (2.0, 6.0, False), 'carrot': (3.0, 9.0, False),
     'rec_back_s': (0.5, 2.5, False), 'rec_side_m': (0.5, 1.5, False), 'bypass_m': (0.5, 1.5, False), 'bypass_len': (2.0, 6.0, False),
-    'brake_v': (0.05, 0.3, False), 'flow_ref': (0.03, 0.2, False), 'v_min': (0.2, 0.6, False), 'tof_stop': (0.6, 2.0, False),
+    'brake_v': (0.05, 0.3, False), 'flow_ref': (0.03, 0.2, False), 'v_min': (0.2, 0.6, False), 'tof_stop': (0.3, 1.5, False),
+    'tof_t': (0.0, 2.0, False), 'creep_s': (0.2, 2.0, False), 'creep_v': (0.1, 0.5, False),
 }
+# the forest session's list for fix-all3 (2026-11-22): pilot parameters + speed; booleans (tof, flow_speed, ...) stay as in the base
+DEFAULT_PARAMS = ['creep_s', 'creep_v', 'tof_stop', 'tof_t', 'rec_side_m', 'bypass_m', 'brake_v', 'flow_ref', 'v_min', 'cool', 'goal_thr',
+                  'goal_gap', 'lplc2_thr', 'veto_r', 'speed']
 
 
 def fitness(s, exit_y=80.0):
@@ -50,7 +54,9 @@ def load_pool():
 class Space:
     def __init__(self, base, names=None):
         known = set(load_configs()['defaults']); self.base = base
-        self.names = [n for n in (names or SPACE) if n in known and n in SPACE]
+        self.names = [n for n in (names or DEFAULT_PARAMS) if n in known and n in SPACE]
+        missing = [n for n in (names or DEFAULT_PARAMS) if n not in self.names]
+        if missing: print('not tunable (unknown to forest_configs defaults or SPACE):', missing, flush=True)
         self.lo = np.array([SPACE[n][0] for n in self.names], float); self.hi = np.array([SPACE[n][1] for n in self.names], float)
         self.isint = np.array([SPACE[n][2] for n in self.names])
         P0 = resolve(base)                                  # start the mean at the base config's values (clipped into range)
@@ -74,7 +80,7 @@ def evaluate(cands, worlds, rep, a):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--base', default='fix-all'); ap.add_argument('--name', default=None); ap.add_argument('--resume', action='store_true')
+    ap.add_argument('--base', default='fix-all3'); ap.add_argument('--name', default=None); ap.add_argument('--resume', action='store_true')
     ap.add_argument('--pop', type=int, default=24); ap.add_argument('--gens', type=int, default=60); ap.add_argument('--elite', type=float, default=0.25)
     ap.add_argument('--alpha', type=float, default=0.7); ap.add_argument('--std0', type=float, default=0.2); ap.add_argument('--min-std', type=float, default=0.03)
     ap.add_argument('--worlds', type=int, default=8, help='current-level pool worlds per generation (>= 8 for promotion)')
@@ -83,11 +89,11 @@ def main():
     ap.add_argument('--eval-every', type=int, default=5); ap.add_argument('--eval-reps', type=int, default=2)
     ap.add_argument('--duration', type=float, default=360.0); ap.add_argument('--workers', type=int, default=None)
     ap.add_argument('--dyn', action='append', default=[], help='flight-model override for training, e.g. drift_sd=0.06 drift_tau=0.5 (randomisation)')
-    ap.add_argument('--params', default=None, help='comma list of parameters to tune (default: all of SPACE)'); ap.add_argument('--seed', type=int, default=0)
+    ap.add_argument('--params', default=None, help='comma list of parameters to tune (default: DEFAULT_PARAMS; "all" = all of SPACE)'); ap.add_argument('--seed', type=int, default=0)
     a = ap.parse_args()
     a.workers = min(a.workers or default_workers(), worker_cap() or 10 ** 6)
     name = a.name or time.strftime('cem_%Y%m%d_%H%M'); D = OUT / name; D.mkdir(parents=True, exist_ok=True)
-    pool = load_pool(); levels = sorted(pool); sp = Space(a.base, a.params.split(',') if a.params else None)
+    pool = load_pool(); levels = sorted(pool); sp = Space(a.base, list(SPACE) if a.params == 'all' else (a.params.split(',') if a.params else None))
     st_f = D / 'state.json'
     if a.resume and st_f.exists():
         st = json.loads(st_f.read_text()); m, s, level, gen = np.array(st['m']), np.array(st['s']), st['level'], st['gen']

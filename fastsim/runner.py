@@ -53,7 +53,7 @@ class _Ep:
 POSE_TICK = 0.0      # 0.02 = Gazebo 50 Hz pose stream read at 30 Hz frames (see run_group); off: PX4 behaviour matched better without it
 
 
-def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared', record=False, prof=None, pose_tick=POSE_TICK):
+def run_group(world, specs, rows=2, image_lag=1, dyn_params=None, pilot='shared', record=False, prof=None, pose_tick=POSE_TICK, ss=4):
     """specs: list of dict(config, rep=0, overrides=None, duration=360, pilot=...) on ONE world -> list of results
     (dict(summary=..., run=... if record)). prof: optional dict, receives wall time per stage.
     pose_tick: the pose the pilot sees is the latest of a pose stream at this period (stale by 0..pose_tick s, phase
@@ -61,8 +61,8 @@ def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared'
     step. That noise reaches v_meas (brake exit) and the yaw-rate gates. 0 = exact pose. Truth uses the true pose."""
     t_wall = time.time(); wname = world if isinstance(world, str) else world.name
     w, truth, eyes = _world(wname); meta = w.meta
-    if rows not in eyes: eyes[rows] = RayEye(w, rows=rows)
-    eye = eyes[rows]; N = len(specs); EXIT = w.exit_y
+    if (rows, ss) not in eyes: eyes[(rows, ss)] = RayEye(w, rows=rows, ss=ss)
+    eye = eyes[(rows, ss)]; N = len(specs); EXIT = w.exit_y
     E = [_Ep(w, s, pilot) for s in specs]
     dyn = X500Batch(N, dyn_params, seeds=[meta['seed'] * 1000 + e.rep for e in E]); dyn.reset([e.x0 for e in E], np.zeros(N), np.full(N, w.alt - 0.09), [e.h0 for e in E])
     hist = [(dyn.x.copy(), dyn.y.copy(), dyn.z.copy(), dyn.h.copy())]       # pose history (for the camera latency)
@@ -145,7 +145,7 @@ def _summary(e, w, wall, record):
     return out
 
 
-def run_episode(config, world, rep=0, duration=360.0, overrides=None, record=False, rows=4, image_lag=1, dyn_params=None, pilot='shared'):
+def run_episode(config, world, rep=0, duration=360.0, overrides=None, record=False, rows=2, image_lag=1, dyn_params=None, pilot='shared'):
     """One episode (= run_group with a single spec) -> dict(summary=..., run=... if record)."""
     spec = dict(config=config, rep=rep, overrides=overrides, duration=duration)
     return run_group(world, [spec], rows=rows, image_lag=image_lag, dyn_params=dyn_params, pilot=pilot, record=record)[0]
@@ -230,7 +230,8 @@ def main():
     ap.add_argument('--seeds', default='0,1,2'); ap.add_argument('--reps', type=int, default=1); ap.add_argument('--workers', type=int, default=None)
     ap.add_argument('--group', type=int, default=None, help='episodes stepped together per process (default auto, <= 32)')
     ap.add_argument('--param', action='append', default=[]); ap.add_argument('--duration', type=float, default=360.0)
-    ap.add_argument('--out', default=str(OUT / 'runs.jsonl')); ap.add_argument('--rows', type=int, default=4)
+    ap.add_argument('--out', default=str(OUT / 'runs.jsonl')); ap.add_argument('--rows', type=int, default=2)
+    ap.add_argument('--ss', type=int, default=4, help='sub-rays per pixel column (horizontal anti-aliasing)')
     ap.add_argument('--dyn', action='append', default=[], help='flight-model override, e.g. drift_sd=0.06 (see dynamics.DEFAULT)')
     ap.add_argument('--pose-tick', type=float, default=POSE_TICK, help='0.02 = pilot sees a 50 Hz pose stream (PX4/Gazebo-like jitter)')
     ap.add_argument('--pilot', default='shared', choices=['shared', 'bridge'], help='shared = px4/forest_pilot.Pilot (what the PX4 bridge runs); bridge = frozen copy of the 2026-11-22 bridge logic')
@@ -241,7 +242,7 @@ def main():
     Path(a.out).parent.mkdir(parents=True, exist_ok=True); workers = min(a.workers or default_workers(), worker_cap() or 10 ** 6)
     dyn = {k: float(v) for k, v in (q.split('=', 1) for q in a.dyn)} or None
     res, wall, prof = run_batch(jobs, workers, a.out, group=a.group, duration=a.duration, overrides=ovr or None, rows=a.rows, pilot=a.pilot,
-                                dyn_params=dyn, pose_tick=a.pose_tick)
+                                dyn_params=dyn, pose_tick=a.pose_tick, ss=a.ss)
     print(json.dumps(report_speed(res, wall, prof, workers)))
 
 

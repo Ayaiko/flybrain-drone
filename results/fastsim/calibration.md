@@ -231,3 +231,53 @@ What the diagnostics show (fix-detour / fix-all / fix-all2 on 4 worlds, 4 reps e
   evidently different from this simple model; the timing of camera frames vs pose is not logged.
 - Speed of this batch: 414 episodes (104,128 s of flight) in 966 s on **3 workers** (the cap) while 3 PX4 sims ran:
   25.7 episodes/min, 108x real time, 36x per worker (render 79%, pilot 14%).
+
+## 8. Anti-aliased eye + calibration v3 (8 PX4 run ids, 2026-11-22 evening)
+
+**What was wrong.** On the new creep configs (`fix-detour-creep`, `fix-all3`) the fast sim got only 15–20 m on easy
+worlds (PX4 49–51 m). Trace: in the open entry clearing, both sims wander with alternating ±60° gap-seeking turns. PX4
+leaves the clearing after a median 25–50 s, but the fast sim needed 54–106 s for every fix config, and with creep it
+often hit the 90 s stall rule. Replaying identical pose sequences through the EMD front end showed the cause. The
+fast-sim nearness map (what goal_gap uses, normalised by its median) was much peakier than Gazebo's (peak/median 9.5 vs
+7.9 in the clearing, 4,000+ vs 350–900 in the forest). Gazebo's frames carry faint, continuous lines from distant thin
+trunks, and the fast sim missed them with one ray per pixel column. **Gazebo renders anti-aliased.**
+
+**Fix.** The eye now casts **4 sub-rays across each pixel column x 2 rows** (`RayEye(ss=4, rows=2)`, the new default).
+The background and ground are now Fourier series in world azimuth (the ground plane is specular), refitted on all 90
+logged PX4 runs:
+
+| eye vs Gazebo, held out (seed 2–5 worlds, 22,225 frames) | before (1 ray x 4 rows) | 4 sub-rays x 2 rows |
+|---|---|---|
+| frame correlation mean / median / p10 | 0.940 / 0.953 / 0.896 | **0.954 / 0.969 / 0.909** |
+| frame-to-frame change correlation (what the EMDs see) | 0.788 | **0.862** |
+| neighbour contrast correlation | 0.907 | **0.933** |
+| nearness peak/median in the clearing (Gazebo 7.9) | 9.5 | 7.7–8.1 |
+| time to leave the clearing, fix-all3 / fix-detour (PX4 50 / 25 s) | 106 / 54 s | **41 / 26 s** |
+
+`--rows 1 --ss 4` behaves the same in the clearing test (frame correlation 0.946) and costs about the same as the old
+eye.
+
+**Calibration v3** (`--configs none-v0.8,lplc2-bold-gate-sv0-v0.8,lplc2-bold-gate-sv0-gg0-v0.8,fix-detour,fix-all,fix-all2@T600,fix-detour-creep,fix-all3 --reps 6 --tag _v3`;
+87 PX4 pairs, shared Pilot):
+
+| Spearman | progress | collisions |
+|---|---|---|
+| all 87 pairs | **0.80** (passes 0.8) | **0.85** (passes) |
+| ceiling (one rep vs mean of the others) | 0.87 | 0.89 |
+| brain configs (75 pairs) | 0.69 | 0.84 |
+
+- Collisions agree well, including the creep effect (fix-detour medium 12.7 PX4 vs 12.1; fix-detour-creep hard 6.7 vs
+  6.8). Collisions are centred on PX4 (percentile 0.55).
+- **Remaining bias: fast-sim progress is optimistic.** The PX4 percentile mean is 0.34, and 41% of PX4 runs fall
+  outside the fast-sim range. Examples: fix-detour easy 54 vs 70 m, fix-all easy 45 vs 64 m, fix-detour-creep medium
+  26 vs 50 m. Exceptions where PX4 is better: fix-all3 hard 35 vs 25 m, fix-all hard 23 vs 16 m. Treat fast-sim
+  progress as an upper estimate and rank configs with it; confirm absolute progress in PX4.
+- Per preset and per world: `calibration_tables_v3.md`; scatter: `calibration_scatter_v3.png`.
+
+**Speed** (default eye, fix-all3, 120 s episodes). Not a clean benchmark: other sessions ran video renders and
+`camera_stress.py`, and the Mac slept once mid-run (`caffeinate -i` does not stop lid-close sleep).
+- 9 workers: **65 episodes/min, 130x real time** (`--rows 1`: 80 episodes/min, 160x).
+- One process: `--rows 1` 49x real time; the default eye costs ~1040 µs per drone-frame for render in small groups.
+- Last idle measurement, old eye, 1 ray x 4 rows: 91x in one process, 267x with 6 workers. The new default doubles the
+  render rays.
+- A clean number needs an idle machine on mains power with the lid open.

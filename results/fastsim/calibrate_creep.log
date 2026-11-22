@@ -1,0 +1,103 @@
+[20/420   225s] group of 20 on ff_easy_0 done in 224s; e.g. fix-all rep5: timeout prog 52.9 coll 0
+[40/420   233s] group of 20 on ff_easy_1 done in 233s; e.g. fix-all rep0: timeout prog 54.6 coll 1
+[60/420   234s] group of 20 on ff_easy_1 done in 234s; e.g. fix-all rep5: stalled prog 2.3 coll 0
+[80/420   257s] group of 20 on ff_easy_0 done in 257s; e.g. fix-all rep0: timeout prog 46.7 coll 0
+[100/420   266s] group of 20 on ff_easy_2 done in 266s; e.g. fix-all rep5: timeout prog 51.3 coll 0
+[120/420   274s] group of 20 on ff_easy_2 done in 274s; e.g. fix-all rep0: timeout prog 50.4 coll 0
+[140/420   327s] group of 20 on ff_hard_0 done in 327s; e.g. fix-all rep0: stalled prog 46.2 coll 4
+[160/420   370s] group of 20 on ff_hard_1 done in 136s; e.g. fix-all rep0: stalled prog 10.1 coll 0
+[180/420   385s] group of 20 on ff_hard_1 done in 151s; e.g. fix-all rep5: stalled prog 12.0 coll 1
+[200/420   416s] group of 20 on ff_hard_2 done in 149s; e.g. fix-all rep5: stalled prog 18.6 coll 0
+[220/420   420s] group of 20 on ff_medium_0 done in 147s; e.g. fix-all rep0: stalled prog 1.9 coll 0
+[240/420   426s] group of 20 on ff_hard_2 done in 169s; e.g. fix-all rep0: timeout prog 44.6 coll 5
+[260/420   437s] group of 20 on ff_hard_0 done in 213s; e.g. fix-all rep5: stalled prog 42.0 coll 0
+[280/420   464s] group of 20 on ff_medium_0 done in 137s; e.g. fix-all rep5: stalled prog 18.7 coll 0
+[300/420   528s] group of 20 on ff_medium_1 done in 158s; e.g. fix-all rep0: stalled prog 43.3 coll 1
+[320/420   547s] group of 20 on ff_medium_1 done in 162s; e.g. fix-all rep5: stalled prog 17.5 coll 2
+[340/420   560s] group of 20 on ff_medium_4 done in 123s; e.g. fix-all rep0: stalled prog 19.7 coll 0
+[360/420   567s] group of 20 on ff_medium_3 done in 141s; e.g. fix-all rep0: timeout prog 52.1 coll 0
+[380/420   587s] group of 20 on ff_medium_2 done in 166s; e.g. fix-all rep5: timeout prog 67.2 coll 0
+[400/420   588s] group of 20 on ff_medium_2 done in 172s; e.g. fix-all rep0: stalled prog 53.8 coll 2
+[420/420   596s] group of 20 on ff_medium_5 done in 132s; e.g. fix-all rep0: stalled prog 1.4 coll 0
+{
+ "corr": {
+  "all": {
+   "progress": 0.4305510534846028,
+   "collisions": 0.7906090074837286
+  },
+  "fix-detour-creep": {
+   "progress": 0.25,
+   "collisions": 0.34901517761108697
+  },
+  "fix-all3": {
+   "progress": 0.08333333333333334,
+   "collisions": 0.487305634673383
+  },
+  "fix-detour": {
+   "progress": 0.5244755244755246,
+   "collisions": 0.42531346865098013
+  },
+  "fix-all": {
+   "progress": 0.7552447552447553,
+   "collisions": -0.4764927498906147
+  },
+  "brain": {
+   "progress": 0.4305510534846028,
+   "collisions": 0.7906090074837286
+  }
+ },
+ "ceiling": {
+  "all": {
+   "progress_m": 0.5027001500139503,
+   "collisions": 0.6937404316434248
+  },
+  "brain": {
+   "progress_m": 0.5027001500139503,
+   "collisions": 0.6937404316434248
+  }
+ },
+ "pit": {
+  "progress_m": {
+   "mean": 0.6166666666666666,
+   "frac_outside_range": 0.2619047619047619
+  },
+  "collisions": {
+   "mean": 0.6642857142857144,
+   "frac_outside_range": 0.16666666666666666
+  }
+ },
+ "speed": {
+  "episodes": 420,
+  "sim_s_total": 108572,
+  "worker_wall_s_total": 3970.6,
+  "rtf_per_core": 27.3,
+  "batch_wall_s": 596.0,
+  "episodes_per_min": 42.3,
+  "rtf_total": 182.2,
+  "workers": 7,
+  "cpu": "arm",
+  "batched": {
+   "episodes": 420,
+   "workers": 7,
+   "wall_s": 596.0,
+   "episodes_per_min": 42.3,
+   "rtf_total": 182.2,
+   "rtf_per_worker": 27.3,
+   "us_per_drone_frame": {
+    "render": 909.3,
+    "pilot": 216.1,
+    "truth": 40.1,
+    "dynamics": 21.1,
+    "book": 30.3
+   },
+   "share": {
+    "render": 0.747,
+    "pilot": 0.178,
+    "truth": 0.033,
+    "dynamics": 0.017,
+    "book": 0.025
+   }
+  },
+  "px4_reference": "PX4 + Gazebo Docker: ~1x real time per container, 3 containers ~1.8x total (forest-test-field notes)"
+ }
+}

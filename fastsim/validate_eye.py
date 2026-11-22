@@ -3,7 +3,7 @@
 Every logged PX4 forest run (px4/runs/forest/*.json) stores the pose and the 120-px eye vector the brain saw (img,
 = camera average + N(0, 0.02) noise, uint8). The eye is rendered at the logged poses; the lighting curve (sky,
 ground, albedo x f(n.L), plain grey g(n.L)) is fitted by linear least squares on the seed-0/1 worlds and tested on
-the seed-2 worlds (held out).
+the seed-2..5 worlds (held out).
 
   .venv/bin/python -m fastsim.validate_eye [--step 15] [--workers 8] [--no-save]
 -> fastsim/eye_calib.json (unless --no-save), results/fastsim/eye_validation.json, results/fastsim/eye_compare_*.png"""
@@ -12,7 +12,7 @@ from multiprocessing import Pool
 from pathlib import Path
 import numpy as np
 from .world import World, ROOT
-from .eye import RayEye, KNOTS, CALIB_FILE, default_calib
+from .eye import RayEye, KNOTS, CALIB_FILE, default_calib, calib_vec, vec_calib
 
 RUNS = ROOT / 'px4/runs/forest'
 # runs flown with the 2026-11-22 bridge logic (newer configs use px4/forest_pilot.py with other behaviours)
@@ -34,8 +34,8 @@ def load_run(f):
 
 
 def _feat(job):
-    f, step, lags, lag = job
-    s, r, img = load_run(f); w = World(s['world']); e = RayEye(w)
+    f, step, lags, lag, rows, ss = job
+    s, r, img = load_run(f); w = World(s['world']); e = RayEye(w, rows=rows, ss=ss)
     n = len(r['x']); idx = np.arange(5, n - 5, step)          # pose idx <-> image idx + lag (camera latency)
     F = np.array([e.features(r['x'][i], r['y'][i], r['z'][i], r['h'][i]) for i in idx])          # (m, 120, nf)
     # next frame too -> temporal differences
@@ -51,8 +51,7 @@ def _feat(job):
 
 
 def coef_to_calib(c):
-    nk = len(KNOTS)
-    return dict(sky=float(c[0]), ground=float(c[1]), tex=[float(v) for v in c[2:2 + nk]], plain=[float(v) for v in c[2 + nk:]])
+    return vec_calib(c)
 
 
 def rowcorr(a, b):
@@ -63,15 +62,16 @@ def rowcorr(a, b):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--step', type=int, default=15); ap.add_argument('--workers', type=int, default=8)
     ap.add_argument('--no-save', action='store_true')
+    ap.add_argument('--rows', type=int, default=2); ap.add_argument('--ss', type=int, default=4)
     ap.add_argument('--lag', type=int, default=1, help='image i + lag was rendered at pose i (measured: 1 frame)')
     a = ap.parse_args(); t0 = time.time()
-    files = fit_files()
+    files = sorted(f for f in RUNS.glob('*_ff_*.json'))          # every logged PX4 forest run (the eye does not care about the pilot)
     with Pool(a.workers) as p:
-        R = p.map(_feat, [(str(f), a.step, i % 3 == 0, a.lag) for i, f in enumerate(files)])
-    train = [r for r in R if r['seed'] in (0, 1)]; test = [r for r in R if r['seed'] == 2]
+        R = p.map(_feat, [(str(f), a.step, i % 3 == 0, a.lag, a.rows, a.ss) for i, f in enumerate(files)])
+    train = [r for r in R if r['seed'] in (0, 1)]; test = [r for r in R if r['seed'] >= 2]
     X = np.concatenate([r['F'].reshape(-1, r['F'].shape[-1]) for r in train]); y = np.concatenate([r['Y'].ravel() for r in train])
     coef, *_ = np.linalg.lstsq(X, y, rcond=None); calib = coef_to_calib(coef)
-    c0 = default_calib(); c0v = np.r_[c0['sky'], c0['ground'], c0['tex'], c0['plain']]
+    c0v = calib_vec(default_calib())
     rng = np.random.default_rng(0)
 
     def stats(rs, c):
@@ -87,14 +87,14 @@ def main():
                     pixel_corr=float(np.corrcoef(P.ravel(), Y.ravel())[0, 1]), rmse=float(np.sqrt(np.mean((P - Y) ** 2))), bias=float(np.mean(P - Y)),
                     noise_ceiling_frame_corr=float(ceil.mean()), spatial_diff_corr_mean=float(dsp.mean()), temporal_diff_corr=float(dt_c))
 
-    res = dict(step=a.step, lag=a.lag, files=[r['file'] for r in R], n_train_runs=len(train), n_test_runs=len(test), calib=calib,
+    res = dict(step=a.step, lag=a.lag, rows=a.rows, ss=a.ss, files=[r['file'] for r in R], n_train_runs=len(train), n_test_runs=len(test), calib=calib,
                train=stats(train, coef), test=stats(test, coef), test_uncalibrated=stats(test, c0v),
                per_run={r['file']: float(rowcorr(r['F'] @ coef, r['Y']).mean()) for r in R},
                per_preset_test={p: stats([r for r in test if f'_{p}_' in r['world']], coef)['frame_corr_mean'] for p in ('easy', 'medium', 'hard')},
                lag_corr={L: float(np.mean([r['lag'][L] for r in R if 'lag' in r])) for L in range(-3, 4)}, wall_s=round(time.time() - t0, 1))
-    calib['source'] = f'fastsim.validate_eye lstsq on {len(train)} seed-0/1 runs (step {a.step}, image lag {a.lag}); held-out frame corr {res["test"]["frame_corr_mean"]:.3f}'
+    calib['source'] = f'fastsim.validate_eye lstsq on {len(train)} seed-0/1 runs (step {a.step}, image lag {a.lag}, rows {a.rows}, ss {a.ss}); held-out frame corr {res["test"]["frame_corr_mean"]:.3f}'
     if not a.no_save: CALIB_FILE.write_text(json.dumps(calib, indent=1))
-    OUT.mkdir(parents=True, exist_ok=True); (OUT / 'eye_validation.json').write_text(json.dumps(res, indent=1))
+    OUT.mkdir(parents=True, exist_ok=True); (OUT / f'eye_validation{"" if not a.no_save else f"_r{a.rows}s{a.ss}"}.json').write_text(json.dumps(res, indent=1))
     print(json.dumps({k: v for k, v in res.items() if k not in ('files', 'per_run')}, indent=1))
     plot(R, coef)
 

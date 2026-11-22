@@ -1,0 +1,45 @@
+[18/522   365s] group of 18 on ff_hard_1 done in 365s; e.g. fix-detour-creep rep2: stalled prog 11.0 coll 3
+[36/522   385s] group of 18 on ff_hard_1 done in 385s; e.g. fix-all rep0: stalled prog 9.1 coll 0
+[54/522   618s] group of 18 on ff_hard_0 done in 618s; e.g. fix-detour-creep rep2: stalled prog 14.7 coll 7
+[72/522   664s] group of 18 on ff_hard_0 done in 664s; e.g. fix-all rep0: stalled prog 18.9 coll 0
+[90/522   686s] group of 18 on ff_easy_2 done in 686s; e.g. fix-all rep0: timeout prog 62.4 coll 2
+[108/522   688s] group of 18 on ff_easy_0 done in 688s; e.g. fix-all rep0: timeout prog 58.0 coll 0
+[126/522   688s] group of 18 on ff_easy_2 done in 688s; e.g. fix-detour-creep rep2: timeout prog 64.2 coll 2
+[144/522   692s] group of 18 on ff_easy_1 done in 692s; e.g. fix-all rep0: timeout prog 61.6 coll 0
+[162/522   708s] group of 18 on ff_easy_1 done in 707s; e.g. fix-detour-creep rep2: timeout prog 59.0 coll 1
+[180/522   723s] group of 18 on ff_easy_0 done in 723s; e.g. fix-detour-creep rep2: timeout prog 55.0 coll 6
+[198/522   828s] group of 18 on ff_hard_2 done in 463s; e.g. fix-all rep0: stalled prog 10.5 coll 0
+[216/522   955s] group of 18 on ff_hard_2 done in 569s; e.g. fix-detour-creep rep2: stalled prog 14.6 coll 5
+[228/522  1307s] group of 12 on ff_easy_0 done in 352s; e.g. fix-all2 rep5: exit prog 80.0 coll 1
+[246/522  1376s] group of 18 on ff_medium_4 done in 653s; e.g. fix-all rep0: stalled prog 19.9 coll 0
+[264/522  1503s] group of 18 on ff_medium_0 done in 885s; e.g. fix-all rep0: stalled prog 52.0 coll 0
+[282/522  1520s] group of 18 on ff_medium_0 done in 856s; e.g. fix-detour-creep rep2: timeout prog 50.1 coll 6
+[300/522  1551s] group of 18 on ff_medium_2 done in 863s; e.g. fix-all rep0: timeout prog 60.7 coll 3
+[318/522  1556s] group of 18 on ff_medium_3 done in 848s; e.g. fix-all rep0: timeout prog 47.6 coll 2
+[336/522  1560s] group of 18 on ff_medium_2 done in 868s; e.g. fix-detour-creep rep2: stalled prog 41.5 coll 4
+[354/522  1573s] group of 18 on ff_medium_1 done in 886s; e.g. fix-detour-creep rep2: timeout prog 51.3 coll 7
+[372/522  1596s] group of 18 on ff_medium_1 done in 910s; e.g. fix-all rep0: stalled prog 43.5 coll 0
+[384/522  1661s] group of 12 on ff_easy_1 done in 355s; e.g. fix-all2 rep5: stalled prog 55.5 coll 2
+[402/522  1672s] group of 18 on ff_medium_5 done in 844s; e.g. fix-all rep0: stalled prog 18.0 coll 0
+[414/522  1720s] group of 12 on ff_easy_2 done in 344s; e.g. fix-all2 rep5: exit prog 80.0 coll 0
+[426/522  1727s] group of 12 on ff_hard_1 done in 208s; e.g. fix-all2 rep5: stalled prog 17.6 coll 8
+[438/522  1860s] group of 12 on ff_hard_0 done in 357s; e.g. fix-all2 rep5: stalled prog 44.9 coll 8
+[450/522  1874s] group of 12 on ff_medium_0 done in 318s; e.g. fix-all2 rep5: stalled prog 62.8 coll 11
+[462/522  1879s] group of 12 on ff_medium_1 done in 319s; e.g. fix-all2 rep5: stalled prog 44.5 coll 3
+[474/522  1882s] group of 12 on ff_medium_2 done in 309s; e.g. fix-all2 rep5: stalled prog 53.0 coll 3
+[486/522  1886s] group of 12 on ff_hard_2 done in 335s; e.g. fix-all2 rep5: stalled prog 52.3 coll 15
+[498/522  1893s] group of 12 on ff_medium_3 done in 297s; e.g. fix-detour rep4: timeout prog 52.3 coll 12
+[510/522  1908s] group of 12 on ff_medium_4 done in 246s; e.g. fix-detour rep4: timeout prog 67.1 coll 13
+[522/522  1928s] group of 12 on ff_medium_5 done in 255s; e.g. fix-detour rep4: timeout prog 67.6 coll 13
+Traceback (most recent call last):
+  File "/Users/graind/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Users/graind/.local/share/uv/python/cpython-3.10-macos-aarch64-none/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/Users/graind/Developer/flybrain-drone/fastsim/calibrate.py", line 217, in <module>
+    main()
+  File "/Users/graind/Developer/flybrain-drone/fastsim/calibrate.py", line 173, in main
+    plot(rows, corr); write_md(out)
+  File "/Users/graind/Developer/flybrain-drone/fastsim/calibrate.py", line 183, in plot
+    ax[0].errorbar(r['px4_prog'], r['fs_prog'], yerr=r['fs_prog_sd'], fmt=mk[p], color=colr[r['config']], ms=6, alpha=.8, capsize=2)
+KeyError: 'fix-detour-creep'

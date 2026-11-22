@@ -7,7 +7,7 @@
         ->  cls (N, C*R) int8   0 background, 1 ground, 2 textured, 3 plain grey
             alb (N, C*R) float  albedo (texture grey, mip-mapped) for textured / plain hits
             ndl (N, C*R) float  max(0, n . sun) at the hit
-        C = 480 camera columns, R = sample rows per column; ray index = column * R + row.
+        C = 480 * ss ray columns (ss sub-rays per pixel column), R = sample rows; ray index = ray column * R + row.
 
 Everything else (shading, ommatidium averaging, pilot, dynamics) is outside, so this function alone can be replaced
 by a numba / Rust (PyO3) version with the same signature. Scene and Cam are NamedTuples of plain numpy arrays and
@@ -49,13 +49,22 @@ class Scene(NamedTuple):
     t_bw: np.ndarray; t_bh: np.ndarray; t_mean: np.ndarray; t_nl: int
 
 
-def make_cam(rows=4):
+def make_cam(rows=2, ss=4):
+    """rows = sample rows per pixel column (of the camera's 8), ss = sub-rays across each pixel column (horizontal
+    anti-aliasing: Gazebo's frames behave like a supersampled render, see fastsim/README). C = 480 * ss ray columns,
+    ordered pixel column-major (ray column = pixel column * ss + sub-ray)."""
     f = (CAM_W / 2) / np.tan(CAM_FOV / 2); u = np.arange(CAM_W) + .5; xo = CAM_W / 2 - u; off = np.arctan(xo / f)
     az = np.concatenate([y + off for y in CAM_YAWS]); vr = (np.arange(rows) + .5) * CAM_H / rows
     tan_el = np.tile((CAM_H / 2 - vr)[None, :] / np.sqrt(f ** 2 + xo ** 2)[:, None], (3, 1))
+    dcol = np.tile(f / (f ** 2 + xo ** 2), 3); cosoff = np.tile(np.cos(off), 3); drow = np.tile(1.0 / np.sqrt(f ** 2 + xo ** 2), 3)
+    if ss > 1:
+        sub = (np.arange(ss) + 0.5) / ss - 0.5
+        az = (az[:, None] + sub[None] * dcol[:, None]).ravel()
+        rep = lambda a: np.repeat(a, ss, axis=0)
+        tan_el, cosoff, drow, dcol = rep(tan_el), rep(cosoff), rep(drow), rep(dcol) / ss
     order = np.argsort(az)
-    return Cam(az=az, az_s=az[order], order=order, cosoff=np.tile(np.cos(off), 3), tan_el=tan_el, sec=np.sqrt(1 + tan_el ** 2),
-               dcol=np.tile(f / (f ** 2 + xo ** 2), 3), drow=np.tile(1.0 / np.sqrt(f ** 2 + xo ** 2), 3), tm=float(np.abs(tan_el).max()))
+    return Cam(az=az, az_s=az[order], order=order, cosoff=cosoff, tan_el=tan_el, sec=np.sqrt(1 + tan_el ** 2),
+               dcol=dcol, drow=drow, tm=float(np.abs(tan_el).max()))
 
 
 def pack_scene(world, tx):

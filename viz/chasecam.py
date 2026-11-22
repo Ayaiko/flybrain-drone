@@ -26,6 +26,7 @@ CAMS = {  # back (m), up (m), look-ahead (m), near clip (m), fov (rad), heading 
     'chase': dict(back=2.6, up=1.1, ahead=1.2, near=1.1, fov=1.45, tau=0.8),
     'high':  dict(back=4.0, up=3.2, ahead=1.5, near=2.2, fov=1.35, tau=1.0),
     'side':  dict(back=0.0, up=0.8, ahead=0.0, near=1.6, fov=1.40, tau=1.5, side=3.2),
+    'fpv':   dict(back=0.0, up=0.0, ahead=0.0, near=0.05, fov=1.745, tau=0.0, fpv=True),   # first person at eye height, 100 deg, drone hidden
 }
 
 
@@ -33,7 +34,7 @@ CAMS = {  # back (m), up (m), look-ahead (m), near clip (m), fov (rad), heading 
 def host(a, argv):
     run = Path(a.run).resolve(); rel = run.relative_to(ROOT)
     out = Path(a.out).resolve() if a.out else ROOT / 'results/videos' / f'{run.stem}_chase.mp4'
-    frames = ROOT / 'results/videos' / f'_frames_{out.stem}'
+    frames = Path(a.frames).resolve() if a.frames else ROOT / 'results/videos' / f'_frames_{out.stem}'
     if frames.exists(): shutil.rmtree(frames)
     st = subprocess.run(['docker', 'inspect', '-f', '{{.State.Running}}', CONTAINER], capture_output=True, text=True)
     if st.returncode:
@@ -43,11 +44,13 @@ def host(a, argv):
     elif st.stdout.strip() != 'true':
         subprocess.run(['docker', 'start', CONTAINER], check=True)
     rest = [x for x in argv if x not in (a.run,)]
+    if a.frames: k = rest.index('--frames'); del rest[k:k + 2]
     inner = ['python3', '/work/viz/chasecam.py', f'/work/{rel}', '--inside', '--frames', f'/work/{frames.relative_to(ROOT)}', *rest]
     cmd = f'export LP_NUM_THREADS={a.threads} && source /work/px4/sim_env.sh && ' + ' '.join(f"'{x}'" for x in inner)
     t0 = time.time(); r = subprocess.run(['docker', 'exec', CONTAINER, 'bash', '-lc', cmd])
     if r.returncode: sys.exit(f'render failed ({r.returncode}); frames left in {frames}')
-    n = len(list(frames.glob('*.jpg'))); print(f'rendered {n} frames in {time.time() - t0:.0f} s; encoding', flush=True)
+    n = len(list(frames.glob('*.jpg'))); print(f'rendered {n} frames in {time.time() - t0:.0f} s', flush=True)
+    if a.frames_only: print(f'frames in {frames}'); return frames
     ff = find_ffmpeg(); out.parent.mkdir(parents=True, exist_ok=True)
     if ff and out.suffix != '.gif':
         subprocess.run([ff, '-y', '-hide_banner', '-loglevel', 'error', '-framerate', f'{a.fps}', '-i', str(frames / '%06d.jpg'),
@@ -82,6 +85,9 @@ def trajectory(R, cam):
     af = ax * np.cos(h) + ay * np.sin(h); al = -ax * np.sin(h) + ay * np.cos(h)          # body-frame forward / left accel
     pitch = np.clip(np.arctan2(af, 9.81), -.35, .35); roll = np.clip(np.arctan2(-al, 9.81), -.35, .35)
     drone = np.c_[R.x, R.y, R.z, roll, pitch, h]
+    if cam.get('fpv'):                                # the eye's own viewpoint: raw logged pose, level, body moved out of view
+        drone[:, 2] = -50.0
+        return drone, np.c_[R.x + 0.15 * np.cos(h), R.y + 0.15 * np.sin(h), R.z, np.zeros_like(h), h]
     hs = lowpass(h, dt, cam['tau']); fx, fy = np.cos(hs), np.sin(hs)
     side = cam.get('side', 0.0)
     cx = lowpass(px, dt, 0.35) - cam['back'] * fx - side * fy; cy = lowpass(py, dt, 0.35) - cam['back'] * fy + side * fx
@@ -197,7 +203,8 @@ def inside(a):
             if last['img'] is None: sys.exit('no camera image; see /tmp/chasecam_gz.log')
             best_y = max(best_y, R.y[i_start:i + 1].max()); nc = int(np.searchsorted(crash_i, i, 'right'))
             age = (i - crash_i[nc - 1]) * R.dt if nc else 1e9
-            hud(last['img'], R, i, nc, age, best_y, W, H).save(frames / f'{k:06d}.jpg', quality=90)
+            from PIL import Image as PImage
+            (PImage.fromarray(last['img']) if a.no_hud else hud(last['img'], R, i, nc, age, best_y, W, H)).save(frames / f'{k:06d}.jpg', quality=90)
             if k % 100 == 0:
                 el = time.time() - t1; print(f'  frame {k}/{len(idx)}  {el:.0f} s  (~{el / max(k, 1) * (len(idx) - k) / 60:.1f} min left)', flush=True)
     finally:
@@ -213,8 +220,9 @@ def main():
     ap.add_argument('--fps', type=float, default=24); ap.add_argument('--t0', type=float, default=0); ap.add_argument('--t1', type=float, default=None)
     ap.add_argument('--cam', choices=list(CAMS), default='chase'); ap.add_argument('--size', default='640x360')
     ap.add_argument('--threads', type=int, default=4, help='llvmpipe render threads in the container')
+    ap.add_argument('--no-hud', action='store_true', help='save the raw camera images'); ap.add_argument('--frames-only', action='store_true', help='render frames (into --frames DIR) and stop, no video')
     ap.add_argument('--keep-frames', action='store_true'); ap.add_argument('--inside', action='store_true', help=argparse.SUPPRESS)
-    ap.add_argument('--frames', help=argparse.SUPPRESS)
+    ap.add_argument('--frames', help='frame folder (default results/videos/_frames_<out>)')
     a = ap.parse_args()
     if a.inside: inside(a)
     else: host(a, sys.argv[1:])

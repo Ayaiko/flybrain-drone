@@ -1,0 +1,130 @@
+[
+  {
+    "course": "กล่องสามใบ",
+    "profile": "กล้องเดิม",
+    "seed": 12000,
+    "result": "Goal",
+    "end_y": 13.513,
+    "clearance": 0.6698192080661556
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "กล้องเดิม",
+    "seed": 12001,
+    "result": "Goal",
+    "end_y": 13.549,
+    "clearance": 0.5300506659918913
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "กล้องเดิม",
+    "seed": 12002,
+    "result": "Goal",
+    "end_y": 13.502,
+    "clearance": 0.5433826042187249
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "กล้องเดิม",
+    "seed": 12003,
+    "result": "Goal",
+    "end_y": 13.551,
+    "clearance": 0.5022585348914914
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "OV2640 จำลอง",
+    "seed": 12000,
+    "result": "Goal",
+    "end_y": 13.574,
+    "clearance": 0.5667061398372369
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "OV2640 จำลอง",
+    "seed": 12001,
+    "result": "Goal",
+    "end_y": 13.569,
+    "clearance": 0.5711491072365641
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "OV2640 จำลอง",
+    "seed": 12002,
+    "result": "Goal",
+    "end_y": 13.546,
+    "clearance": 0.5354694815651055
+  },
+  {
+    "course": "กล่องสามใบ",
+    "profile": "OV2640 จำลอง",
+    "seed": 12003,
+    "result": "Goal",
+    "end_y": 13.579,
+    "clearance": 0.5536757361785156
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "กล้องเดิม",
+    "seed": 12000,
+    "result": "Stopped",
+    "end_y": 1.44,
+    "clearance": 2.5210588748655915
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "กล้องเดิม",
+    "seed": 12001,
+    "result": "Stopped",
+    "end_y": 1.588,
+    "clearance": 2.3922592663030278
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "กล้องเดิม",
+    "seed": 12002,
+    "result": "Stopped",
+    "end_y": 1.782,
+    "clearance": 2.1810673702239374
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "กล้องเดิม",
+    "seed": 12003,
+    "result": "Stopped",
+    "end_y": 1.649,
+    "clearance": 2.317910780143335
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "OV2640 จำลอง",
+    "seed": 12000,
+    "result": "Stopped",
+    "end_y": 1.641,
+    "clearance": 2.3193192282084096
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "OV2640 จำลอง",
+    "seed": 12001,
+    "result": "Stopped",
+    "end_y": 1.636,
+    "clearance": 2.323939270338104
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "OV2640 จำลอง",
+    "seed": 12002,
+    "result": "Stopped",
+    "end_y": 1.422,
+    "clearance": 2.538248031063418
+  },
+  {
+    "course": "ประตูคู่เยื้องแนว",
+    "profile": "OV2640 จำลอง",
+    "seed": 12003,
+    "result": "Stopped",
+    "end_y": 1.317,
+    "clearance": 2.6425745912227327
+  }
+]

@@ -1,0 +1,683 @@
+[
+  {
+    "scene": "floor box",
+    "seed": 0,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.729,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "floor box",
+    "seed": 1,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "floor box",
+    "seed": 2,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.729,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.5
+  },
+  {
+    "scene": "floor box",
+    "seed": 3,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.727,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "floor box",
+    "seed": 4,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "floor box",
+    "seed": 5,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.9
+  },
+  {
+    "scene": "floor box",
+    "seed": 6,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.729,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "floor box",
+    "seed": 7,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "floor box",
+    "seed": 8,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "floor box",
+    "seed": 9,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.728,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "floor box",
+    "seed": 10,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.729,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "floor box",
+    "seed": 11,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.729,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 0,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 1,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 2,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 3,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 4,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.0
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 5,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 6,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 7,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 8,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 9,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.0
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 10,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.449,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "wide floor box",
+    "seed": 11,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.448,
+    "modes": [
+      "above"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 0,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 1,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 2,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 3,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 4,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.0
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 5,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 6,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 7,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 8,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 9,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.0
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 10,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.279,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "suspended panel",
+    "seed": 11,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.276,
+    "modes": [
+      "below"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "person crossing",
+    "seed": 0,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.593,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.1
+  },
+  {
+    "scene": "person crossing",
+    "seed": 1,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.624,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.3
+  },
+  {
+    "scene": "person crossing",
+    "seed": 2,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.616,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.5
+  },
+  {
+    "scene": "person crossing",
+    "seed": 3,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.655,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.8
+  },
+  {
+    "scene": "person crossing",
+    "seed": 4,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.596,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.4
+  },
+  {
+    "scene": "person crossing",
+    "seed": 5,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.596,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.8
+  },
+  {
+    "scene": "person crossing",
+    "seed": 6,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.612,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.4
+  },
+  {
+    "scene": "person crossing",
+    "seed": 7,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.612,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.3
+  },
+  {
+    "scene": "person crossing",
+    "seed": 8,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.64,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.6
+  },
+  {
+    "scene": "person crossing",
+    "seed": 9,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.58,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.1
+  },
+  {
+    "scene": "person crossing",
+    "seed": 10,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.596,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.2
+  },
+  {
+    "scene": "person crossing",
+    "seed": 11,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.612,
+    "modes": [
+      "straight",
+      "yield"
+    ],
+    "hold_seconds": 6.7
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 0,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.845,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 1,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 2,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.844,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.5
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 3,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.842,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 4,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.3
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 5,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.837,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.9
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 6,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.844,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 7,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 8,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.4
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 9,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.1
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 10,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.848,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.2
+  },
+  {
+    "scene": "person walking ahead",
+    "seed": 11,
+    "tracks": true,
+    "outcome": "goal",
+    "min_gap_m": 0.843,
+    "modes": [
+      "left"
+    ],
+    "hold_seconds": 0.7
+  },
+  {
+    "scene": "person crossing",
+    "seed": 0,
+    "tracks": false,
+    "outcome": "held/timeout",
+    "min_gap_m": 1.52,
+    "modes": [],
+    "hold_seconds": 50.0
+  }
+]

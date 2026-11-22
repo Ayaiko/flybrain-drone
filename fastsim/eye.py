@@ -25,6 +25,30 @@ CAM_W, CAM_H, CAM_FOV, CAM_YAWS, EYE_DZ, FAR, NEAR = 160, 8, np.radians(110), np
 SUN = np.array([0.001, 0.625, -0.78]); LDIR = -SUN / np.linalg.norm(SUN)          # direction toward the sun
 KNOTS = np.array([0.0, 0.25, 0.5, 0.75, 1.0])                                       # lighting curve knots in n.L
 SKY, GROUND, TEX, PLN = 0, 1, 2, 3
+NF = 3          # background / ground brightness = Fourier series of order NF in world azimuth (+ grazing term for ground)
+NB_S, NB_G = 1 + 2 * NF, 2 + 2 * NF
+
+
+def bg_basis(waz, tel, ground):
+    """Per-ray basis for the background (ground=False) or ground (True): [1, cos k az, sin k az .., (-tan_el)].
+    Gazebo's ground plane is specular (0.8) under the sun, so its brightness depends on the view azimuth / grazing
+    angle; a flat constant leaves the fast-sim background without the weak motion signal Gazebo has."""
+    cols = [np.ones_like(waz)]
+    for k in range(1, NF + 1): cols += [np.cos(k * waz), np.sin(k * waz)]
+    if ground: cols.append(-np.broadcast_to(tel, np.shape(waz)))
+    return np.stack(cols, -1)
+
+
+def calib_vec(c):
+    """calib dict -> flat coefficient vector [sky NB_S, ground NB_G, tex 5, plain 5] (scalars expand to a constant)."""
+    sk = np.r_[np.atleast_1d(c['sky']), np.zeros(NB_S)][:NB_S] if np.ndim(c['sky']) else np.r_[c['sky'], np.zeros(NB_S - 1)]
+    gr = np.r_[np.atleast_1d(c['ground']), np.zeros(NB_G)][:NB_G] if np.ndim(c['ground']) else np.r_[c['ground'], np.zeros(NB_G - 1)]
+    return np.r_[sk, gr, c['tex'], c['plain']]
+
+
+def vec_calib(v):
+    v = [float(x) for x in v]; k = NB_S + NB_G
+    return dict(sky=v[:NB_S], ground=v[NB_S:k], tex=v[k:k + len(KNOTS)], plain=v[k + len(KNOTS):])
 BRANCH_CULL = 25.0                                                                  # branches (r <= 5 cm) farther than this are sub-pixel
 
 
@@ -43,8 +67,8 @@ def load_calib():
 
 
 class RayEye:
-    def __init__(self, world, rows=4, calib=None, n_omm=120):
-        self.world, self.tx, self.rows = world, textures(), rows
+    def __init__(self, world, rows=2, calib=None, n_omm=120, ss=4):
+        self.world, self.tx, self.rows, self.ss = world, textures(), rows, ss
         f = (CAM_W / 2) / np.tan(CAM_FOV / 2); u = np.arange(CAM_W) + .5; xo = CAM_W / 2 - u
         off = np.arctan(xo / f)
         self.az = np.concatenate([y + off for y in CAM_YAWS])                      # 480 column azimuths rel. heading (+ = left)
@@ -61,16 +85,18 @@ class RayEye:
         self.cyl = o.cyl; self.sph = o.sph; self.seg = o.seg; self.box = o.box
         self.sph_R = np.c_[o.sph[:, 3], o.sph[:, 3], o.sph[:, 3] * world.sph_kz] if len(o.sph) else np.zeros((0, 3))
         self.tm = float(np.abs(self.tan_el).max())
-        self.cam = kernel.make_cam(rows); self.scene = kernel.pack_scene(world, self.tx)
-        assert np.allclose(self.cam.tan_el, self.tan_el) and np.allclose(self.cam.az, self.az)
+        self.cam = kernel.make_cam(rows, ss); self.scene = kernel.pack_scene(world, self.tx)
+        self.spc = ss * rows                                                         # rays per pixel column
 
     def set_calib(self, c):
-        self.calib = c; self.k_tex = np.asarray(c['tex'], float); self.k_plain = np.asarray(c['plain'], float)
-        self.sky_v, self.ground_v = float(c['sky']), float(c['ground'])
+        self.calib = c; v = calib_vec(c); self.k_tex = np.asarray(c['tex'], float); self.k_plain = np.asarray(c['plain'], float)
+        self.c_sky, self.c_ground = v[:NB_S], v[NB_S:NB_S + NB_G]
+        cam = kernel.make_cam(self.rows, getattr(self, 'ss', 1))
+        self.waz0 = np.repeat(cam.az, self.rows); self.tel0 = cam.tan_el.ravel()          # per ray (column-major)
 
     # ------------------------------------------------------------------ ray casting
     def cast_ref(self, x, y, z, h):
-        """Brute-force reference of cast() (every ray against every obstacle); slower, same result."""
+        """Brute-force reference of cast() for ss=1 (every ray against every obstacle); slower, same result."""
         ex, ey, ez = x, y, z + EYE_DZ; R = self.rows; tx = self.tx
         a = h + self.az; ca, sa = np.cos(a), np.sin(a)
         K = self.n_col * R
@@ -204,30 +230,34 @@ class RayEye:
     def render_batch(self, X, Y, Z, H):
         """N poses (base_link z) -> (N, 120) brightness, one kernel call."""
         cls, alb, ndl = kernel.cast(self.scene, self.cam, X, Y, np.asarray(Z, float) + EYE_DZ, H)
-        v = self.shade(cls, alb, ndl).reshape(len(cls), self.n_col, self.rows).mean(2)
+        waz = np.asarray(H, float).reshape(-1, 1) + self.waz0[None]
+        v = self.shade(cls, alb, ndl, waz).reshape(len(cls), self.n_col, self.spc).mean(2)
         return v @ self.W.T
 
     # ------------------------------------------------------------------ shading
-    def shade(self, cls, alb, ndl):
-        v = np.where(cls == SKY, self.sky_v, self.ground_v)
+    def shade(self, cls, alb, ndl, waz=None):
+        """waz: world azimuth per ray (h + column azimuth); None = heading 0."""
+        waz = self.waz0 if waz is None else waz
+        v = np.where(cls == SKY, bg_basis(waz, self.tel0, False) @ self.c_sky, bg_basis(waz, self.tel0, True) @ self.c_ground)
         v = np.where(cls == TEX, alb * np.interp(ndl, KNOTS, self.k_tex), v)
         v = np.where(cls == PLN, np.interp(ndl, KNOTS, self.k_plain), v)
         return v
 
     def columns(self, ray_vals):
-        return ray_vals.reshape(self.n_col, self.rows).mean(1)
+        return ray_vals.reshape(self.n_col, self.spc).mean(1)
 
     def render(self, x, y, z, h):
         """-> 120-vector of brightness (0..1, no noise), like fly_forest.Eye.vector()."""
-        return self.W @ self.columns(self.shade(*self.cast(x, y, z, h)))
+        return self.W @ self.columns(self.shade(*self.cast(x, y, z, h), h + self.waz0))
 
     def features(self, x, y, z, h):
-        """Linear basis for fitting the lighting: (120, 2 + 2*len(KNOTS)) = [sky, ground, albedo*hat_k(n.L) .., hat_k(n.L) ..]
-        (the plain grey is folded into its own curve)."""
-        cls, alb, ndl = self.cast(x, y, z, h); nk = len(KNOTS)
+        """Linear basis for fitting the lighting: (120, NB_S + NB_G + 2*len(KNOTS)) = [background basis, ground basis,
+        albedo*hat_k(n.L) .., hat_k(n.L) ..] - the same order as calib_vec."""
+        cls, alb, ndl = self.cast(x, y, z, h); nk = len(KNOTS); waz = h + self.waz0; o = NB_S + NB_G
         hat = np.maximum(0, 1 - np.abs(ndl[:, None] - KNOTS[None]) / (KNOTS[1] - KNOTS[0]))       # (K, nk)
-        F = np.zeros((len(cls), 2 + 2 * nk))
-        F[:, 0] = cls == SKY; F[:, 1] = cls == GROUND
-        F[:, 2:2 + nk] = (cls == TEX)[:, None] * alb[:, None] * hat; F[:, 2 + nk:] = (cls == PLN)[:, None] * hat
-        Fc = F.reshape(self.n_col, self.rows, -1).mean(1)
+        F = np.zeros((len(cls), o + 2 * nk))
+        F[:, :NB_S] = (cls == SKY)[:, None] * bg_basis(waz, self.tel0, False)
+        F[:, NB_S:o] = (cls == GROUND)[:, None] * bg_basis(waz, self.tel0, True)
+        F[:, o:o + nk] = (cls == TEX)[:, None] * alb[:, None] * hat; F[:, o + nk:] = (cls == PLN)[:, None] * hat
+        Fc = F.reshape(self.n_col, self.spc, -1).mean(1)
         return self.W @ Fc

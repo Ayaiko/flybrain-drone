@@ -19,8 +19,8 @@ Numbers below are from 2026-11-22. The full report is `results/fastsim/calibrati
 | `kernel.py` | **the ray-cast kernel**: `cast(scene, cam, ex, ey, ez, h)` for N drones -> per-ray class / albedo / n.L arrays. `Scene` and `Cam` are NamedTuples of plain arrays. Each obstacle is only tested against the columns inside its angular footprint (exact). Nearest hit = one argsort. Branches thinner than 0.3 px are culled. |
 | `truth.py` | `BatchTruth`: collision truth for N drones, with the formulas of `forest_geom.Obstacles.query` and candidates from a 1 m grid. Identical to `Obstacles.query` (checked on 9000 points with gap < 3 m), ~15 µs per drone |
 | `world.py` | loads `px4/forest/<world>.json` (obstacles via `px4/forest_geom.Obstacles`), the procedural textures (`px4/forest/textures`) as grey mip pyramids |
-| `eye.py` | `RayEye`: the real camera geometry (3 x 160 x 8 px, 110 deg, yaw -110/0/+110, eye 0.18 m above base_link, far clip 80 m depth). Ray-casts all 480 pixel columns at 4 of the 8 pixel rows against trunks (cylinders), branches (capsules), foliage/shrubs/crowns/boulder (ellipsoids), the rock (box), the ground and the background. Brightness = texture albedo x fitted lighting curve of n.L (sun 0.001 0.625 -0.78), plus constants for untextured grey, ground and background. Then the same column -> 120-ommatidium averaging matrix as the bridge. `render_batch` handles N poses in one call; `cast` / `render` handle one pose. All of them go through `kernel.cast`. `cast_ref` is the slow brute-force reference used in tests. |
-| `eye_calib.json` | lighting curve fitted by `validate_eye.py` |
+| `eye.py` | `RayEye`: the real camera geometry (3 x 160 x 8 px, 110 deg, yaw -110/0/+110, eye 0.18 m above base_link, far clip 80 m depth). **Default sampling: 4 sub-rays across each of the 480 pixel columns x 2 rows** (`ss=4, rows=2`). Gazebo's frames behave like an anti-aliased render: with one ray per column, distant thin trunks only appear now and then, the background has no weak motion signal, and the gap-seeking pilot wandered in open space (see calibration.md section 8). Rays hit trunks (cylinders), branches (capsules), foliage/shrubs/crowns/boulder (ellipsoids), the rock (box), the ground and the background. Brightness = texture albedo x fitted lighting curve of n.L (sun 0.001 0.625 -0.78), untextured grey curve, and background / ground as Fourier series in world azimuth (the ground plane is specular), all fitted to Gazebo frames. Then the same column -> 120-ommatidium averaging as the bridge. `render_batch` for N poses, `cast` / `render` for one; all go through `kernel.cast`. `cast_ref` = brute-force reference (ss=1). `--rows 1` is ~1.6x faster with slightly lower fidelity. |
+| `eye_calib.json` | lighting / background fit by `validate_eye.py` for the default eye (`eye_calib_v1.json` = the earlier 1-ray-x-4-rows fit) |
 | `dynamics.py` | `X500` / `X500Batch` (N drones): PX4 offboard body velocity + yaw rate. Command delay (speed 8 frames, yaw 4 frames), first-order yaw rate with acceleration limit, world-frame velocity that follows the rotating body setpoint (lag, side-slip) with accel/brake limits, first-order altitude |
 | `dyn_params.json` | parameters fitted by `fit_dynamics.py` |
 | `pilot.py` | the pilot interface (see below). **Default `SharedPilot`** = the shared `px4/forest_pilot.Pilot`, the exact logic the PX4 bridge runs. `BridgePilot` is a frozen copy of the 2026-11-22 bridge logic, kept only to reproduce the first calibration |
@@ -90,20 +90,24 @@ Add `record=True` for the per-frame trace and eye images. Batches append one sum
   (the base config as is) and every `--eval-every` generations.
 - Search space: 20 continuous parameters of the shared pilot (`SPACE` in the file; the base config's values are the
   start). `best.json` holds the current mean as overrides, so it can be flown in PX4 with `forest_eval --param ...`.
-- Cost: pop 24 × 10 episodes = 240 episodes per generation. That is ~10–15 min with the current 3-worker cap under
-  PX4 load (110x real time in total), and an estimated ~3 min on the idle machine with 10 workers. Not measured idle yet.
+- Cost: pop 24 × 10 episodes = 240 episodes per generation, ~5–8 min at the ~130x real time measured with 9 workers on a
+  busy machine (`--rows 1` is ~20% faster). Base config: `fix-all3`. Its 15 pilot parameters (the forest session's
+  list) are tuned, starting exactly at fix-all3's values.
 
 ## Calibration in short
 
-- **Eye vs Gazebo** (9 held-out seed-2 runs, 4678 frames): per-frame correlation mean 0.936 (median 0.953, p10 0.89).
-  The noise ceiling is 0.994, set by the logged img's own noise. Frame-to-frame change correlation is 0.77; neighbour-contrast correlation is 0.90.
+- **Eye vs Gazebo** (anti-aliased eye, 40 held-out runs, 22,225 frames): per-frame correlation mean 0.954 (median 0.969).
+  The noise ceiling is 0.995. Frame-to-frame change correlation is 0.86; neighbour-contrast correlation is 0.93.
 - **Flight model** (held out): position RMSE 4.5 cm at 1 s and 8.5 cm at 2 s; heading RMSE 1.1 deg at 1 s and 1.6 deg at 2 s
   (an ideal no-lag unicycle gives 29 cm / 14 deg). PX4 follows yaw-rate commands up to the 2 rad/s used in recovery.
   The ~60 deg/s limit seen in saccades is the bridge's own clip, not the autopilot.
 - **Closed loop** (3 configs x 9 worlds, 10 reps vs the single PX4 runs): Spearman progress 0.89 (gate 0.8 passed),
   collisions 0.74. Both are at the ceiling a single run allows (0.83 / 0.70, measured from rep-to-rep scatter). See
   `results/fastsim/calibration.md`.
-- **Calibration v2** (shared pilot, 6 run ids incl. fix-detour / fix-all / fix-all2@T600, 69 PX4 pairs): Spearman
+- **Calibration v3** (anti-aliased eye, shared pilot, 8 run ids incl. the creep configs, 87 PX4 pairs): Spearman
+  **progress 0.80, collisions 0.85**, both passing 0.8. Collisions are unbiased; fast-sim **progress is optimistic**
+  (PX4 percentile 0.34), so use it to rank and confirm in PX4. calibration.md section 8.
+- **Calibration v2** (old eye, shared pilot, 6 run ids incl. fix-detour / fix-all / fix-all2@T600, 69 PX4 pairs): Spearman
   progress 0.76, collisions 0.81, both above the single-run ceiling (0.69 / 0.68). PX4 collides ~1.5x more with
   fix-detour. Optional `--dyn drift_sd=..` (position-hold drift) and `--pose-tick 0.02` (PX4 pose sampling) are
   studied in calibration.md section 7; both are off by default.

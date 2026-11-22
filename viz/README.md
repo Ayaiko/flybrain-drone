@@ -58,6 +58,8 @@ How it works:
   - `--cam chase` (default): 2.6 m behind and 1.1 m above
   - `--cam high`: 4 m behind and 3.2 m above
   - `--cam side`: 3.2 m to the side
+  - `--cam fpv`: first person from the logged pose, 100° FOV, drone body hidden. `flyeye_explainer.py` uses this mode.
+- **Frame-only output:** `--no-hud` saves raw images. `--frames-only --frames DIR` renders into DIR and stops without encoding.
 - **Drone attitude:** roll and pitch are not logged. They are approximated from the logged acceleration (clipped to ±20°), for looks only.
 
 Options:
@@ -70,6 +72,34 @@ Cost: about 0.15–0.3 s per frame at 640×360 with 4 threads on an idle machine
 The script doesn't use the other `flybrain-px4*` containers.
 
 Note: `none-*` runs (route following with no brain) log state 0 throughout, so their state badge always reads "warmup" and the looming flag is always off. That is how the log is written, not a bug in the replay.
+
+## flyeye_explainer.py: explainer video for people outside the project
+
+```bash
+.venv/bin/python viz/flyeye_explainer.py --clip all          # the built-in clips a, b, c -> results/videos/explainer/
+.venv/bin/python viz/flyeye_explainer.py <run.json> --key 92.9 --pre 7 --post 3.5 --slow-pre 2 --slow-post 2 --title "..." --out x.mp4
+```
+
+The video is 1280×720. Each panel is one step of the pipeline, labelled in Thai with the English term in brackets:
+1. **What a person sees:** a first-person Gazebo camera at eye height with a 100° field of view, rendered from the logged poses (`chasecam.py --cam fpv`). The 8°-tall band that the fly eye samples is marked.
+2. **What the fly eye sees:** the logged 120-value eye vector as a pixelated 330° panorama, marked front / left / right / back. Brackets show the camera's 100° view and the LPLC2 field (front 0–35°).
+3. **Motion detectors (T4/T5 → EMD):** outward motion for each pair of neighbouring ommatidia, recomputed from the logged eye with `flydrone.controllers.EMD(120, 1/30, 0.035, 0.25)`.
+4. **Looming neurons (LPLC2):** left, right and sum bars, the threshold (`lplc2_thr` × a slowly adapting baseline), a 4 s history, the logged looming flag, and an escape-turn banner. The banner's direction comes from the heading change that actually follows.
+5. **Top-down map:** the obstacle ahead along the heading (or the nearest one), outlined. The readout is the true clearance from the drone body, measured the same way as the logged `gap`.
+
+How the neuron signals are recomputed:
+- The EMD is reset where the brain resets it: at saccade start, and at the fresh start after a turn or recovery (logged state 4, 1, 0).
+- The baseline adapts only during calm fixation.
+- Outside fixation the bars are faded and the history has gaps, because the brain ignores vision while turning.
+- The recomputed flag matches the logged one well: on the three runs used, 268/309, 303/387 and 175/220 of the logged looming frames during fixation are reproduced, and the onset in clip (a) is exact. The logged flag is still drawn as well.
+
+Each clip starts with a 4 s title card, then plays at 1×, slowing to 0.5× around the key moment. First-person frames take about 0.2–0.3 s each to render in the viz container.
+
+| clip | run, key time | what it shows |
+|---|---|---|
+| `a_success_trunk_escape.mp4` (19 s) | `lplc2-bold-gate-sv0-v0.8_ff_easy_0`, t = 92.9 s | After a saccade the drone fixates with a trunk front-right 1.8 m ahead and speeds up. The right LPLC2 unit rises and the sum crosses threshold at 1.2 m clearance. It turns 72° left and passes the trunk with about 0.8 m to spare. This run uses vision only; the `fix-all*` configs also use a ToF sensor, so they were avoided here. |
+| `b_fail_flat_rock_wall.mp4` (16 s) | `lplc2-bold-gate-sv0-v0.8_ff_easy_2`, t = 319.5 s | The drone fixates for 1.1 s at 0.7 m/s toward the plain grey rock wall. LPLC2 peaks at 82% of threshold, there is no alarm, and it crashes. |
+| `c_fail_thin_branch.mp4` (16 s) | `lplc2-bold-gate-sv0-v0.8_ff_medium_3`, t = 242.5 s | A branch at eye height barely changes the 120 values. LPLC2 stays under threshold and the drone hits the branch. |
 
 ## Files
 

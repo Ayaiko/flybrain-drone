@@ -1,0 +1,110 @@
+[
+  {
+    "kind": 0,
+    "seed": 23000,
+    "stress": false,
+    "outcome": "goal",
+    "min_gap_m": null,
+    "stale_ticks": 0,
+    "end_y": 6.805999999999943
+  },
+  {
+    "kind": 0,
+    "seed": 23000,
+    "stress": true,
+    "outcome": "goal",
+    "min_gap_m": null,
+    "stale_ticks": 10,
+    "end_y": 6.817101732602215
+  },
+  {
+    "kind": 0,
+    "seed": 23001,
+    "stress": false,
+    "outcome": "goal",
+    "min_gap_m": null,
+    "stale_ticks": 0,
+    "end_y": 6.805999999999943
+  },
+  {
+    "kind": 0,
+    "seed": 23001,
+    "stress": true,
+    "outcome": "goal",
+    "min_gap_m": null,
+    "stale_ticks": 19,
+    "end_y": 6.8017516247448535
+  },
+  {
+    "kind": 1,
+    "seed": 23000,
+    "stress": false,
+    "outcome": "stopped",
+    "min_gap_m": 1.544743360384744,
+    "stale_ticks": 0,
+    "end_y": 2.505774533518016
+  },
+  {
+    "kind": 1,
+    "seed": 23000,
+    "stress": true,
+    "outcome": "stopped",
+    "min_gap_m": 1.446944267742026,
+    "stale_ticks": 5,
+    "end_y": 2.6035736261607343
+  },
+  {
+    "kind": 1,
+    "seed": 23001,
+    "stress": false,
+    "outcome": "goal",
+    "min_gap_m": 0.6854417485349803,
+    "stale_ticks": 0,
+    "end_y": 6.806777251960687
+  },
+  {
+    "kind": 1,
+    "seed": 23001,
+    "stress": true,
+    "outcome": "goal",
+    "min_gap_m": 0.6860079974174543,
+    "stale_ticks": 23,
+    "end_y": 6.816727716130609
+  },
+  {
+    "kind": 3,
+    "seed": 23000,
+    "stress": false,
+    "outcome": "stopped",
+    "min_gap_m": 2.246517893902759,
+    "stale_ticks": 0,
+    "end_y": 1.8040000000000014
+  },
+  {
+    "kind": 3,
+    "seed": 23000,
+    "stress": true,
+    "outcome": "stopped",
+    "min_gap_m": 2.170194395341098,
+    "stale_ticks": 3,
+    "end_y": 1.880323498561662
+  },
+  {
+    "kind": 3,
+    "seed": 23001,
+    "stress": false,
+    "outcome": "stopped",
+    "min_gap_m": 3.77224254488869,
+    "stale_ticks": 0,
+    "end_y": 0.0
+  },
+  {
+    "kind": 3,
+    "seed": 23001,
+    "stress": true,
+    "outcome": "stopped",
+    "min_gap_m": 3.77224254488869,
+    "stale_ticks": 0,
+    "end_y": 0.0
+  }
+]

@@ -1,0 +1,992 @@
+{
+ "configs": [
+  "fix-detour-creep",
+  "fix-all3",
+  "fix-detour",
+  "fix-all"
+ ],
+ "px4_pairs": 42,
+ "px4_excluded": {},
+ "rule": {
+  "stall_s": 90,
+  "stall_m": 3.0,
+  "max_coll": 20,
+  "limit_s": 360
+ },
+ "reps": 10,
+ "pilot": "shared",
+ "corr": {
+  "all": {
+   "progress": 0.4305510534846028,
+   "collisions": 0.7906090074837286
+  },
+  "fix-detour-creep": {
+   "progress": 0.25,
+   "collisions": 0.34901517761108697
+  },
+  "fix-all3": {
+   "progress": 0.08333333333333334,
+   "collisions": 0.487305634673383
+  },
+  "fix-detour": {
+   "progress": 0.5244755244755246,
+   "collisions": 0.42531346865098013
+  },
+  "fix-all": {
+   "progress": 0.7552447552447553,
+   "collisions": -0.4764927498906147
+  },
+  "brain": {
+   "progress": 0.4305510534846028,
+   "collisions": 0.7906090074837286
+  }
+ },
+ "split_half_ceiling": {
+  "all": {
+   "progress_m": 0.5027001500139503,
+   "collisions": 0.6937404316434248
+  },
+  "brain": {
+   "progress_m": 0.5027001500139503,
+   "collisions": 0.6937404316434248
+  }
+ },
+ "px4_percentile_in_fastsim": {
+  "progress_m": {
+   "mean": 0.6166666666666666,
+   "frac_outside_range": 0.2619047619047619,
+   "values": [
+    1.0,
+    1.0,
+    1.0,
+    0.3,
+    0.4,
+    0.9,
+    0.6,
+    0.3,
+    0.7,
+    1.0,
+    1.0,
+    1.0,
+    0.9,
+    0.6,
+    1.0,
+    0.8,
+    0.8,
+    0.8,
+    0.5,
+    0.1,
+    0.2,
+    0.5,
+    1.0,
+    0.4,
+    0.4,
+    0.8,
+    0.1,
+    0.0,
+    0.7,
+    0.5,
+    0.7,
+    0.5,
+    0.8,
+    0.3,
+    0.7,
+    0.3,
+    0.6,
+    0.5,
+    0.6,
+    0.6,
+    1.0,
+    0.0
+   ]
+  },
+  "collisions": {
+   "mean": 0.6642857142857144,
+   "frac_outside_range": 0.16666666666666666,
+   "values": [
+    1.0,
+    0.5,
+    0.4,
+    0.4,
+    0.7,
+    0.95,
+    0.4,
+    0.3,
+    0.55,
+    1.0,
+    1.0,
+    0.85,
+    0.2,
+    0.7,
+    0.6,
+    0.8,
+    0.8,
+    0.7,
+    0.65,
+    0.95,
+    1.0,
+    1.0,
+    0.85,
+    0.5,
+    1.0,
+    0.7,
+    0.2,
+    0.2,
+    0.95,
+    0.85,
+    1.0,
+    0.95,
+    0.95,
+    0.25,
+    0.7,
+    0.6,
+    0.9,
+    0.85,
+    0.25,
+    0.3,
+    0.25,
+    0.2
+   ]
+  }
+ },
+ "speed": {
+  "episodes": 420,
+  "sim_s_total": 108572,
+  "worker_wall_s_total": 3970.6,
+  "rtf_per_core": 27.3,
+  "batch_wall_s": 596.0,
+  "episodes_per_min": 42.3,
+  "rtf_total": 182.2,
+  "workers": 7,
+  "cpu": "arm",
+  "batched": {
+   "episodes": 420,
+   "workers": 7,
+   "wall_s": 596.0,
+   "episodes_per_min": 42.3,
+   "rtf_total": 182.2,
+   "rtf_per_worker": 27.3,
+   "us_per_drone_frame": {
+    "render": 909.3,
+    "pilot": 216.1,
+    "truth": 40.1,
+    "dynamics": 21.1,
+    "book": 30.3
+   },
+   "share": {
+    "render": 0.747,
+    "pilot": 0.178,
+    "truth": 0.033,
+    "dynamics": 0.017,
+    "book": 0.025
+   }
+  },
+  "px4_reference": "PX4 + Gazebo Docker: ~1x real time per container, 3 containers ~1.8x total (forest-test-field notes)"
+ },
+ "by_preset": {
+  "fix-detour-creep easy": {
+   "px4_prog": 48.9,
+   "fs_prog": 20.256666666666668,
+   "px4_coll": 3.0,
+   "fs_coll": 1.8666666666666665
+  },
+  "fix-detour-creep medium": {
+   "px4_prog": 26.133333333333336,
+   "fs_prog": 26.496666666666666,
+   "px4_coll": 4.333333333333333,
+   "fs_coll": 2.966666666666667
+  },
+  "fix-detour-creep hard": {
+   "px4_prog": 24.166666666666668,
+   "fs_prog": 21.593333333333334,
+   "px4_coll": 6.666666666666667,
+   "fs_coll": 6.833333333333333
+  },
+  "fix-all3 easy": {
+   "px4_prog": 51.4,
+   "fs_prog": 14.743333333333334,
+   "px4_coll": 2.0,
+   "fs_coll": 0.20000000000000004
+  },
+  "fix-all3 medium": {
+   "px4_prog": 45.5,
+   "fs_prog": 26.50666666666667,
+   "px4_coll": 1.0,
+   "fs_coll": 1.4333333333333333
+  },
+  "fix-all3 hard": {
+   "px4_prog": 35.300000000000004,
+   "fs_prog": 21.730000000000004,
+   "px4_coll": 6.666666666666667,
+   "fs_coll": 4.366666666666666
+  },
+  "fix-detour easy": {
+   "px4_prog": 53.56666666666666,
+   "fs_prog": 56.28666666666667,
+   "px4_coll": 8.333333333333334,
+   "fs_coll": 5.3
+  },
+  "fix-detour medium": {
+   "px4_prog": 44.46666666666667,
+   "fs_prog": 39.48500000000001,
+   "px4_coll": 12.666666666666666,
+   "fs_coll": 9.166666666666666
+  },
+  "fix-detour hard": {
+   "px4_prog": 17.366666666666664,
+   "fs_prog": 27.540000000000003,
+   "px4_coll": 15.666666666666666,
+   "fs_coll": 11.633333333333333
+  },
+  "fix-all easy": {
+   "px4_prog": 45.1,
+   "fs_prog": 39.96333333333333,
+   "px4_coll": 2.3333333333333335,
+   "fs_coll": 0.39999999999999997
+  },
+  "fix-all medium": {
+   "px4_prog": 36.716666666666676,
+   "fs_prog": 33.31166666666667,
+   "px4_coll": 1.5,
+   "fs_coll": 0.85
+  },
+  "fix-all hard": {
+   "px4_prog": 23.233333333333334,
+   "fs_prog": 19.286666666666665,
+   "px4_coll": 0.0,
+   "fs_coll": 1.5666666666666664
+  }
+ },
+ "rows": [
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_easy_0",
+   "n": 10,
+   "px4_prog": 45.4,
+   "px4_coll": 6,
+   "px4_end": "timeout",
+   "fs_prog": 13.959999999999999,
+   "fs_prog_sd": 12.348376411496371,
+   "fs_coll": 1.2,
+   "fs_coll_sd": 1.661324772583615,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_easy_1",
+   "n": 10,
+   "px4_prog": 52.4,
+   "px4_coll": 2,
+   "px4_end": "timeout",
+   "fs_prog": 21.360000000000003,
+   "fs_prog_sd": 13.574255044016228,
+   "fs_coll": 2.1,
+   "fs_coll_sd": 2.2113344387495983,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 7,
+    "stalled": 3
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_easy_2",
+   "n": 10,
+   "px4_prog": 48.9,
+   "px4_coll": 1,
+   "px4_end": "timeout",
+   "fs_prog": 25.450000000000003,
+   "fs_prog_sd": 13.768896106805368,
+   "fs_coll": 2.3,
+   "fs_coll_sd": 2.1931712199461306,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 7,
+    "stalled": 3
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_medium_0",
+   "n": 10,
+   "px4_prog": 18.5,
+   "px4_coll": 3,
+   "px4_end": "stalled",
+   "fs_prog": 20.57,
+   "fs_prog_sd": 12.686926341710983,
+   "fs_coll": 3.2,
+   "fs_coll_sd": 2.3151673805580453,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 3,
+    "stalled": 7
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_medium_1",
+   "n": 10,
+   "px4_prog": 15.7,
+   "px4_coll": 5,
+   "px4_end": "stalled",
+   "fs_prog": 24.43,
+   "fs_prog_sd": 19.004686264182315,
+   "fs_coll": 3.1,
+   "fs_coll_sd": 2.6627053911388696,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_medium_2",
+   "n": 10,
+   "px4_prog": 44.2,
+   "px4_coll": 5,
+   "px4_end": "timeout",
+   "fs_prog": 34.489999999999995,
+   "fs_prog_sd": 16.556113674410426,
+   "fs_coll": 2.6,
+   "fs_coll_sd": 1.4966629547095764,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 8,
+    "stalled": 2
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_hard_0",
+   "n": 10,
+   "px4_prog": 42.3,
+   "px4_coll": 6,
+   "px4_end": "stalled",
+   "fs_prog": 30.109999999999996,
+   "fs_prog_sd": 15.023944222473672,
+   "fs_coll": 6.8,
+   "fs_coll_sd": 2.6,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6,
+    "stalled": 4
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_hard_1",
+   "n": 10,
+   "px4_prog": 10.8,
+   "px4_coll": 5,
+   "px4_end": "stalled",
+   "fs_prog": 15.55,
+   "fs_prog_sd": 9.33555033193009,
+   "fs_coll": 7.1,
+   "fs_coll_sd": 3.9102429592034307,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-detour-creep",
+   "world": "ff_hard_2",
+   "n": 10,
+   "px4_prog": 19.4,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 19.119999999999997,
+   "fs_prog_sd": 14.794309716914812,
+   "fs_coll": 6.6,
+   "fs_coll_sd": 4.431703961232067,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 2,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_easy_0",
+   "n": 10,
+   "px4_prog": 49.5,
+   "px4_coll": 2,
+   "px4_end": "timeout",
+   "fs_prog": 10.760000000000002,
+   "fs_prog_sd": 15.376228406211975,
+   "fs_coll": 0.1,
+   "fs_coll_sd": 0.30000000000000004,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 2,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_easy_1",
+   "n": 10,
+   "px4_prog": 44.5,
+   "px4_coll": 3,
+   "px4_end": "timeout",
+   "fs_prog": 8.87,
+   "fs_prog_sd": 9.706085719794565,
+   "fs_coll": 0.2,
+   "fs_coll_sd": 0.6000000000000001,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 2,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_easy_2",
+   "n": 10,
+   "px4_prog": 60.2,
+   "px4_coll": 1,
+   "px4_end": "timeout",
+   "fs_prog": 24.6,
+   "fs_prog_sd": 16.595541569951855,
+   "fs_coll": 0.3,
+   "fs_coll_sd": 0.45825756949558394,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 7,
+    "stalled": 3
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_medium_0",
+   "n": 10,
+   "px4_prog": 42.8,
+   "px4_coll": 0,
+   "px4_end": "timeout",
+   "fs_prog": 17.32,
+   "fs_prog_sd": 14.203436203961349,
+   "fs_coll": 1.9,
+   "fs_coll_sd": 2.022374841615669,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_medium_1",
+   "n": 10,
+   "px4_prog": 40.8,
+   "px4_coll": 1,
+   "px4_end": "timeout",
+   "fs_prog": 24.89,
+   "fs_prog_sd": 18.816612341226566,
+   "fs_coll": 0.6,
+   "fs_coll_sd": 0.8,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6,
+    "stalled": 4
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_medium_2",
+   "n": 10,
+   "px4_prog": 52.9,
+   "px4_coll": 2,
+   "px4_end": "timeout",
+   "fs_prog": 37.31,
+   "fs_prog_sd": 7.056124998892805,
+   "fs_coll": 1.8,
+   "fs_coll_sd": 1.1661903789690602,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 10
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_hard_0",
+   "n": 10,
+   "px4_prog": 42.5,
+   "px4_coll": 7,
+   "px4_end": "timeout",
+   "fs_prog": 25.130000000000003,
+   "fs_prog_sd": 14.670858870563784,
+   "fs_coll": 4.4,
+   "fs_coll_sd": 2.244994432064365,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_hard_1",
+   "n": 10,
+   "px4_prog": 22.2,
+   "px4_coll": 7,
+   "px4_end": "stalled",
+   "fs_prog": 16.52,
+   "fs_prog_sd": 8.615892292734399,
+   "fs_coll": 4.3,
+   "fs_coll_sd": 2.9,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-all3",
+   "world": "ff_hard_2",
+   "n": 10,
+   "px4_prog": 41.2,
+   "px4_coll": 6,
+   "px4_end": "timeout",
+   "fs_prog": 23.540000000000003,
+   "fs_prog_sd": 13.904258340522878,
+   "fs_coll": 4.4,
+   "fs_coll_sd": 2.33238075793812,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_0",
+   "n": 10,
+   "px4_prog": 63.0,
+   "px4_coll": 7,
+   "px4_end": "timeout",
+   "fs_prog": 56.290000000000006,
+   "fs_prog_sd": 19.289606009454936,
+   "fs_coll": 5.5,
+   "fs_coll_sd": 2.7658633371878665,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 9,
+    "stalled": 1
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_1",
+   "n": 10,
+   "px4_prog": 42.9,
+   "px4_coll": 8,
+   "px4_end": "timeout",
+   "fs_prog": 54.52,
+   "fs_prog_sd": 18.13525847623904,
+   "fs_coll": 4.8,
+   "fs_coll_sd": 2.4413111231467406,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 9,
+    "stalled": 1
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_2",
+   "n": 10,
+   "px4_prog": 54.8,
+   "px4_coll": 10,
+   "px4_end": "timeout",
+   "fs_prog": 58.05,
+   "fs_prog_sd": 20.317098710199744,
+   "fs_coll": 5.6,
+   "fs_coll_sd": 2.65329983228432,
+   "fs_reached": 0.1,
+   "fs_ends": {
+    "exit": 1,
+    "timeout": 8,
+    "stalled": 1
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_0",
+   "n": 10,
+   "px4_prog": 55.7,
+   "px4_coll": 16,
+   "px4_end": "timeout",
+   "fs_prog": 37.540000000000006,
+   "fs_prog_sd": 26.47025500443847,
+   "fs_coll": 6.9,
+   "fs_coll_sd": 4.846648326421054,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 5,
+    "stalled": 5
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_1",
+   "n": 10,
+   "px4_prog": 65.5,
+   "px4_coll": 15,
+   "px4_end": "timeout",
+   "fs_prog": 48.34,
+   "fs_prog_sd": 3.374966666502055,
+   "fs_coll": 12.2,
+   "fs_coll_sd": 3.1559467676119,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6,
+    "stalled": 4
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_2",
+   "n": 10,
+   "px4_prog": 53.1,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 45.75000000000001,
+   "fs_prog_sd": 16.53071383818618,
+   "fs_coll": 9.3,
+   "fs_coll_sd": 5.0803543183522155,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "too_many_collisions": 1,
+    "timeout": 2,
+    "stalled": 7
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_3",
+   "n": 10,
+   "px4_prog": 29.4,
+   "px4_coll": 19,
+   "px4_end": "timeout",
+   "fs_prog": 31.589999999999996,
+   "fs_prog_sd": 22.587272965101388,
+   "fs_coll": 9.2,
+   "fs_coll_sd": 6.690291473471092,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_4",
+   "n": 10,
+   "px4_prog": 43.4,
+   "px4_coll": 10,
+   "px4_end": "stalled",
+   "fs_prog": 26.18,
+   "fs_prog_sd": 18.45458208684228,
+   "fs_coll": 6.5,
+   "fs_coll_sd": 4.522167621838006,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_5",
+   "n": 10,
+   "px4_prog": 19.7,
+   "px4_coll": 7,
+   "px4_end": "stalled",
+   "fs_prog": 47.510000000000005,
+   "fs_prog_sd": 15.588293684685313,
+   "fs_coll": 10.9,
+   "fs_coll_sd": 5.223983154643591,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "too_many_collisions": 1,
+    "timeout": 6,
+    "stalled": 3
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_0",
+   "n": 10,
+   "px4_prog": 10.2,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 43.230000000000004,
+   "fs_prog_sd": 8.709885188680733,
+   "fs_coll": 13.6,
+   "fs_coll_sd": 2.973213749463701,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "too_many_collisions": 1,
+    "timeout": 4,
+    "stalled": 5
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_1",
+   "n": 10,
+   "px4_prog": 22.4,
+   "px4_coll": 20,
+   "px4_end": "too_many_collisions",
+   "fs_prog": 17.560000000000002,
+   "fs_prog_sd": 6.4938740363514915,
+   "fs_coll": 11.2,
+   "fs_coll_sd": 5.436910887627274,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "too_many_collisions": 1,
+    "timeout": 1,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_2",
+   "n": 10,
+   "px4_prog": 19.5,
+   "px4_coll": 16,
+   "px4_end": "stalled",
+   "fs_prog": 21.83,
+   "fs_prog_sd": 14.54833667468553,
+   "fs_coll": 10.1,
+   "fs_coll_sd": 5.374941860150676,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 2,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_0",
+   "n": 10,
+   "px4_prog": 57.7,
+   "px4_coll": 4,
+   "px4_end": "timeout",
+   "fs_prog": 44.73,
+   "fs_prog_sd": 19.582596865584502,
+   "fs_coll": 0.6,
+   "fs_coll_sd": 0.9165151389911681,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 8,
+    "stalled": 2
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_1",
+   "n": 10,
+   "px4_prog": 16.8,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 29.45,
+   "fs_prog_sd": 27.05672744438987,
+   "fs_coll": 0.1,
+   "fs_coll_sd": 0.30000000000000004,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 5,
+    "stalled": 5
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_2",
+   "n": 10,
+   "px4_prog": 60.8,
+   "px4_coll": 2,
+   "px4_end": "timeout",
+   "fs_prog": 45.71,
+   "fs_prog_sd": 18.422890652663604,
+   "fs_coll": 0.5,
+   "fs_coll_sd": 0.6708203932499369,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 8,
+    "stalled": 2
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_0",
+   "n": 10,
+   "px4_prog": 14.1,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 31.68,
+   "fs_prog_sd": 24.04744477070277,
+   "fs_coll": 0.8,
+   "fs_coll_sd": 0.9797958971132713,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 2,
+    "stalled": 8
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_1",
+   "n": 10,
+   "px4_prog": 43.7,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 34.279999999999994,
+   "fs_prog_sd": 17.554930931222714,
+   "fs_coll": 0.7,
+   "fs_coll_sd": 1.004987562112089,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_2",
+   "n": 10,
+   "px4_prog": 52.1,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 51.85,
+   "fs_prog_sd": 6.322539046933597,
+   "fs_coll": 0.8,
+   "fs_coll_sd": 0.8717797887081348,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_3",
+   "n": 10,
+   "px4_prog": 47.7,
+   "px4_coll": 5,
+   "px4_end": "stalled",
+   "fs_prog": 32.940000000000005,
+   "fs_prog_sd": 19.93861579949822,
+   "fs_coll": 1.1,
+   "fs_coll_sd": 2.1656407827707715,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 4,
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_4",
+   "n": 10,
+   "px4_prog": 20.3,
+   "px4_coll": 2,
+   "px4_end": "stalled",
+   "fs_prog": 25.560000000000002,
+   "fs_prog_sd": 17.876140523054747,
+   "fs_coll": 0.6,
+   "fs_coll_sd": 1.2806248474865698,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 10
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_5",
+   "n": 10,
+   "px4_prog": 42.4,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 23.560000000000002,
+   "fs_prog_sd": 19.12026150448785,
+   "fs_coll": 1.1,
+   "fs_coll_sd": 1.374772708486752,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_0",
+   "n": 10,
+   "px4_prog": 41.9,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 26.18,
+   "fs_prog_sd": 14.674794717473905,
+   "fs_coll": 0.9,
+   "fs_coll_sd": 1.3,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 10
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_1",
+   "n": 10,
+   "px4_prog": 17.6,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 9.75,
+   "fs_prog_sd": 2.5741989045137905,
+   "fs_coll": 1.0,
+   "fs_coll_sd": 1.4832396974191326,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 10
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_2",
+   "n": 10,
+   "px4_prog": 10.2,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 21.93,
+   "fs_prog_sd": 8.693106464319875,
+   "fs_coll": 2.8,
+   "fs_coll_sd": 3.5721142198983498,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 1,
+    "stalled": 9
+   }
+  }
+ ],
+ "eye_calib": "fastsim.validate_eye lstsq on 18 seed-0/1 runs (step 15, image lag 1); held-out frame corr 0.936",
+ "dyn_params": {
+  "delay_v": 8,
+  "delay_r": 4,
+  "tau_v": 0.42575467669323447,
+  "acc": 2.0369255505573114,
+  "dec": 3.445665091603966,
+  "tau_r": 0.1986232923805292,
+  "rmax": 2.416109632045282,
+  "alpha": 12.97541960934372,
+  "tau_z": 0.5,
+  "vel_off": 0.0,
+  "drift_sd": 0.0,
+  "drift_tau": 1.0
+ }
+}
