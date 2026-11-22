@@ -1,0 +1,382 @@
+[
+  {
+    "scene": "walk_reverse",
+    "seed": 0,
+    "outcome": "finish",
+    "min_gap_m": 0.267,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 190,
+    "contact": null,
+    "object_gap_m": 0.267,
+    "obstacle_z_range": [
+      0.832,
+      0.832
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 1,
+    "outcome": "finish",
+    "min_gap_m": 0.76,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 190,
+    "contact": null,
+    "object_gap_m": 0.76,
+    "obstacle_z_range": [
+      0.886,
+      0.886
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 2,
+    "outcome": "finish",
+    "min_gap_m": 0.478,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 191,
+    "contact": null,
+    "object_gap_m": 0.478,
+    "obstacle_z_range": [
+      0.834,
+      0.834
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 3,
+    "outcome": "finish",
+    "min_gap_m": 0.729,
+    "first_sidestep_tick": 12,
+    "event_tick": 16,
+    "last_tick": 189,
+    "contact": null,
+    "object_gap_m": 0.968,
+    "obstacle_z_range": [
+      0.829,
+      0.829
+    ],
+    "brake_tick": null,
+    "stopped_tick": null,
+    "recognized": false,
+    "sidestepped_before_reversal": true,
+    "sidestepped": true
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 4,
+    "outcome": "finish",
+    "min_gap_m": 0.382,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 188,
+    "contact": null,
+    "object_gap_m": 0.382,
+    "obstacle_z_range": [
+      0.851,
+      0.851
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 5,
+    "outcome": "finish",
+    "min_gap_m": 0.475,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 189,
+    "contact": null,
+    "object_gap_m": 0.475,
+    "obstacle_z_range": [
+      0.875,
+      0.875
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 6,
+    "outcome": "finish",
+    "min_gap_m": 0.546,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 188,
+    "contact": null,
+    "object_gap_m": 0.546,
+    "obstacle_z_range": [
+      0.837,
+      0.837
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 7,
+    "outcome": "finish",
+    "min_gap_m": 0.563,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 0.563,
+    "obstacle_z_range": [
+      0.882,
+      0.882
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 8,
+    "outcome": "finish",
+    "min_gap_m": 0.714,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 187,
+    "contact": null,
+    "object_gap_m": 0.714,
+    "obstacle_z_range": [
+      0.889,
+      0.889
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 9,
+    "outcome": "finish",
+    "min_gap_m": 0.716,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 185,
+    "contact": null,
+    "object_gap_m": 0.716,
+    "obstacle_z_range": [
+      0.833,
+      0.833
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 10,
+    "outcome": "finish",
+    "min_gap_m": 0.394,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 184,
+    "contact": null,
+    "object_gap_m": 0.394,
+    "obstacle_z_range": [
+      0.827,
+      0.827
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 11,
+    "outcome": "finish",
+    "min_gap_m": 0.387,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 190,
+    "contact": null,
+    "object_gap_m": 0.387,
+    "obstacle_z_range": [
+      0.85,
+      0.85
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 80,
+    "outcome": "finish",
+    "min_gap_m": 0.711,
+    "first_sidestep_tick": 22,
+    "event_tick": 26,
+    "last_tick": 191,
+    "contact": null,
+    "object_gap_m": 0.83,
+    "obstacle_z_range": [
+      0.811,
+      0.811
+    ],
+    "brake_tick": null,
+    "stopped_tick": null,
+    "recognized": false,
+    "sidestepped_before_reversal": true,
+    "sidestepped": true
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 81,
+    "outcome": "finish",
+    "min_gap_m": 0.727,
+    "first_sidestep_tick": 13,
+    "event_tick": 18,
+    "last_tick": 200,
+    "contact": null,
+    "object_gap_m": 1.052,
+    "obstacle_z_range": [
+      0.827,
+      0.827
+    ],
+    "brake_tick": null,
+    "stopped_tick": null,
+    "recognized": false,
+    "sidestepped_before_reversal": true,
+    "sidestepped": true
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 82,
+    "outcome": "finish",
+    "min_gap_m": 0.745,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 187,
+    "contact": null,
+    "object_gap_m": 0.745,
+    "obstacle_z_range": [
+      0.878,
+      0.878
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 83,
+    "outcome": "finish",
+    "min_gap_m": 0.714,
+    "first_sidestep_tick": 18,
+    "event_tick": 23,
+    "last_tick": 194,
+    "contact": null,
+    "object_gap_m": 0.856,
+    "obstacle_z_range": [
+      0.814,
+      0.814
+    ],
+    "brake_tick": null,
+    "stopped_tick": null,
+    "recognized": false,
+    "sidestepped_before_reversal": true,
+    "sidestepped": true
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 84,
+    "outcome": "finish",
+    "min_gap_m": 0.782,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 189,
+    "contact": null,
+    "object_gap_m": 0.8,
+    "obstacle_z_range": [
+      0.882,
+      0.882
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 85,
+    "outcome": "finish",
+    "min_gap_m": 0.64,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 185,
+    "contact": null,
+    "object_gap_m": 0.64,
+    "obstacle_z_range": [
+      0.848,
+      0.848
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 86,
+    "outcome": "finish",
+    "min_gap_m": 0.555,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 192,
+    "contact": null,
+    "object_gap_m": 0.555,
+    "obstacle_z_range": [
+      0.824,
+      0.824
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 87,
+    "outcome": "finish",
+    "min_gap_m": 0.56,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 189,
+    "contact": null,
+    "object_gap_m": 0.56,
+    "obstacle_z_range": [
+      0.873,
+      0.873
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 88,
+    "outcome": "finish",
+    "min_gap_m": 0.738,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 187,
+    "contact": null,
+    "object_gap_m": 0.738,
+    "obstacle_z_range": [
+      0.866,
+      0.866
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 89,
+    "outcome": "finish",
+    "min_gap_m": 0.352,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 191,
+    "contact": null,
+    "object_gap_m": 0.352,
+    "obstacle_z_range": [
+      0.872,
+      0.872
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 90,
+    "outcome": "finish",
+    "min_gap_m": 0.574,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 191,
+    "contact": null,
+    "object_gap_m": 0.574,
+    "obstacle_z_range": [
+      0.865,
+      0.865
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 91,
+    "outcome": "finish",
+    "min_gap_m": 0.565,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 190,
+    "contact": null,
+    "object_gap_m": 0.565,
+    "obstacle_z_range": [
+      0.883,
+      0.883
+    ]
+  }
+]

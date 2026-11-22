@@ -1,0 +1,675 @@
+{
+  "source": "https://raw.githubusercontent.com/pulp-platform/pulp-dronet/98f15cfe2e9c34c3a546358e22e45b3b09f11a79/pulp-dronet-v2/gapflow/nntool_input/models_onnx/model_original_himax.onnx",
+  "sha256": "b764df96067210f55fd9a1ae3804c84be9f60dc51329fbab6277d49d6b7074d6",
+  "onnxruntime": "1.23.2",
+  "threshold": 0.5,
+  "method_order": [
+    "ReviewPilot",
+    "DroNet"
+  ],
+  "rows": [
+    {
+      "profile": "reference",
+      "seed": 0,
+      "event_tick": 36,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        40,
+        36
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 0,
+      "event_tick": 36,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        36
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 1,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        33,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 1,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 2,
+      "event_tick": 31,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        31
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 2,
+      "event_tick": 31,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        31
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 3,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        27
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 3,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        27
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 4,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        33,
+        26
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 4,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        26
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 5,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        35,
+        26
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 5,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        26
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 6,
+      "event_tick": 32,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        39,
+        32
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 6,
+      "event_tick": 32,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        32
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 7,
+      "event_tick": 32,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        39,
+        32
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 7,
+      "event_tick": 32,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        32
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 8,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        39,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 8,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 9,
+      "event_tick": 31,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        35,
+        31
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 9,
+      "event_tick": 31,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        31
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 10,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        35,
+        26
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 10,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        26
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 11,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        29
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 11,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        29
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 80,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        33,
+        27
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 80,
+      "event_tick": 26,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        27
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 81,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        36,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 81,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 82,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        35,
+        29
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 82,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        29
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 83,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        36,
+        28
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 83,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        28
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 84,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        32,
+        27
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 84,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        27
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 85,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        36,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 85,
+      "event_tick": 30,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 86,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        35,
+        29
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 86,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        29
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 87,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        28
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 87,
+      "event_tick": 27,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        28
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 88,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        29
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 88,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        29
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 89,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        36,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 89,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 90,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        34,
+        28
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 90,
+      "event_tick": 28,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        28
+      ]
+    },
+    {
+      "profile": "reference",
+      "seed": 91,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        37,
+        30
+      ]
+    },
+    {
+      "profile": "both",
+      "seed": 91,
+      "event_tick": 29,
+      "early": [
+        false,
+        true
+      ],
+      "first": [
+        null,
+        30
+      ]
+    }
+  ],
+  "empty_scores": [
+    0.9888511300086975,
+    0.9927183389663696,
+    0.9896364212036133,
+    0.9884674549102783,
+    0.9819871187210083,
+    0.9914140105247498,
+    0.9922329783439636,
+    0.9845758080482483,
+    0.9884467720985413,
+    0.9755657911300659,
+    0.9923374652862549,
+    0.992925763130188,
+    0.9788640737533569,
+    0.9923995733261108,
+    0.9869852066040039,
+    0.9869246482849121,
+    0.9918644428253174,
+    0.9949942827224731,
+    0.9871767163276672,
+    0.988374650478363,
+    0.9869718551635742,
+    0.98650062084198,
+    0.9909332394599915,
+    0.9800856113433838
+  ],
+  "timing_ms": [
+    [
+      0.024959,
+      0.06319219999999998,
+      0.14733316
+    ],
+    [
+      1.19925,
+      1.4009417999999998,
+      2.0497278799999976
+    ]
+  ],
+  "frames": 3585
+}

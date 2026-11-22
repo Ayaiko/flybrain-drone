@@ -1,0 +1,716 @@
+[
+  {
+    "scene": "walk_stop",
+    "seed": 0,
+    "outcome": "finish",
+    "min_gap_m": 0.226,
+    "first_sidestep_tick": 27,
+    "event_tick": 33,
+    "last_tick": 199,
+    "contact": null,
+    "object_gap_m": 0.226,
+    "obstacle_z_range": [
+      0.832,
+      0.832
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 1,
+    "outcome": "finish",
+    "min_gap_m": 0.261,
+    "first_sidestep_tick": 22,
+    "event_tick": 30,
+    "last_tick": 209,
+    "contact": null,
+    "object_gap_m": 0.261,
+    "obstacle_z_range": [
+      0.886,
+      0.886
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 2,
+    "outcome": "finish",
+    "min_gap_m": 0.258,
+    "first_sidestep_tick": 24,
+    "event_tick": 31,
+    "last_tick": 207,
+    "contact": null,
+    "object_gap_m": 0.258,
+    "obstacle_z_range": [
+      0.834,
+      0.834
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 3,
+    "outcome": "finish",
+    "min_gap_m": 0.254,
+    "first_sidestep_tick": 23,
+    "event_tick": 27,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 0.254,
+    "obstacle_z_range": [
+      0.829,
+      0.829
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 4,
+    "outcome": "finish",
+    "min_gap_m": 0.257,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 199,
+    "contact": null,
+    "object_gap_m": 0.257,
+    "obstacle_z_range": [
+      0.851,
+      0.851
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 5,
+    "outcome": "finish",
+    "min_gap_m": 0.28,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 201,
+    "contact": null,
+    "object_gap_m": 0.28,
+    "obstacle_z_range": [
+      0.875,
+      0.875
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 6,
+    "outcome": "finish",
+    "min_gap_m": 0.224,
+    "first_sidestep_tick": 29,
+    "event_tick": 32,
+    "last_tick": 203,
+    "contact": null,
+    "object_gap_m": 0.224,
+    "obstacle_z_range": [
+      0.837,
+      0.837
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 7,
+    "outcome": "finish",
+    "min_gap_m": 0.271,
+    "first_sidestep_tick": 29,
+    "event_tick": 32,
+    "last_tick": 214,
+    "contact": null,
+    "object_gap_m": 0.271,
+    "obstacle_z_range": [
+      0.882,
+      0.882
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 8,
+    "outcome": "finish",
+    "min_gap_m": 0.254,
+    "first_sidestep_tick": 28,
+    "event_tick": 30,
+    "last_tick": 197,
+    "contact": null,
+    "object_gap_m": 0.254,
+    "obstacle_z_range": [
+      0.889,
+      0.889
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 9,
+    "outcome": "finish",
+    "min_gap_m": 0.236,
+    "first_sidestep_tick": 23,
+    "event_tick": 31,
+    "last_tick": 204,
+    "contact": null,
+    "object_gap_m": 0.236,
+    "obstacle_z_range": [
+      0.833,
+      0.833
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 10,
+    "outcome": "finish",
+    "min_gap_m": 0.235,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 195,
+    "contact": null,
+    "object_gap_m": 0.235,
+    "obstacle_z_range": [
+      0.827,
+      0.827
+    ]
+  },
+  {
+    "scene": "walk_stop",
+    "seed": 11,
+    "outcome": "finish",
+    "min_gap_m": 0.284,
+    "first_sidestep_tick": 25,
+    "event_tick": 29,
+    "last_tick": 203,
+    "contact": null,
+    "object_gap_m": 0.284,
+    "obstacle_z_range": [
+      0.85,
+      0.85
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 0,
+    "outcome": "finish",
+    "min_gap_m": 0.732,
+    "first_sidestep_tick": 27,
+    "event_tick": 33,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 0.87,
+    "obstacle_z_range": [
+      0.832,
+      0.832
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 1,
+    "outcome": "finish",
+    "min_gap_m": 0.786,
+    "first_sidestep_tick": 22,
+    "event_tick": 30,
+    "last_tick": 203,
+    "contact": null,
+    "object_gap_m": 1.026,
+    "obstacle_z_range": [
+      0.886,
+      0.886
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 2,
+    "outcome": "finish",
+    "min_gap_m": 0.734,
+    "first_sidestep_tick": 24,
+    "event_tick": 31,
+    "last_tick": 203,
+    "contact": null,
+    "object_gap_m": 0.922,
+    "obstacle_z_range": [
+      0.834,
+      0.834
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 3,
+    "outcome": "contact",
+    "min_gap_m": -0.002,
+    "first_sidestep_tick": 23,
+    "event_tick": 27,
+    "last_tick": 98,
+    "contact": "side wall",
+    "object_gap_m": 0.516,
+    "obstacle_z_range": null
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 4,
+    "outcome": "finish",
+    "min_gap_m": 0.751,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 196,
+    "contact": null,
+    "object_gap_m": 0.92,
+    "obstacle_z_range": [
+      0.851,
+      0.851
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 5,
+    "outcome": "finish",
+    "min_gap_m": 0.775,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 1.027,
+    "obstacle_z_range": [
+      0.875,
+      0.875
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 6,
+    "outcome": "finish",
+    "min_gap_m": 0.737,
+    "first_sidestep_tick": 29,
+    "event_tick": 32,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 0.923,
+    "obstacle_z_range": [
+      0.837,
+      0.837
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 7,
+    "outcome": "finish",
+    "min_gap_m": 0.782,
+    "first_sidestep_tick": 29,
+    "event_tick": 32,
+    "last_tick": 209,
+    "contact": null,
+    "object_gap_m": 0.981,
+    "obstacle_z_range": [
+      0.882,
+      0.882
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 8,
+    "outcome": "contact",
+    "min_gap_m": -0.001,
+    "first_sidestep_tick": 28,
+    "event_tick": 30,
+    "last_tick": 104,
+    "contact": "side wall",
+    "object_gap_m": 0.383,
+    "obstacle_z_range": null
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 9,
+    "outcome": "finish",
+    "min_gap_m": 0.733,
+    "first_sidestep_tick": 23,
+    "event_tick": 31,
+    "last_tick": 198,
+    "contact": null,
+    "object_gap_m": 1.008,
+    "obstacle_z_range": [
+      0.833,
+      0.833
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 10,
+    "outcome": "finish",
+    "min_gap_m": 0.727,
+    "first_sidestep_tick": 23,
+    "event_tick": 26,
+    "last_tick": 192,
+    "contact": null,
+    "object_gap_m": 0.936,
+    "obstacle_z_range": [
+      0.827,
+      0.827
+    ]
+  },
+  {
+    "scene": "walk_reverse",
+    "seed": 11,
+    "outcome": "finish",
+    "min_gap_m": 0.75,
+    "first_sidestep_tick": 25,
+    "event_tick": 29,
+    "last_tick": 199,
+    "contact": null,
+    "object_gap_m": 0.902,
+    "obstacle_z_range": [
+      0.85,
+      0.85
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 0,
+    "outcome": "finish",
+    "min_gap_m": 0.218,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 211,
+    "contact": null,
+    "object_gap_m": 0.218,
+    "obstacle_z_range": [
+      1.338,
+      1.338
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 1,
+    "outcome": "finish",
+    "min_gap_m": 0.232,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 210,
+    "contact": null,
+    "object_gap_m": 0.232,
+    "obstacle_z_range": [
+      1.352,
+      1.352
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 2,
+    "outcome": "finish",
+    "min_gap_m": 0.24,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 213,
+    "contact": null,
+    "object_gap_m": 0.24,
+    "obstacle_z_range": [
+      1.36,
+      1.36
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 3,
+    "outcome": "finish",
+    "min_gap_m": 0.257,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 209,
+    "contact": null,
+    "object_gap_m": 0.257,
+    "obstacle_z_range": [
+      1.377,
+      1.377
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 4,
+    "outcome": "finish",
+    "min_gap_m": 0.237,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 209,
+    "contact": null,
+    "object_gap_m": 0.237,
+    "obstacle_z_range": [
+      1.357,
+      1.357
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 5,
+    "outcome": "finish",
+    "min_gap_m": 0.242,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 210,
+    "contact": null,
+    "object_gap_m": 0.242,
+    "obstacle_z_range": [
+      1.362,
+      1.362
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 6,
+    "outcome": "finish",
+    "min_gap_m": 0.203,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 210,
+    "contact": null,
+    "object_gap_m": 0.203,
+    "obstacle_z_range": [
+      1.323,
+      1.323
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 7,
+    "outcome": "finish",
+    "min_gap_m": 0.25,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 219,
+    "contact": null,
+    "object_gap_m": 0.25,
+    "obstacle_z_range": [
+      1.37,
+      1.37
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 8,
+    "outcome": "finish",
+    "min_gap_m": 0.215,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.215,
+    "obstacle_z_range": [
+      1.335,
+      1.335
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 9,
+    "outcome": "finish",
+    "min_gap_m": 0.239,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 208,
+    "contact": null,
+    "object_gap_m": 0.239,
+    "obstacle_z_range": [
+      1.359,
+      1.359
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 10,
+    "outcome": "finish",
+    "min_gap_m": 0.212,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.212,
+    "obstacle_z_range": [
+      1.332,
+      1.332
+    ]
+  },
+  {
+    "scene": "over_box",
+    "seed": 11,
+    "outcome": "finish",
+    "min_gap_m": 0.256,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 211,
+    "contact": null,
+    "object_gap_m": 0.256,
+    "obstacle_z_range": [
+      1.376,
+      1.376
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 0,
+    "outcome": "finish",
+    "min_gap_m": 0.234,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.234,
+    "obstacle_z_range": [
+      0.466,
+      0.466
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 1,
+    "outcome": "finish",
+    "min_gap_m": 0.22,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 207,
+    "contact": null,
+    "object_gap_m": 0.22,
+    "obstacle_z_range": [
+      0.48,
+      0.48
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 2,
+    "outcome": "finish",
+    "min_gap_m": 0.212,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 206,
+    "contact": null,
+    "object_gap_m": 0.212,
+    "obstacle_z_range": [
+      0.488,
+      0.488
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 3,
+    "outcome": "finish",
+    "min_gap_m": 0.194,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 200,
+    "contact": null,
+    "object_gap_m": 0.194,
+    "obstacle_z_range": [
+      0.506,
+      0.506
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 4,
+    "outcome": "finish",
+    "min_gap_m": 0.235,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 204,
+    "contact": null,
+    "object_gap_m": 0.235,
+    "obstacle_z_range": [
+      0.465,
+      0.465
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 5,
+    "outcome": "finish",
+    "min_gap_m": 0.211,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.211,
+    "obstacle_z_range": [
+      0.489,
+      0.489
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 6,
+    "outcome": "finish",
+    "min_gap_m": 0.208,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 203,
+    "contact": null,
+    "object_gap_m": 0.208,
+    "obstacle_z_range": [
+      0.492,
+      0.492
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 7,
+    "outcome": "finish",
+    "min_gap_m": 0.203,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 214,
+    "contact": null,
+    "object_gap_m": 0.203,
+    "obstacle_z_range": [
+      0.497,
+      0.497
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 8,
+    "outcome": "finish",
+    "min_gap_m": 0.237,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.237,
+    "obstacle_z_range": [
+      0.463,
+      0.463
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 9,
+    "outcome": "finish",
+    "min_gap_m": 0.213,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 200,
+    "contact": null,
+    "object_gap_m": 0.213,
+    "obstacle_z_range": [
+      0.487,
+      0.487
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 10,
+    "outcome": "finish",
+    "min_gap_m": 0.239,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 199,
+    "contact": null,
+    "object_gap_m": 0.239,
+    "obstacle_z_range": [
+      0.461,
+      0.461
+    ]
+  },
+  {
+    "scene": "under_panel",
+    "seed": 11,
+    "outcome": "finish",
+    "min_gap_m": 0.216,
+    "first_sidestep_tick": null,
+    "event_tick": null,
+    "last_tick": 205,
+    "contact": null,
+    "object_gap_m": 0.216,
+    "obstacle_z_range": [
+      0.484,
+      0.484
+    ]
+  }
+]
