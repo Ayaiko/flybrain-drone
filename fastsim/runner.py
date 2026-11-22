@@ -95,7 +95,9 @@ def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared'
             r['x'].append(round(x, 3)); r['y'].append(round(y, 3)); r['z'].append(round(z, 3)); r['h'].append(round(h, 3))
             r['phase'].append(dg.get('phase', st)); r['state'].append(STATES.index(st) if st in STATES else 0); r['looming'].append(int(bool(dg.get('looming', False))))
             r['gap'].append(round(g, 3)); r['yawc'].append(round(yaw, 3)); r['v'].append(round(v, 3))
-            if record: e.img.append(np.clip(lum * 255, 0, 255).astype(np.uint8))
+            if record:
+                r.setdefault('tof', []).append(dg.get('tof'))
+                e.img.append(np.clip(lum * 255, 0, 255).astype(np.uint8))
             if e.last is not None: e.dist += float(np.hypot(x - e.last[0], y - e.last[1]))
             e.last = (x, y); e.k += 1
         t4 = time.perf_counter(); T['book'] += t4 - t3

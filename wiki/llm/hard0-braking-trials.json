@@ -1,0 +1,1057 @@
+{
+  "pose_tick_s": 0,
+  "trials": [
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.45",
+      "run_id": "scan-front+tof_stop=0.45",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.45
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 1,
+      "collisions_by_zone": {
+        "trunks": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1
+      },
+      "dist_m": 64.4,
+      "progress_m": 48.0,
+      "time_s": 343.6,
+      "min_clear_m": 0.219,
+      "min_gap_m": -0.022,
+      "frac_time_gap_lt_0p2": 0.325,
+      "min_clear_by_zone": {
+        "entry": 1.35,
+        "trunks": 0.33,
+        "clearing": 1.21,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 9.24,
+      "contacts_by_phase": {
+        "scan": 1
+      },
+      "first_hits": 1,
+      "rehits": 0,
+      "frames": 10308,
+      "wall_s": 14.494,
+      "rtf": 23.7,
+      "scan_count": 18,
+      "scan_rotation_s": 122.57,
+      "empty_scans": 8,
+      "geofence_events": 0,
+      "hazards": 21,
+      "turn_kinds": {
+        "looming": 7,
+        "goal": 29,
+        "balance": 10,
+        "tof": 10
+      },
+      "brakes": 7,
+      "recoveries": 1
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.7",
+      "run_id": "scan-front+tof_stop=0.7",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.7
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 6,
+      "collisions_by_zone": {
+        "trunks": 6
+      },
+      "collisions_by_kind": {
+        "trunk": 6
+      },
+      "dist_m": 72.7,
+      "progress_m": 44.4,
+      "time_s": 408.6,
+      "min_clear_m": 0.253,
+      "min_gap_m": -0.097,
+      "frac_time_gap_lt_0p2": 0.181,
+      "min_clear_by_zone": {
+        "entry": 1.42,
+        "trunks": 0.25,
+        "clearing": 1.54,
+        "branches": 0.45
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 14.36,
+      "contacts_by_phase": {
+        "fixate": 1,
+        "saccade": 1,
+        "scan_move": 1,
+        "side": 2,
+        "turn2": 1
+      },
+      "first_hits": 5,
+      "rehits": 1,
+      "frames": 12258,
+      "wall_s": 17.236,
+      "rtf": 23.7,
+      "scan_count": 18,
+      "scan_rotation_s": 136.2,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 14,
+      "turn_kinds": {
+        "looming": 2,
+        "goal": 32,
+        "balance": 8,
+        "tof": 10
+      },
+      "brakes": 3,
+      "recoveries": 6
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.9",
+      "run_id": "scan-front+tof_stop=0.9",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.9
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 1,
+      "collisions_by_zone": {
+        "trunks": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1
+      },
+      "dist_m": 55.7,
+      "progress_m": 41.9,
+      "time_s": 361.3,
+      "min_clear_m": 0.206,
+      "min_gap_m": -0.144,
+      "frac_time_gap_lt_0p2": 0.135,
+      "min_clear_by_zone": {
+        "entry": 1.42,
+        "trunks": 0.21,
+        "clearing": 1.59,
+        "branches": 0.58
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 25.6,
+      "contacts_by_phase": {
+        "scan_move": 1
+      },
+      "first_hits": 1,
+      "rehits": 0,
+      "frames": 10839,
+      "wall_s": 15.241,
+      "rtf": 23.7,
+      "scan_count": 18,
+      "scan_rotation_s": 136.27,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 16,
+      "turn_kinds": {
+        "looming": 4,
+        "goal": 23,
+        "balance": 8,
+        "tof": 12
+      },
+      "brakes": 5,
+      "recoveries": 1
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.45",
+      "run_id": "scan-front+tof_stop=0.45",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.45
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 9,
+      "collisions_by_zone": {
+        "trunks": 6,
+        "branches": 3
+      },
+      "collisions_by_kind": {
+        "trunk": 8,
+        "branch": 1
+      },
+      "dist_m": 99.5,
+      "progress_m": 48.0,
+      "time_s": 554.8,
+      "min_clear_m": -0.142,
+      "min_gap_m": -0.492,
+      "frac_time_gap_lt_0p2": 0.268,
+      "min_clear_by_zone": {
+        "entry": 1.55,
+        "trunks": 0.18,
+        "clearing": 1.76,
+        "branches": -0.14
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 10.86,
+      "contacts_by_phase": {
+        "saccade": 1,
+        "scan": 1,
+        "scan_move": 1,
+        "side": 2,
+        "side_brake": 2,
+        "turn1": 2
+      },
+      "first_hits": 7,
+      "rehits": 2,
+      "frames": 16645,
+      "wall_s": 22.3,
+      "rtf": 24.9,
+      "scan_count": 18,
+      "scan_rotation_s": 122.83,
+      "empty_scans": 4,
+      "geofence_events": 0,
+      "hazards": 74,
+      "turn_kinds": {
+        "looming": 36,
+        "goal": 35,
+        "balance": 7,
+        "tof": 14
+      },
+      "brakes": 38,
+      "recoveries": 9
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.7",
+      "run_id": "scan-front+tof_stop=0.7",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.7
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 1,
+      "collisions_by_zone": {
+        "trunks": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1
+      },
+      "dist_m": 90.2,
+      "progress_m": 47.6,
+      "time_s": 532.9,
+      "min_clear_m": 0.217,
+      "min_gap_m": -0.056,
+      "frac_time_gap_lt_0p2": 0.066,
+      "min_clear_by_zone": {
+        "entry": 1.55,
+        "trunks": 0.29,
+        "clearing": 1.39,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 11.98,
+      "contacts_by_phase": {
+        "saccade": 1
+      },
+      "first_hits": 1,
+      "rehits": 0,
+      "frames": 15987,
+      "wall_s": 21.418,
+      "rtf": 24.9,
+      "scan_count": 17,
+      "scan_rotation_s": 128.63,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 67,
+      "turn_kinds": {
+        "looming": 38,
+        "goal": 29,
+        "balance": 9,
+        "tof": 10
+      },
+      "brakes": 38,
+      "recoveries": 1
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_stop=0.9",
+      "run_id": "scan-front+tof_stop=0.9",
+      "config": "scan-front",
+      "overrides": {
+        "tof_stop": 0.9
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 0,
+      "collisions_by_zone": {},
+      "collisions_by_kind": {},
+      "dist_m": 72.3,
+      "progress_m": 42.0,
+      "time_s": 408.2,
+      "min_clear_m": 0.461,
+      "min_gap_m": 0.111,
+      "frac_time_gap_lt_0p2": 0.024,
+      "min_clear_by_zone": {
+        "entry": 1.55,
+        "trunks": 0.46,
+        "clearing": 1.31,
+        "branches": 0.53
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": null,
+      "contacts_by_phase": {},
+      "first_hits": 0,
+      "rehits": 0,
+      "frames": 12247,
+      "wall_s": 16.408,
+      "rtf": 24.9,
+      "scan_count": 13,
+      "scan_rotation_s": 98.17,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 60,
+      "turn_kinds": {
+        "looming": 30,
+        "goal": 25,
+        "balance": 9,
+        "tof": 9
+      },
+      "brakes": 30,
+      "recoveries": 0
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+brake=all",
+      "run_id": "scan-front+brake=all",
+      "config": "scan-front",
+      "overrides": {
+        "brake": "all"
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 0,
+      "collisions_by_zone": {},
+      "collisions_by_kind": {},
+      "dist_m": 30.7,
+      "progress_m": 4.9,
+      "time_s": 177.8,
+      "min_clear_m": 4.333,
+      "min_gap_m": 3.983,
+      "frac_time_gap_lt_0p2": 0.0,
+      "min_clear_by_zone": {
+        "entry": 4.33
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": null,
+      "contacts_by_phase": {},
+      "first_hits": 0,
+      "rehits": 0,
+      "frames": 5333,
+      "wall_s": 6.179,
+      "rtf": 28.8,
+      "scan_count": 0,
+      "scan_rotation_s": 0.0,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 63,
+      "turn_kinds": {
+        "looming": 28,
+        "goal": 14,
+        "balance": 1,
+        "tof": 0
+      },
+      "brakes": 43,
+      "recoveries": 0
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+speed=0.6",
+      "run_id": "scan-front+speed=0.6",
+      "config": "scan-front",
+      "overrides": {
+        "speed": 0.6
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 0,
+      "collisions_by_zone": {},
+      "collisions_by_kind": {},
+      "dist_m": 11.5,
+      "progress_m": 2.9,
+      "time_s": 90.0,
+      "min_clear_m": 6.22,
+      "min_gap_m": 6.018,
+      "frac_time_gap_lt_0p2": 0.0,
+      "min_clear_by_zone": {
+        "entry": 6.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": null,
+      "contacts_by_phase": {},
+      "first_hits": 0,
+      "rehits": 0,
+      "frames": 2701,
+      "wall_s": 3.129,
+      "rtf": 28.8,
+      "scan_count": 0,
+      "scan_rotation_s": 0.0,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 37,
+      "turn_kinds": {
+        "looming": 18,
+        "goal": 5,
+        "balance": 0,
+        "tof": 0
+      },
+      "brakes": 18,
+      "recoveries": 0
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+brake_v=0.08",
+      "run_id": "scan-front+brake_v=0.08",
+      "config": "scan-front",
+      "overrides": {
+        "brake_v": 0.08
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 0,
+      "collisions_by_zone": {},
+      "collisions_by_kind": {},
+      "dist_m": 13.4,
+      "progress_m": 2.1,
+      "time_s": 90.0,
+      "min_clear_m": 4.509,
+      "min_gap_m": 4.159,
+      "frac_time_gap_lt_0p2": 0.0,
+      "min_clear_by_zone": {
+        "entry": 4.51
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": null,
+      "contacts_by_phase": {},
+      "first_hits": 0,
+      "rehits": 0,
+      "frames": 2701,
+      "wall_s": 3.129,
+      "rtf": 28.8,
+      "scan_count": 0,
+      "scan_rotation_s": 0.0,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 35,
+      "turn_kinds": {
+        "looming": 19,
+        "goal": 2,
+        "balance": 0,
+        "tof": 0
+      },
+      "brakes": 19,
+      "recoveries": 0
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_t=1.5",
+      "run_id": "scan-front+tof_t=1.5",
+      "config": "scan-front",
+      "overrides": {
+        "tof_t": 1.5
+      },
+      "rep": 1,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 2,
+      "collisions_by_zone": {
+        "trunks": 2
+      },
+      "collisions_by_kind": {
+        "trunk": 2
+      },
+      "dist_m": 85.7,
+      "progress_m": 44.4,
+      "time_s": 494.6,
+      "min_clear_m": 0.233,
+      "min_gap_m": -0.117,
+      "frac_time_gap_lt_0p2": 0.117,
+      "min_clear_by_zone": {
+        "entry": 1.55,
+        "trunks": 0.23,
+        "clearing": 1.71,
+        "branches": 0.46
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 9.18,
+      "contacts_by_phase": {
+        "fixate": 1,
+        "side_brake": 1
+      },
+      "first_hits": 2,
+      "rehits": 0,
+      "frames": 14837,
+      "wall_s": 17.19,
+      "rtf": 28.8,
+      "scan_count": 16,
+      "scan_rotation_s": 120.37,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 66,
+      "turn_kinds": {
+        "looming": 32,
+        "goal": 28,
+        "balance": 8,
+        "tof": 12
+      },
+      "brakes": 32,
+      "recoveries": 2
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+brake=all",
+      "run_id": "scan-front+brake=all",
+      "config": "scan-front",
+      "overrides": {
+        "brake": "all"
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 7,
+      "collisions_by_zone": {
+        "trunks": 6,
+        "branches": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 6,
+        "branch": 1
+      },
+      "dist_m": 90.9,
+      "progress_m": 47.8,
+      "time_s": 494.4,
+      "min_clear_m": 0.129,
+      "min_gap_m": -0.221,
+      "frac_time_gap_lt_0p2": 0.313,
+      "min_clear_by_zone": {
+        "entry": 1.38,
+        "trunks": 0.13,
+        "clearing": 1.99,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 9.62,
+      "contacts_by_phase": {
+        "brake": 1,
+        "saccade": 1,
+        "scan": 3,
+        "scan_move": 1,
+        "turn1": 1
+      },
+      "first_hits": 6,
+      "rehits": 1,
+      "frames": 14831,
+      "wall_s": 24.722,
+      "rtf": 20.0,
+      "scan_count": 18,
+      "scan_rotation_s": 107.4,
+      "empty_scans": 1,
+      "geofence_events": 0,
+      "hazards": 33,
+      "turn_kinds": {
+        "looming": 13,
+        "goal": 34,
+        "balance": 10,
+        "tof": 15
+      },
+      "brakes": 59,
+      "recoveries": 7
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+speed=0.6",
+      "run_id": "scan-front+speed=0.6",
+      "config": "scan-front",
+      "overrides": {
+        "speed": 0.6
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 2,
+      "collisions_by_zone": {
+        "trunks": 1,
+        "branches": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1,
+        "branch": 1
+      },
+      "dist_m": 65.7,
+      "progress_m": 48.3,
+      "time_s": 408.5,
+      "min_clear_m": 0.236,
+      "min_gap_m": -0.061,
+      "frac_time_gap_lt_0p2": 0.285,
+      "min_clear_by_zone": {
+        "entry": 1.52,
+        "trunks": 0.29,
+        "clearing": 1.94,
+        "branches": 0.24
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 12.24,
+      "contacts_by_phase": {
+        "fixate": 1,
+        "scan": 1
+      },
+      "first_hits": 2,
+      "rehits": 0,
+      "frames": 12255,
+      "wall_s": 20.428,
+      "rtf": 20.0,
+      "scan_count": 19,
+      "scan_rotation_s": 132.1,
+      "empty_scans": 7,
+      "geofence_events": 0,
+      "hazards": 20,
+      "turn_kinds": {
+        "looming": 3,
+        "goal": 46,
+        "balance": 14,
+        "tof": 9
+      },
+      "brakes": 3,
+      "recoveries": 2
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+brake_v=0.08",
+      "run_id": "scan-front+brake_v=0.08",
+      "config": "scan-front",
+      "overrides": {
+        "brake_v": 0.08
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 2,
+      "collisions_by_zone": {
+        "trunks": 1,
+        "branches": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1,
+        "branch": 1
+      },
+      "dist_m": 69.2,
+      "progress_m": 48.0,
+      "time_s": 362.9,
+      "min_clear_m": 0.222,
+      "min_gap_m": -0.047,
+      "frac_time_gap_lt_0p2": 0.3,
+      "min_clear_by_zone": {
+        "entry": 1.36,
+        "trunks": 0.3,
+        "clearing": 1.82,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 9.14,
+      "contacts_by_phase": {
+        "saccade": 1,
+        "scan": 1
+      },
+      "first_hits": 2,
+      "rehits": 0,
+      "frames": 10887,
+      "wall_s": 18.148,
+      "rtf": 20.0,
+      "scan_count": 16,
+      "scan_rotation_s": 113.33,
+      "empty_scans": 7,
+      "geofence_events": 0,
+      "hazards": 19,
+      "turn_kinds": {
+        "looming": 8,
+        "goal": 32,
+        "balance": 11,
+        "tof": 8
+      },
+      "brakes": 9,
+      "recoveries": 2
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front+tof_t=1.5",
+      "run_id": "scan-front+tof_t=1.5",
+      "config": "scan-front",
+      "overrides": {
+        "tof_t": 1.5
+      },
+      "rep": 0,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 2,
+      "collisions_by_zone": {
+        "trunks": 2
+      },
+      "collisions_by_kind": {
+        "trunk": 2
+      },
+      "dist_m": 27.0,
+      "progress_m": 14.8,
+      "time_s": 163.6,
+      "min_clear_m": 0.328,
+      "min_gap_m": -0.022,
+      "frac_time_gap_lt_0p2": 0.173,
+      "min_clear_by_zone": {
+        "entry": 1.35,
+        "trunks": 0.33
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 9.24,
+      "contacts_by_phase": {
+        "scan": 1,
+        "side_brake": 1
+      },
+      "first_hits": 2,
+      "rehits": 0,
+      "frames": 4909,
+      "wall_s": 8.183,
+      "rtf": 20.0,
+      "scan_count": 9,
+      "scan_rotation_s": 56.1,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 12,
+      "turn_kinds": {
+        "looming": 1,
+        "goal": 10,
+        "balance": 3,
+        "tof": 7
+      },
+      "brakes": 2,
+      "recoveries": 2
+    }
+  ],
+  "validation": [
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front",
+      "run_id": "scan-front",
+      "config": "scan-front",
+      "overrides": {},
+      "rep": 2,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 3,
+      "collisions_by_zone": {
+        "trunks": 3
+      },
+      "collisions_by_kind": {
+        "trunk": 3
+      },
+      "dist_m": 84.0,
+      "progress_m": 48.0,
+      "time_s": 456.4,
+      "min_clear_m": -0.037,
+      "min_gap_m": -0.387,
+      "frac_time_gap_lt_0p2": 0.352,
+      "min_clear_by_zone": {
+        "entry": 1.4,
+        "trunks": -0.04,
+        "clearing": 1.19,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 19.06,
+      "contacts_by_phase": {
+        "back": 1,
+        "saccade": 2
+      },
+      "first_hits": 3,
+      "rehits": 0,
+      "frames": 13692,
+      "wall_s": 22.289,
+      "rtf": 20.5,
+      "scan_count": 19,
+      "scan_rotation_s": 143.47,
+      "empty_scans": 7,
+      "geofence_events": 0,
+      "hazards": 30,
+      "turn_kinds": {
+        "looming": 13,
+        "goal": 37,
+        "balance": 9,
+        "tof": 12
+      },
+      "brakes": 13,
+      "recoveries": 3
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front-margin",
+      "run_id": "scan-front-margin",
+      "config": "scan-front-margin",
+      "overrides": {},
+      "rep": 2,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 2,
+      "collisions_by_zone": {
+        "trunks": 2
+      },
+      "collisions_by_kind": {
+        "trunk": 2
+      },
+      "dist_m": 80.0,
+      "progress_m": 47.6,
+      "time_s": 466.2,
+      "min_clear_m": 0.217,
+      "min_gap_m": -0.011,
+      "frac_time_gap_lt_0p2": 0.065,
+      "min_clear_by_zone": {
+        "entry": 1.4,
+        "trunks": 0.34,
+        "clearing": 1.49,
+        "branches": 0.22
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 10.91,
+      "contacts_by_phase": {
+        "scan": 1,
+        "side_brake": 1
+      },
+      "first_hits": 2,
+      "rehits": 0,
+      "frames": 13985,
+      "wall_s": 22.766,
+      "rtf": 20.5,
+      "scan_count": 22,
+      "scan_rotation_s": 159.07,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 25,
+      "turn_kinds": {
+        "looming": 6,
+        "goal": 29,
+        "balance": 10,
+        "tof": 15
+      },
+      "brakes": 6,
+      "recoveries": 2
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front",
+      "run_id": "scan-front",
+      "config": "scan-front",
+      "overrides": {},
+      "rep": 3,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 5,
+      "collisions_by_zone": {
+        "trunks": 3,
+        "branches": 2
+      },
+      "collisions_by_kind": {
+        "trunk": 4,
+        "branch": 1
+      },
+      "dist_m": 87.1,
+      "progress_m": 47.4,
+      "time_s": 460.5,
+      "min_clear_m": 0.154,
+      "min_gap_m": -0.196,
+      "frac_time_gap_lt_0p2": 0.385,
+      "min_clear_by_zone": {
+        "entry": 1.36,
+        "trunks": 0.27,
+        "clearing": 1.33,
+        "branches": 0.15
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 14.41,
+      "contacts_by_phase": {
+        "saccade": 2,
+        "scan_move": 2,
+        "side": 1
+      },
+      "first_hits": 4,
+      "rehits": 1,
+      "frames": 13815,
+      "wall_s": 22.489,
+      "rtf": 20.5,
+      "scan_count": 16,
+      "scan_rotation_s": 119.23,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 29,
+      "turn_kinds": {
+        "looming": 14,
+        "goal": 30,
+        "balance": 11,
+        "tof": 14
+      },
+      "brakes": 15,
+      "recoveries": 5
+    },
+    {
+      "sim": "fastsim",
+      "pilot": "shared",
+      "mode": "scan-front-margin",
+      "run_id": "scan-front-margin",
+      "config": "scan-front-margin",
+      "overrides": {},
+      "rep": 3,
+      "world": "ff_hard_0",
+      "preset": "hard",
+      "seed": 0,
+      "end_reason": "stalled",
+      "reached": false,
+      "success": false,
+      "collisions": 1,
+      "collisions_by_zone": {
+        "trunks": 1
+      },
+      "collisions_by_kind": {
+        "trunk": 1
+      },
+      "dist_m": 62.1,
+      "progress_m": 42.0,
+      "time_s": 324.5,
+      "min_clear_m": 0.296,
+      "min_gap_m": -0.054,
+      "frac_time_gap_lt_0p2": 0.082,
+      "min_clear_by_zone": {
+        "entry": 1.36,
+        "trunks": 0.3,
+        "clearing": 1.35,
+        "branches": 0.6
+      },
+      "centreline_hits": 11,
+      "first_contact_y_m": 11.97,
+      "contacts_by_phase": {
+        "side_brake": 1
+      },
+      "first_hits": 1,
+      "rehits": 0,
+      "frames": 9736,
+      "wall_s": 15.849,
+      "rtf": 20.5,
+      "scan_count": 12,
+      "scan_rotation_s": 90.8,
+      "empty_scans": 0,
+      "geofence_events": 0,
+      "hazards": 28,
+      "turn_kinds": {
+        "looming": 9,
+        "goal": 24,
+        "balance": 8,
+        "tof": 12
+      },
+      "brakes": 9,
+      "recoveries": 1
+    }
+  ]
+}
