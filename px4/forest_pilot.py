@@ -61,6 +61,7 @@ class Pilot:
         self.haz = Hazards(P['haz_expire']); self.sac_end_wy = np.radians(P['sac_end_wy'])
         self.prev_h, self.loom_run, self.sac_target, self.brake_target, self.brake_t0 = None, 0, None, None, 0.0
         self.fencing, self.fence_events = False, 0
+        self.scan_choices = []
         self.scan_count = self.scan_ticks = self.empty_scans = 0
         self.bin_width = np.radians(10)
         self.rec = None                         # active recovery: dict(kind, phase, ...)
@@ -118,7 +119,16 @@ class Pilot:
                 return 0.0, 0.0, info
             bearing = np.arctan2(goal[1]-xy[1], goal[0]-xy[0])
             choices = headings[corridor]
-            target = choices[np.argmin(np.abs(wrap(choices-bearing)))]
+            cost = np.abs(wrap(choices-bearing))
+            if P.get('scan_remember'):
+                # Repeated scans at one position can pick the same dead end each time.
+                self.scan_choices = [(t, pt, angle) for t, pt, angle in self.scan_choices if now-t < 90]
+                for _, pt, angle in self.scan_choices:
+                    if np.linalg.norm(pt-xy) < 1.5:
+                        cost += np.maximum(0, np.radians(75) - np.abs(wrap(choices-angle))) * 2
+            target = choices[np.argmin(cost)]
+            if P.get('scan_remember'):
+                self.scan_choices.append((now, xy.copy(), target))
             r.update(phase='scan_align', target=target)
         if r['phase'] == 'scan_wait':
             if now >= r['retry']:
@@ -135,13 +145,17 @@ class Pilot:
             if not valid or tof <= P['tof_stop'] + P['tof_t']*v_meas:
                 r.update(phase='side_brake')
                 return 0.0, 0.0, info
-            if np.linalg.norm(xy-r['start']) >= .8 or now-r['t1'] > 5:
+            if np.linalg.norm(xy-r['start']) >= P.get('scan_leg_m', .8) or now-r['t1'] > 5:
                 r['phase'] = 'scan_end'
             else:
                 probing = now-r['t1'] < P['scan_creep_s']
                 return (.2 if probing else .4), 0.0, info
         info['phase'] = 'scan_end'
         if v_meas <= P['brake_v']:
+            if P.get('scan_keep_offset'):
+                # Keep the lateral displacement actually gained until past the obstruction.
+                offset = float(xy[0] - r['start'][0])
+                self.bypass = (offset, xy[1] + P['bypass_len'])
             r['phase'] = 'turn2'
         return 0.0, 0.0, info
 
@@ -260,7 +274,10 @@ class Pilot:
             side = (-1 if l2[0] > l2[1] else 1) if l2 is not None and l2.sum() > 0 else (1 if to_g > 0 else -1)
             self.turn_kind['tof'] += 1; fly.sac_left = 0.0; fly.cool = fly.cool_t
             if P.get('tof_action') == 'detour':        # go around it: brake, turn to the freer side, slide, turn back, bypass
-                self.rec = dict(kind='detour', phase='brake', t0=now, h0=h); info['state'] = 'saccade_start'; return 0.0, 0.0, info
+                phase = 'side_brake' if P.get('scan_on_front') else 'brake'
+                self.rec = dict(kind='detour', phase=phase, t0=now, h0=h)
+                info['state'] = 'saccade_start'
+                return 0.0, 0.0, info
             self._begin_turn(h + side * np.pi / 2, now, big=True)
             info['state'] = 'saccade_start'; return 0.0, 0.0, info
         self.loom_run = self.loom_run + 1 if (info['looming'] and dg.get('state') == 'fixate') else 0
