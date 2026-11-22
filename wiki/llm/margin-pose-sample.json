@@ -1,0 +1,62 @@
+[
+  {
+    "mode": "nominal",
+    "rep": 1,
+    "progress_m": 1.3,
+    "collisions": 0,
+    "time_s": 90.0,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 6,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0,
+    "end_reason": "stalled"
+  },
+  {
+    "mode": "timestamp",
+    "rep": 1,
+    "progress_m": 2.9,
+    "collisions": 0,
+    "time_s": 90.0,
+    "turn_kinds": {
+      "looming": 19,
+      "goal": 3,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0,
+    "end_reason": "stalled"
+  },
+  {
+    "mode": "nominal",
+    "rep": 0,
+    "progress_m": 26.1,
+    "collisions": 2,
+    "time_s": 180.0,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 15,
+      "balance": 7,
+      "tof": 5
+    },
+    "scan_count": 5,
+    "end_reason": "timeout"
+  },
+  {
+    "mode": "timestamp",
+    "rep": 0,
+    "progress_m": 22.9,
+    "collisions": 4,
+    "time_s": 180.0,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 11,
+      "balance": 7,
+      "tof": 5
+    },
+    "scan_count": 5,
+    "end_reason": "timeout"
+  }
+]

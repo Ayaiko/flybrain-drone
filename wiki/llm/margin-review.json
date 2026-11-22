@@ -1,0 +1,242 @@
+[
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "variant": "balanced",
+    "progress_m": 80.0,
+    "collisions": 0,
+    "dist_m": 125.1,
+    "end_reason": "exit",
+    "reached": true
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "variant": "baseline",
+    "progress_m": 80.0,
+    "collisions": 0,
+    "dist_m": 145.7,
+    "end_reason": "exit",
+    "reached": true
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "variant": "fixed",
+    "progress_m": 80.0,
+    "collisions": 0,
+    "dist_m": 125.5,
+    "end_reason": "exit",
+    "reached": true
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "variant": "moderate",
+    "progress_m": 80.0,
+    "collisions": 1,
+    "dist_m": 128.5,
+    "end_reason": "exit",
+    "reached": true
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "variant": "balanced",
+    "progress_m": 44.4,
+    "collisions": 0,
+    "dist_m": 59.6,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "variant": "baseline",
+    "progress_m": 48.0,
+    "collisions": 1,
+    "dist_m": 64.4,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "variant": "fixed",
+    "progress_m": 44.4,
+    "collisions": 6,
+    "dist_m": 72.7,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "variant": "moderate",
+    "progress_m": 47.8,
+    "collisions": 1,
+    "dist_m": 65.9,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "variant": "balanced",
+    "progress_m": 47.8,
+    "collisions": 1,
+    "dist_m": 86.7,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "variant": "baseline",
+    "progress_m": 48.0,
+    "collisions": 9,
+    "dist_m": 99.5,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "variant": "fixed",
+    "progress_m": 47.6,
+    "collisions": 1,
+    "dist_m": 90.2,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "variant": "moderate",
+    "progress_m": 47.8,
+    "collisions": 0,
+    "dist_m": 78.6,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "variant": "balanced",
+    "progress_m": 44.2,
+    "collisions": 1,
+    "dist_m": 71.4,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "variant": "baseline",
+    "progress_m": 48.0,
+    "collisions": 3,
+    "dist_m": 84.0,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "variant": "fixed",
+    "progress_m": 47.6,
+    "collisions": 2,
+    "dist_m": 80.0,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "variant": "moderate",
+    "progress_m": 47.7,
+    "collisions": 1,
+    "dist_m": 73.1,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "variant": "balanced",
+    "progress_m": 48.6,
+    "collisions": 2,
+    "dist_m": 79.2,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "variant": "baseline",
+    "progress_m": 47.4,
+    "collisions": 5,
+    "dist_m": 87.1,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "variant": "fixed",
+    "progress_m": 42.0,
+    "collisions": 1,
+    "dist_m": 62.1,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "variant": "moderate",
+    "progress_m": 47.9,
+    "collisions": 2,
+    "dist_m": 67.2,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "variant": "balanced",
+    "progress_m": 52.6,
+    "collisions": 2,
+    "dist_m": 84.0,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "variant": "baseline",
+    "progress_m": 52.5,
+    "collisions": 3,
+    "dist_m": 86.9,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "variant": "fixed",
+    "progress_m": 52.5,
+    "collisions": 0,
+    "dist_m": 76.9,
+    "end_reason": "stalled",
+    "reached": false
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "variant": "moderate",
+    "progress_m": 52.5,
+    "collisions": 1,
+    "dist_m": 83.3,
+    "end_reason": "stalled",
+    "reached": false
+  }
+]
