@@ -65,7 +65,8 @@ class Space:
 def evaluate(cands, worlds, rep, a):
     """cands: list of override dicts; worlds: list of names -> (per candidate list of summaries, speed report)."""
     specs = [dict(config=a.base, world=w, rep=rep, overrides=dict(c), tag=i) for i, c in enumerate(cands) for w in worlds]
-    res, wall, prof = run_batch(specs, a.workers, None, verbose=False, duration=a.duration)
+    dyn = {k: float(v) for k, v in (q.split('=', 1) for q in a.dyn)} or None
+    res, wall, prof = run_batch(specs, a.workers, None, verbose=False, duration=a.duration, dyn_params=dyn)
     out = [[] for _ in cands]
     for s in res: out[s['tag']].append(s)
     return out, report_speed(res, wall, prof, a.workers)
@@ -81,6 +82,7 @@ def main():
     ap.add_argument('--start-level', type=float, default=0.0); ap.add_argument('--max-level', type=float, default=2.0)
     ap.add_argument('--eval-every', type=int, default=5); ap.add_argument('--eval-reps', type=int, default=2)
     ap.add_argument('--duration', type=float, default=360.0); ap.add_argument('--workers', type=int, default=None)
+    ap.add_argument('--dyn', action='append', default=[], help='flight-model override for training, e.g. drift_sd=0.06 drift_tau=0.5 (randomisation)')
     ap.add_argument('--params', default=None, help='comma list of parameters to tune (default: all of SPACE)'); ap.add_argument('--seed', type=int, default=0)
     a = ap.parse_args()
     a.workers = min(a.workers or default_workers(), worker_cap() or 10 ** 6)

@@ -182,3 +182,52 @@ What would go faster:
   its runs were affected by CPU overload (e.g. fix-all ff_medium_0 never took off; runs with < 1 m progress are excluded).
 - Pending: re-measure throughput on an idle machine. Every speed number here was taken with PX4 containers busy.
   The fast sim is capped at 3 workers (`fastsim/max_workers.txt`) until the PX4 batch is done.
+
+## 7. Calibration v2: shared pilot vs the full PX4 target set (2026-11-22 afternoon)
+
+`python -m fastsim.calibrate --configs none-v0.8,lplc2-bold-gate-sv0-v0.8,lplc2-bold-gate-sv0-gg0-v0.8,fix-detour,fix-all,fix-all2@T600 --reps 6 --tag _v2`.
+All configs were flown with the shared `px4/forest_pilot.Pilot`, on 69 PX4 pairs (easy 0–2, medium 0–5, hard 0–2;
+gg0 on 0–2 only; fix-all2 with its 600 s limit), with 6 fast-sim reps each. Tables: `calibration_tables_v2.md`;
+scatter: `calibration_scatter_v2.png`; data: `calibration_v2.json`, `calibration_runs_v2.jsonl`.
+
+| Spearman (69 pairs) | progress | collisions |
+|---|---|---|
+| fast sim vs PX4 | **0.76** | **0.81** |
+| ceiling (one rep vs mean of the others) | 0.69 | 0.68 |
+| brain configs only (57 pairs) | 0.60 | 0.77 |
+| ceiling, brain configs | 0.47 | 0.64 |
+
+- Both are above the single-run ceiling. Collisions pass 0.8; progress misses it nominally, but no single-run comparison
+  could do better than ~0.69 here.
+- PX4 runs as a percentile of the fast-sim reps (57 brain pairs): progress 0.49 (centred), collisions **0.62** (PX4
+  collides somewhat more). 21% / 19% fall outside the 6-rep range; an exchangeable draw would give 29%.
+- Per preset (PX4 vs fast sim, progress m / collisions):
+
+| run id | easy | medium | hard |
+|---|---|---|---|
+| fix-detour | 53.6 / 8.3 vs 62.2 / 5.9 | 44.5 / 12.7 vs 38.0 / 8.4 | 17.4 / 15.7 vs 25.4 / 10.3 |
+| fix-all | 45.1 / 2.3 vs 37.1 / 0.4 | 36.7 / 1.5 vs 31.4 / 1.0 | 23.2 / 0.0 vs 19.1 / 1.5 |
+| fix-all2@T600 | 74.3 / 3.0 vs 54.2 / 1.9 | 45.2 / 6.8 vs 41.9 / 4.4 | 22.2 / 6.3 vs 25.8 / 8.0 |
+
+The relative order of the configs is kept: fix-all collides least by far in both sims, fix-detour most, and
+fix-all2 gets furthest. The largest gaps are fix-all2 on easy (PX4 74 m vs 54 m; PX4 reached the exit in 2 of 3) and
+fix-detour collisions (PX4 ~1.5x).
+
+What the diagnostics show (fix-detour / fix-all / fix-all2 on 4 worlds, 4 reps each):
+- **Forward speed while fixating matches** (PX4 0.45–0.50 m/s, fast sim 0.44–0.49). So the optic-flow magnitude
+  that the flow-speed governor reads is right in the ray-cast eye.
+- **Contacts by phase**: PX4 has more contacts in every phase for fix-detour. Per 12 worlds: turns 69 vs 44, recovery
+  32 vs 17, fixation 46 vs 38. For fix-all2 they are close (recovery 55 vs 47).
+- **Drift during in-place turns**: PX4 median 0.15 m/s (sideways 0.10) vs fast sim 0.10 (0.065). An optional
+  Ornstein-Uhlenbeck velocity disturbance (`--dyn drift_sd=0.08 --dyn drift_tau=0.5`) matches PX4's turn speed and raises
+  fix-detour collisions from 8.0 to 10.2 per world (PX4 13.0). But that much drift alone would give ~6 cm of 1 s
+  position error, more than the whole 4.5 cm residual of the PX4 trajectory fit. So part of PX4's "turn speed" is
+  probably pose-sampling jitter in the log (next point), not motion. It stays **off by default**; it is useful as
+  randomisation when training (`train_cem --dyn drift_sd=0.05 --dyn drift_tau=0.5`).
+- **PX4 pose sampling**: frame-to-frame displacements in the PX4 logs jump between 0.6x and 1.2x of the true step (a
+  50 Hz pose stream read at 30 Hz). The bridge's `v_meas` and yaw rate are therefore noisy. Feeding the fast-sim pilot
+  the same kind of stale pose (`--pose-tick 0.02`) made agreement worse: fixation speed fell to 0.40 m/s (PX4 0.50)
+  and looming detections rose from 13% to 21% of fixation. So it is also **off by default**. Its effect in PX4 is
+  evidently different from this simple model; the timing of camera frames vs pose is not logged.
+- Speed of this batch: 414 episodes (104,128 s of flight) in 966 s on **3 workers** (the cap) while 3 PX4 sims ran:
+  25.7 episodes/min, 108x real time, 36x per worker (render 79%, pilot 14%).

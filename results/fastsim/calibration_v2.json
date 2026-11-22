@@ -1,0 +1,1509 @@
+{
+ "configs": [
+  "none-v0.8",
+  "lplc2-bold-gate-sv0-v0.8",
+  "lplc2-bold-gate-sv0-gg0-v0.8",
+  "fix-detour",
+  "fix-all",
+  "fix-all2@T600"
+ ],
+ "px4_pairs": 69,
+ "px4_excluded": {},
+ "rule": {
+  "stall_s": 90,
+  "stall_m": 3.0,
+  "max_coll": 20,
+  "limit_s": 360
+ },
+ "reps": 6,
+ "pilot": "shared",
+ "corr": {
+  "all": {
+   "progress": 0.7625412362728134,
+   "collisions": 0.8089951999146323
+  },
+  "none-v0.8": {
+   "progress": NaN,
+   "collisions": 0.8900765182794907
+  },
+  "lplc2-bold-gate-sv0-v0.8": {
+   "progress": 0.4895104895104896,
+   "collisions": 0.014059949376891905
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8": {
+   "progress": 0.2333333333333333,
+   "collisions": 0.8853067919890986
+  },
+  "fix-detour": {
+   "progress": 0.5244755244755246,
+   "collisions": 0.3409537723896287
+  },
+  "fix-all": {
+   "progress": 0.6993006993006995,
+   "collisions": -0.35639252079162576
+  },
+  "fix-all2@T600": {
+   "progress": 0.5779343363791357,
+   "collisions": 0.48136889484408796
+  },
+  "brain": {
+   "progress": 0.5971119300780404,
+   "collisions": 0.7706640894728046
+  }
+ },
+ "split_half_ceiling": {
+  "all": {
+   "progress_m": 0.6879267168348125,
+   "collisions": 0.6788221337851029
+  },
+  "brain": {
+   "progress_m": 0.4669322744586613,
+   "collisions": 0.6448337102605509
+  }
+ },
+ "px4_percentile_in_fastsim": {
+  "progress_m": {
+   "mean": 0.4926900584795321,
+   "frac_outside_range": 0.21052631578947367,
+   "values": [
+    0.16666666666666666,
+    0.3333333333333333,
+    0.6666666666666666,
+    0.6666666666666666,
+    0.16666666666666666,
+    0.5833333333333334,
+    0.16666666666666666,
+    1.0,
+    1.0,
+    0.0,
+    0.16666666666666666,
+    0.3333333333333333,
+    0.8333333333333334,
+    0.16666666666666666,
+    1.0,
+    0.16666666666666666,
+    1.0,
+    0.6666666666666666,
+    1.0,
+    0.3333333333333333,
+    0.16666666666666666,
+    0.5,
+    0.0,
+    0.16666666666666666,
+    0.5,
+    1.0,
+    0.4166666666666667,
+    0.3333333333333333,
+    1.0,
+    0.16666666666666666,
+    0.0,
+    0.8333333333333334,
+    0.5,
+    0.6666666666666666,
+    0.6666666666666666,
+    0.6666666666666666,
+    0.3333333333333333,
+    0.6666666666666666,
+    0.16666666666666666,
+    0.6666666666666666,
+    0.8333333333333334,
+    0.6666666666666666,
+    0.6666666666666666,
+    1.0,
+    0.0,
+    0.6666666666666666,
+    0.75,
+    0.16666666666666666,
+    0.3333333333333333,
+    0.16666666666666666,
+    0.25,
+    0.5,
+    0.6666666666666666,
+    0.5,
+    0.3333333333333333,
+    0.6666666666666666,
+    0.08333333333333333
+   ]
+  },
+  "collisions": {
+   "mean": 0.6198830409356726,
+   "frac_outside_range": 0.19298245614035087,
+   "values": [
+    0.9166666666666666,
+    0.25,
+    0.5,
+    1.0,
+    0.4166666666666667,
+    0.3333333333333333,
+    1.0,
+    0.9166666666666666,
+    0.4166666666666667,
+    0.0,
+    0.16666666666666666,
+    0.25,
+    0.5,
+    0.5,
+    0.6666666666666666,
+    0.5,
+    0.9166666666666666,
+    0.4166666666666667,
+    0.75,
+    0.5,
+    0.75,
+    0.5833333333333334,
+    0.9166666666666666,
+    1.0,
+    1.0,
+    0.75,
+    0.6666666666666666,
+    1.0,
+    0.75,
+    0.3333333333333333,
+    0.25,
+    1.0,
+    1.0,
+    1.0,
+    0.9166666666666666,
+    0.9166666666666666,
+    0.25,
+    0.5,
+    0.5,
+    0.8333333333333334,
+    1.0,
+    0.3333333333333333,
+    0.25,
+    0.25,
+    0.25,
+    0.8333333333333334,
+    0.6666666666666666,
+    0.75,
+    0.8333333333333334,
+    0.4166666666666667,
+    0.3333333333333333,
+    1.0,
+    0.9166666666666666,
+    0.5,
+    0.3333333333333333,
+    0.25,
+    0.5833333333333334
+   ]
+  }
+ },
+ "speed": {
+  "episodes": 414,
+  "sim_s_total": 104128,
+  "worker_wall_s_total": 2848.6,
+  "rtf_per_core": 36.6,
+  "batch_wall_s": 966.1,
+  "episodes_per_min": 25.7,
+  "rtf_total": 107.8,
+  "workers": 3,
+  "cpu": "arm",
+  "batched": {
+   "episodes": 414,
+   "workers": 3,
+   "wall_s": 966.1,
+   "episodes_per_min": 25.7,
+   "rtf_total": 107.8,
+   "rtf_per_worker": 36.5,
+   "us_per_drone_frame": {
+    "render": 715.6,
+    "pilot": 131.2,
+    "truth": 28.3,
+    "dynamics": 14.7,
+    "book": 21.4
+   },
+   "share": {
+    "render": 0.785,
+    "pilot": 0.144,
+    "truth": 0.031,
+    "dynamics": 0.016,
+    "book": 0.023
+   }
+  },
+  "px4_reference": "PX4 + Gazebo Docker: ~1x real time per container, 3 containers ~1.8x total (forest-test-field notes)"
+ },
+ "by_preset": {
+  "none-v0.8 easy": {
+   "px4_prog": 80.0,
+   "fs_prog": 80.0,
+   "px4_coll": 1.0,
+   "fs_coll": 1.0
+  },
+  "none-v0.8 medium": {
+   "px4_prog": 80.0,
+   "fs_prog": 80.0,
+   "px4_coll": 4.833333333333333,
+   "fs_coll": 4.666666666666667
+  },
+  "none-v0.8 hard": {
+   "px4_prog": 80.0,
+   "fs_prog": 80.0,
+   "px4_coll": 14.0,
+   "fs_coll": 10.222222222222221
+  },
+  "lplc2-bold-gate-sv0-v0.8 easy": {
+   "px4_prog": 54.93333333333334,
+   "fs_prog": 56.13888888888889,
+   "px4_coll": 8.0,
+   "fs_coll": 7.333333333333333
+  },
+  "lplc2-bold-gate-sv0-v0.8 medium": {
+   "px4_prog": 51.53333333333333,
+   "fs_prog": 39.28333333333334,
+   "px4_coll": 14.833333333333334,
+   "fs_coll": 11.083333333333334
+  },
+  "lplc2-bold-gate-sv0-v0.8 hard": {
+   "px4_prog": 13.300000000000002,
+   "fs_prog": 19.983333333333334,
+   "px4_coll": 7.333333333333333,
+   "fs_coll": 14.611111111111112
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8 easy": {
+   "px4_prog": 48.6,
+   "fs_prog": 50.25555555555556,
+   "px4_coll": 5.333333333333333,
+   "fs_coll": 5.777777777777778
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8 medium": {
+   "px4_prog": 40.9,
+   "fs_prog": 37.12222222222221,
+   "px4_coll": 14.0,
+   "fs_coll": 10.666666666666666
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8 hard": {
+   "px4_prog": 28.23333333333333,
+   "fs_prog": 27.28333333333333,
+   "px4_coll": 18.0,
+   "fs_coll": 14.5
+  },
+  "fix-detour easy": {
+   "px4_prog": 53.56666666666666,
+   "fs_prog": 62.216666666666676,
+   "px4_coll": 8.333333333333334,
+   "fs_coll": 5.944444444444444
+  },
+  "fix-detour medium": {
+   "px4_prog": 44.46666666666667,
+   "fs_prog": 37.98888888888889,
+   "px4_coll": 12.666666666666666,
+   "fs_coll": 8.416666666666668
+  },
+  "fix-detour hard": {
+   "px4_prog": 17.366666666666664,
+   "fs_prog": 25.355555555555554,
+   "px4_coll": 15.666666666666666,
+   "fs_coll": 10.277777777777777
+  },
+  "fix-all easy": {
+   "px4_prog": 45.1,
+   "fs_prog": 37.13333333333333,
+   "px4_coll": 2.3333333333333335,
+   "fs_coll": 0.4444444444444444
+  },
+  "fix-all medium": {
+   "px4_prog": 36.716666666666676,
+   "fs_prog": 31.413888888888888,
+   "px4_coll": 1.5,
+   "fs_coll": 0.9722222222222223
+  },
+  "fix-all hard": {
+   "px4_prog": 23.233333333333334,
+   "fs_prog": 19.11666666666667,
+   "px4_coll": 0.0,
+   "fs_coll": 1.5
+  },
+  "fix-all2@T600 easy": {
+   "px4_prog": 74.3,
+   "fs_prog": 54.22777777777778,
+   "px4_coll": 3.0,
+   "fs_coll": 1.9444444444444446
+  },
+  "fix-all2@T600 medium": {
+   "px4_prog": 45.23333333333333,
+   "fs_prog": 41.927777777777784,
+   "px4_coll": 6.833333333333333,
+   "fs_coll": 4.416666666666666
+  },
+  "fix-all2@T600 hard": {
+   "px4_prog": 22.166666666666668,
+   "fs_prog": 25.78333333333333,
+   "px4_coll": 6.333333333333333,
+   "fs_coll": 8.0
+  }
+ },
+ "rows": [
+  {
+   "config": "none-v0.8",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 0,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 0.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 1,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 1.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 2,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 2.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 6,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 3.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 6,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 5.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 4,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 3.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_3",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 6,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 6.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_4",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 4,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 6.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_medium_5",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 3,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 5.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 10,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 8.666666666666666,
+   "fs_coll_sd": 0.4714045207910317,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 14,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 10.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "none-v0.8",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 18,
+   "px4_end": "exit",
+   "fs_prog": 80.0,
+   "fs_prog_sd": 0.0,
+   "fs_coll": 12.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 1.0,
+   "fs_ends": {
+    "exit": 6
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 49.2,
+   "px4_coll": 9,
+   "px4_end": "timeout",
+   "fs_prog": 55.88333333333333,
+   "fs_prog_sd": 8.737928180575123,
+   "fs_coll": 6.166666666666667,
+   "fs_coll_sd": 2.1147629234082532,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 52.6,
+   "px4_coll": 4,
+   "px4_end": "timeout",
+   "fs_prog": 50.716666666666676,
+   "fs_prog_sd": 18.319881428534288,
+   "fs_coll": 6.333333333333333,
+   "fs_coll_sd": 2.981423969999719,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 63.0,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 61.81666666666667,
+   "fs_prog_sd": 6.822369252849203,
+   "fs_coll": 9.5,
+   "fs_coll_sd": 3.253203549323856,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 52.7,
+   "px4_coll": 17,
+   "px4_end": "timeout",
+   "fs_prog": 37.3,
+   "fs_prog_sd": 24.857661461475683,
+   "fs_coll": 8.833333333333334,
+   "fs_coll_sd": 6.413960468297952,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 42.2,
+   "px4_coll": 14,
+   "px4_end": "stalled",
+   "fs_prog": 48.43333333333334,
+   "fs_prog_sd": 4.586453483417832,
+   "fs_coll": 15.333333333333334,
+   "fs_coll_sd": 3.636237371545238,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "too_many_collisions": 2,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 53.1,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 42.61666666666667,
+   "fs_prog_sd": 23.535109706327884,
+   "fs_coll": 11.5,
+   "fs_coll_sd": 7.041543391425869,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 2,
+    "too_many_collisions": 2
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_3",
+   "n": 6,
+   "px4_prog": 44.8,
+   "px4_coll": 19,
+   "px4_end": "stalled",
+   "fs_prog": 44.76666666666667,
+   "fs_prog_sd": 20.18263830347482,
+   "fs_coll": 11.666666666666666,
+   "fs_coll_sd": 6.289320754704402,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_4",
+   "n": 6,
+   "px4_prog": 52.5,
+   "px4_coll": 16,
+   "px4_end": "timeout",
+   "fs_prog": 23.8,
+   "fs_prog_sd": 22.58103924387302,
+   "fs_coll": 5.333333333333333,
+   "fs_coll_sd": 5.9907335852038095,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_medium_5",
+   "n": 6,
+   "px4_prog": 63.9,
+   "px4_coll": 14,
+   "px4_end": "timeout",
+   "fs_prog": 38.78333333333334,
+   "fs_prog_sd": 18.698165388317886,
+   "fs_coll": 13.833333333333334,
+   "fs_coll_sd": 6.841458583924597,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 2,
+    "too_many_collisions": 2
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 12.0,
+   "px4_coll": 5,
+   "px4_end": "stalled",
+   "fs_prog": 27.633333333333336,
+   "fs_prog_sd": 13.33412497649879,
+   "fs_coll": 16.333333333333332,
+   "fs_coll_sd": 3.496029493900505,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "too_many_collisions": 2,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 17.1,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 19.583333333333336,
+   "fs_prog_sd": 4.315636942818779,
+   "fs_coll": 18.166666666666668,
+   "fs_coll_sd": 3.6704525909242065,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "too_many_collisions": 4
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-v0.8",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 10.8,
+   "px4_coll": 6,
+   "px4_end": "stalled",
+   "fs_prog": 12.733333333333334,
+   "fs_prog_sd": 6.395745113398091,
+   "fs_coll": 9.333333333333334,
+   "fs_coll_sd": 6.046119049072352,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "too_many_collisions": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 63.0,
+   "px4_coll": 3,
+   "px4_end": "timeout",
+   "fs_prog": 39.95,
+   "fs_prog_sd": 22.970542730491445,
+   "fs_coll": 4.166666666666667,
+   "fs_coll_sd": 3.7155828016013257,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 14.6,
+   "px4_coll": 6,
+   "px4_end": "stalled",
+   "fs_prog": 49.98333333333333,
+   "fs_prog_sd": 21.75480151343351,
+   "fs_coll": 5.333333333333333,
+   "fs_coll_sd": 3.0368111930481,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 68.2,
+   "px4_coll": 7,
+   "px4_end": "timeout",
+   "fs_prog": 60.833333333333336,
+   "fs_prog_sd": 5.943530563188477,
+   "fs_coll": 7.833333333333333,
+   "fs_coll_sd": 4.374801582802228,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 14.9,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 34.199999999999996,
+   "fs_prog_sd": 20.394607130317564,
+   "fs_coll": 9.333333333333334,
+   "fs_coll_sd": 4.988876515698588,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "timeout": 3
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 54.6,
+   "px4_coll": 20,
+   "px4_end": "too_many_collisions",
+   "fs_prog": 27.933333333333334,
+   "fs_prog_sd": 22.329999751206646,
+   "fs_coll": 10.833333333333334,
+   "fs_coll_sd": 8.82074574826616,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "too_many_collisions": 1,
+    "timeout": 2
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 53.2,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 49.23333333333333,
+   "fs_prog_sd": 7.700793609896466,
+   "fs_coll": 11.833333333333334,
+   "fs_coll_sd": 4.2196629670573875,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 3,
+    "too_many_collisions": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 48.8,
+   "px4_coll": 20,
+   "px4_end": "too_many_collisions",
+   "fs_prog": 25.066666666666666,
+   "fs_prog_sd": 15.281433905959945,
+   "fs_coll": 16.0,
+   "fs_coll_sd": 7.211102550927978,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "too_many_collisions": 3,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 15.3,
+   "px4_coll": 14,
+   "px4_end": "stalled",
+   "fs_prog": 24.38333333333333,
+   "fs_prog_sd": 13.571344402412343,
+   "fs_coll": 13.166666666666666,
+   "fs_coll_sd": 5.6984403324262525,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "timeout": 2,
+    "too_many_collisions": 1
+   }
+  },
+  {
+   "config": "lplc2-bold-gate-sv0-gg0-v0.8",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 20.6,
+   "px4_coll": 20,
+   "px4_end": "too_many_collisions",
+   "fs_prog": 32.4,
+   "fs_prog_sd": 17.082349565170087,
+   "fs_coll": 14.333333333333334,
+   "fs_coll_sd": 7.156970184527963,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 1,
+    "too_many_collisions": 3
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 63.0,
+   "px4_coll": 7,
+   "px4_end": "timeout",
+   "fs_prog": 61.80000000000001,
+   "fs_prog_sd": 6.872651113895811,
+   "fs_coll": 6.333333333333333,
+   "fs_coll_sd": 2.2110831935702664,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 42.9,
+   "px4_coll": 8,
+   "px4_end": "timeout",
+   "fs_prog": 59.11666666666667,
+   "fs_prog_sd": 5.488902946450733,
+   "fs_coll": 5.5,
+   "fs_coll_sd": 2.0615528128088303,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "timeout": 6
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 54.8,
+   "px4_coll": 10,
+   "px4_end": "timeout",
+   "fs_prog": 65.73333333333333,
+   "fs_prog_sd": 9.0154805134773,
+   "fs_coll": 6.0,
+   "fs_coll_sd": 2.23606797749979,
+   "fs_reached": 0.16666666666666666,
+   "fs_ends": {
+    "exit": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 55.7,
+   "px4_coll": 16,
+   "px4_end": "timeout",
+   "fs_prog": 38.25,
+   "fs_prog_sd": 25.72370826040963,
+   "fs_coll": 6.166666666666667,
+   "fs_coll_sd": 4.524623986832743,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "timeout": 3
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 65.5,
+   "px4_coll": 15,
+   "px4_end": "timeout",
+   "fs_prog": 48.199999999999996,
+   "fs_prog_sd": 3.62859017617954,
+   "fs_coll": 12.333333333333334,
+   "fs_coll_sd": 3.9015666369065416,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 53.1,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 44.76666666666667,
+   "fs_prog_sd": 18.723395940789043,
+   "fs_coll": 6.666666666666667,
+   "fs_coll_sd": 3.3499585403736303,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_3",
+   "n": 6,
+   "px4_prog": 29.4,
+   "px4_coll": 19,
+   "px4_end": "timeout",
+   "fs_prog": 34.483333333333334,
+   "fs_prog_sd": 19.878666677845597,
+   "fs_coll": 11.166666666666666,
+   "fs_coll_sd": 6.229410530343586,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "timeout": 3
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_4",
+   "n": 6,
+   "px4_prog": 43.4,
+   "px4_coll": 10,
+   "px4_end": "stalled",
+   "fs_prog": 18.466666666666665,
+   "fs_prog_sd": 18.801654773509224,
+   "fs_coll": 4.833333333333333,
+   "fs_coll_sd": 5.047001309908907,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_medium_5",
+   "n": 6,
+   "px4_prog": 19.7,
+   "px4_coll": 7,
+   "px4_end": "stalled",
+   "fs_prog": 43.76666666666667,
+   "fs_prog_sd": 18.98329675150119,
+   "fs_coll": 9.333333333333334,
+   "fs_coll_sd": 5.280993172584953,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 10.2,
+   "px4_coll": 11,
+   "px4_end": "stalled",
+   "fs_prog": 41.4,
+   "fs_prog_sd": 10.718053305832486,
+   "fs_coll": 13.666666666666666,
+   "fs_coll_sd": 3.448026810929534,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "too_many_collisions": 1,
+    "timeout": 2
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 22.4,
+   "px4_coll": 20,
+   "px4_end": "too_many_collisions",
+   "fs_prog": 14.683333333333332,
+   "fs_prog_sd": 6.238968041449019,
+   "fs_coll": 8.666666666666666,
+   "fs_coll_sd": 4.921607686744467,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-detour",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 19.5,
+   "px4_coll": 16,
+   "px4_end": "stalled",
+   "fs_prog": 19.98333333333333,
+   "fs_prog_sd": 15.472493514477733,
+   "fs_coll": 8.5,
+   "fs_coll_sd": 5.251983752196243,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 57.7,
+   "px4_coll": 4,
+   "px4_end": "timeout",
+   "fs_prog": 46.416666666666664,
+   "fs_prog_sd": 16.05920469872514,
+   "fs_coll": 0.6666666666666666,
+   "fs_coll_sd": 0.9428090415820634,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 1,
+    "timeout": 5
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 16.8,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 21.450000000000003,
+   "fs_prog_sd": 25.85992717184898,
+   "fs_coll": 0.16666666666666666,
+   "fs_coll_sd": 0.372677996249965,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 4,
+    "timeout": 2
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 60.8,
+   "px4_coll": 2,
+   "px4_end": "timeout",
+   "fs_prog": 43.53333333333333,
+   "fs_prog_sd": 23.3974120126327,
+   "fs_coll": 0.5,
+   "fs_coll_sd": 0.7637626158259734,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 2,
+    "timeout": 4
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 14.1,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 30.266666666666666,
+   "fs_prog_sd": 23.79080121017832,
+   "fs_coll": 1.0,
+   "fs_coll_sd": 1.1547005383792515,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 4,
+    "timeout": 2
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 43.7,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 37.43333333333333,
+   "fs_prog_sd": 15.425267870895759,
+   "fs_coll": 1.1666666666666667,
+   "fs_coll_sd": 1.0671873729054748,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 52.1,
+   "px4_coll": 1,
+   "px4_end": "stalled",
+   "fs_prog": 53.28333333333333,
+   "fs_prog_sd": 7.548160187901567,
+   "fs_coll": 1.0,
+   "fs_coll_sd": 1.0,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_3",
+   "n": 6,
+   "px4_prog": 47.7,
+   "px4_coll": 5,
+   "px4_end": "stalled",
+   "fs_prog": 32.81666666666666,
+   "fs_prog_sd": 19.77594638836674,
+   "fs_coll": 1.6666666666666667,
+   "fs_coll_sd": 2.6246692913372702,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 3,
+    "timeout": 3
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_4",
+   "n": 6,
+   "px4_prog": 20.3,
+   "px4_coll": 2,
+   "px4_end": "stalled",
+   "fs_prog": 14.300000000000002,
+   "fs_prog_sd": 14.646159906268945,
+   "fs_coll": 0.0,
+   "fs_coll_sd": 0.0,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_medium_5",
+   "n": 6,
+   "px4_prog": 42.4,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 20.383333333333333,
+   "fs_prog_sd": 18.50310034081376,
+   "fs_coll": 1.0,
+   "fs_coll_sd": 1.5275252316519468,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 41.9,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 24.916666666666668,
+   "fs_prog_sd": 13.986709961801438,
+   "fs_coll": 1.1666666666666667,
+   "fs_coll_sd": 1.4624940645653537,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 17.6,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 9.25,
+   "fs_prog_sd": 3.2139020935097986,
+   "fs_coll": 1.1666666666666667,
+   "fs_coll_sd": 1.7716909687891083,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 10.2,
+   "px4_coll": 0,
+   "px4_end": "stalled",
+   "fs_prog": 23.183333333333337,
+   "fs_prog_sd": 10.600065513424381,
+   "fs_coll": 2.1666666666666665,
+   "fs_coll_sd": 2.192157739660984,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_easy_0",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 3,
+   "px4_end": "exit",
+   "fs_prog": 54.53333333333333,
+   "fs_prog_sd": 36.02437446445886,
+   "fs_coll": 1.3333333333333333,
+   "fs_coll_sd": 1.3743685418725535,
+   "fs_reached": 0.6666666666666666,
+   "fs_ends": {
+    "exit": 4,
+    "stalled": 2
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_easy_1",
+   "n": 6,
+   "px4_prog": 80.0,
+   "px4_coll": 2,
+   "px4_end": "exit",
+   "fs_prog": 41.050000000000004,
+   "fs_prog_sd": 38.95029952815939,
+   "fs_coll": 1.6666666666666667,
+   "fs_coll_sd": 2.2110831935702664,
+   "fs_reached": 0.5,
+   "fs_ends": {
+    "exit": 3,
+    "stalled": 3
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_easy_2",
+   "n": 6,
+   "px4_prog": 62.9,
+   "px4_coll": 4,
+   "px4_end": "stalled",
+   "fs_prog": 67.10000000000001,
+   "fs_prog_sd": 28.84527690974729,
+   "fs_coll": 2.8333333333333335,
+   "fs_coll_sd": 1.950783318453271,
+   "fs_reached": 0.8333333333333334,
+   "fs_ends": {
+    "exit": 5,
+    "stalled": 1
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_0",
+   "n": 6,
+   "px4_prog": 18.9,
+   "px4_coll": 7,
+   "px4_end": "stalled",
+   "fs_prog": 43.416666666666664,
+   "fs_prog_sd": 30.899483095280985,
+   "fs_coll": 3.8333333333333335,
+   "fs_coll_sd": 3.435921354681384,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_1",
+   "n": 6,
+   "px4_prog": 48.3,
+   "px4_coll": 6,
+   "px4_end": "stalled",
+   "fs_prog": 56.833333333333336,
+   "fs_prog_sd": 8.825657041955697,
+   "fs_coll": 6.833333333333333,
+   "fs_coll_sd": 3.2871804872193366,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_2",
+   "n": 6,
+   "px4_prog": 52.6,
+   "px4_coll": 3,
+   "px4_end": "stalled",
+   "fs_prog": 52.800000000000004,
+   "fs_prog_sd": 0.2236067977499795,
+   "fs_coll": 4.0,
+   "fs_coll_sd": 1.632993161855452,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_3",
+   "n": 6,
+   "px4_prog": 50.9,
+   "px4_coll": 12,
+   "px4_end": "stalled",
+   "fs_prog": 45.11666666666667,
+   "fs_prog_sd": 23.494922619342436,
+   "fs_coll": 4.5,
+   "fs_coll_sd": 2.362907813126304,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_4",
+   "n": 6,
+   "px4_prog": 43.0,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 20.083333333333332,
+   "fs_prog_sd": 20.7201525627159,
+   "fs_coll": 2.8333333333333335,
+   "fs_coll_sd": 3.337497399083464,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_medium_5",
+   "n": 6,
+   "px4_prog": 57.7,
+   "px4_coll": 4,
+   "px4_end": "stalled",
+   "fs_prog": 33.31666666666667,
+   "fs_prog_sd": 32.1432946178342,
+   "fs_coll": 4.5,
+   "fs_coll_sd": 4.8218253804964775,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 5,
+    "timeout": 1
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_hard_0",
+   "n": 6,
+   "px4_prog": 44.7,
+   "px4_coll": 9,
+   "px4_end": "stalled",
+   "fs_prog": 45.666666666666664,
+   "fs_prog_sd": 2.6699979192667724,
+   "fs_coll": 11.666666666666666,
+   "fs_coll_sd": 4.496912521077347,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_hard_1",
+   "n": 6,
+   "px4_prog": 11.3,
+   "px4_coll": 4,
+   "px4_end": "stalled",
+   "fs_prog": 12.416666666666666,
+   "fs_prog_sd": 6.2696136687642525,
+   "fs_coll": 5.166666666666667,
+   "fs_coll_sd": 2.793842435706702,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  },
+  {
+   "config": "fix-all2@T600",
+   "world": "ff_hard_2",
+   "n": 6,
+   "px4_prog": 10.5,
+   "px4_coll": 6,
+   "px4_end": "stalled",
+   "fs_prog": 19.266666666666666,
+   "fs_prog_sd": 14.033372921559362,
+   "fs_coll": 7.166666666666667,
+   "fs_coll_sd": 5.013869652163774,
+   "fs_reached": 0.0,
+   "fs_ends": {
+    "stalled": 6
+   }
+  }
+ ],
+ "eye_calib": "fastsim.validate_eye lstsq on 18 seed-0/1 runs (step 15, image lag 1); held-out frame corr 0.936",
+ "dyn_params": {
+  "delay_v": 8,
+  "delay_r": 4,
+  "tau_v": 0.42575467669323447,
+  "acc": 2.0369255505573114,
+  "dec": 3.445665091603966,
+  "tau_r": 0.1986232923805292,
+  "rmax": 2.416109632045282,
+  "alpha": 12.97541960934372,
+  "tau_z": 0.5,
+  "vel_off": 0.0
+ }
+}

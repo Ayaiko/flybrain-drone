@@ -47,6 +47,8 @@
   "fix-all2-side-guard": {"base": "fix-all2", "guard_side": true},
   "side-scan": {"base": "fix-all2-side-guard", "scan_after_brake": true},
   "scan-memory": {"base": "side-scan", "scan_remember": true},
+  "depart-loom35": {"base": "scan-front-060", "lplc2_thr": 3.5},
+  "depart-direct": {"base": "depart-loom35", "goal_gap": 0.0},
   "scan-front-060": {"base": "scan-front", "tof_stop": 0.60},
   "scan-front-margin": {"base": "scan-front", "tof_stop": 0.70},
   "scan-front": {"base": "side-scan", "scan_on_front": true},

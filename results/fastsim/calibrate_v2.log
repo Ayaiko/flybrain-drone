@@ -1,0 +1,111 @@
+[32/414   215s] group of 32 on ff_easy_1 done in 215s; e.g. fix-all rep0: timeout prog 54.6 coll 1
+[64/414   249s] group of 32 on ff_easy_0 done in 249s; e.g. fix-all rep0: timeout prog 46.7 coll 0
+[96/414   249s] group of 32 on ff_easy_2 done in 249s; e.g. fix-all rep0: timeout prog 50.4 coll 0
+[128/414   423s] group of 32 on ff_hard_1 done in 174s; e.g. fix-all rep0: stalled prog 10.1 coll 0
+[160/414   481s] group of 32 on ff_hard_2 done in 231s; e.g. fix-all rep0: timeout prog 44.6 coll 5
+[192/414   526s] group of 32 on ff_hard_0 done in 312s; e.g. fix-all rep0: stalled prog 46.2 coll 4
+[224/414   678s] group of 32 on ff_medium_0 done in 255s; e.g. fix-all rep0: stalled prog 1.9 coll 0
+[256/414   772s] group of 32 on ff_medium_2 done in 246s; e.g. fix-all rep0: stalled prog 53.8 coll 2
+[288/414   775s] group of 32 on ff_medium_1 done in 294s; e.g. fix-all rep0: stalled prog 43.3 coll 1
+[318/414   878s] group of 30 on ff_medium_3 done in 201s; e.g. fix-all rep0: timeout prog 52.1 coll 0
+[322/414   887s] group of 4 on ff_easy_0 done in 9s; e.g. none-v0.8 rep2: exit prog 80.0 coll 0
+[352/414   895s] group of 30 on ff_medium_4 done in 123s; e.g. fix-all rep0: stalled prog 19.7 coll 0
+[356/414   897s] group of 4 on ff_easy_1 done in 9s; e.g. none-v0.8 rep2: exit prog 80.0 coll 1
+[360/414   904s] group of 4 on ff_easy_2 done in 9s; e.g. none-v0.8 rep2: exit prog 80.0 coll 2
+[364/414   911s] group of 4 on ff_hard_0 done in 14s; e.g. none-v0.8 rep2: exit prog 80.0 coll 9
+[368/414   919s] group of 4 on ff_hard_1 done in 15s; e.g. none-v0.8 rep2: exit prog 80.0 coll 10
+[372/414   926s] group of 4 on ff_hard_2 done in 15s; e.g. none-v0.8 rep2: exit prog 80.0 coll 12
+[376/414   932s] group of 4 on ff_medium_0 done in 13s; e.g. none-v0.8 rep2: exit prog 80.0 coll 3
+[380/414   940s] group of 4 on ff_medium_1 done in 14s; e.g. none-v0.8 rep2: exit prog 80.0 coll 5
+[384/414   945s] group of 4 on ff_medium_2 done in 13s; e.g. none-v0.8 rep2: exit prog 80.0 coll 3
+[414/414   966s] group of 30 on ff_medium_5 done in 191s; e.g. fix-all rep0: stalled prog 1.4 coll 0
+{
+ "corr": {
+  "all": {
+   "progress": 0.7625412362728134,
+   "collisions": 0.8089951999146323
+  },
+  "none-v0.8": {
+   "progress": NaN,
+   "collisions": 0.8900765182794907
+  },
+  "lplc2-bold-gate-sv0-v0.8": {
+   "progress": 0.4895104895104896,
+   "collisions": 0.014059949376891905
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8": {
+   "progress": 0.2333333333333333,
+   "collisions": 0.8853067919890986
+  },
+  "fix-detour": {
+   "progress": 0.5244755244755246,
+   "collisions": 0.3409537723896287
+  },
+  "fix-all": {
+   "progress": 0.6993006993006995,
+   "collisions": -0.35639252079162576
+  },
+  "fix-all2@T600": {
+   "progress": 0.5779343363791357,
+   "collisions": 0.48136889484408796
+  },
+  "brain": {
+   "progress": 0.5971119300780404,
+   "collisions": 0.7706640894728046
+  }
+ },
+ "ceiling": {
+  "all": {
+   "progress_m": 0.6879267168348125,
+   "collisions": 0.6788221337851029
+  },
+  "brain": {
+   "progress_m": 0.4669322744586613,
+   "collisions": 0.6448337102605509
+  }
+ },
+ "pit": {
+  "progress_m": {
+   "mean": 0.4926900584795321,
+   "frac_outside_range": 0.21052631578947367
+  },
+  "collisions": {
+   "mean": 0.6198830409356726,
+   "frac_outside_range": 0.19298245614035087
+  }
+ },
+ "speed": {
+  "episodes": 414,
+  "sim_s_total": 104128,
+  "worker_wall_s_total": 2848.6,
+  "rtf_per_core": 36.6,
+  "batch_wall_s": 966.1,
+  "episodes_per_min": 25.7,
+  "rtf_total": 107.8,
+  "workers": 3,
+  "cpu": "arm",
+  "batched": {
+   "episodes": 414,
+   "workers": 3,
+   "wall_s": 966.1,
+   "episodes_per_min": 25.7,
+   "rtf_total": 107.8,
+   "rtf_per_worker": 36.5,
+   "us_per_drone_frame": {
+    "render": 715.6,
+    "pilot": 131.2,
+    "truth": 28.3,
+    "dynamics": 14.7,
+    "book": 21.4
+   },
+   "share": {
+    "render": 0.785,
+    "pilot": 0.144,
+    "truth": 0.031,
+    "dynamics": 0.016,
+    "book": 0.023
+   }
+  },
+  "px4_reference": "PX4 + Gazebo Docker: ~1x real time per container, 3 containers ~1.8x total (forest-test-field notes)"
+ }
+}

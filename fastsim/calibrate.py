@@ -1,11 +1,13 @@
 """Calibration gate: does the fast sim rank worlds and configs like PX4 + Gazebo does?
 
-Runs the configs on ff_{easy,medium,hard}_{0,1,2} (N reps each, different sensor-noise seeds) with the bridge-mirror
-pilot, and compares per (config, world) mean progress and collisions with the PX4 runs in px4/runs/forest/, re-scored
-under the same early-stop rule (stall 90 s / 3 m, 20 collisions, 360 s; the rule in forest_configs.json 'defaults').
-Gate: Spearman rank correlation >= 0.8.
+For every PX4 run id given (--configs; e.g. none-v0.8, fix-all, fix-all2@T600 = config fix-all2 with a 600 s limit,
+name+k=v = overrides) and every held-out world ff_{easy,medium,hard}_{0..5} that has a PX4 log in px4/runs/forest/,
+runs N fast-sim reps (different sensor-noise seeds) with the same pilot (default: the shared px4/forest_pilot.Pilot)
+and compares per (run id, world) mean progress and collisions with the PX4 run, both under the same early-stop rule
+(stall 90 s / 3 m, 20 collisions, the run's time limit). PX4 runs with < 1 m progress (failed takeoff) are excluded.
+Gate: Spearman rank correlation >= 0.8, read against the ceiling a single PX4 run allows.
 
-  .venv/bin/python -m fastsim.calibrate [--reps 5] [--workers 8] [--reuse]
+  .venv/bin/python -m fastsim.calibrate [--configs a,b,...] [--reps 5] [--workers N] [--tag _x] [--reuse]
 -> results/fastsim/calibration.md, calibration.json, calibration_runs.jsonl, calibration_scatter.png"""
 import argparse, json, os, platform, time
 from pathlib import Path
@@ -32,11 +34,21 @@ def debounce(run, hyst=0.05):
     return keep
 
 
-def rescore(run, dt, exit_y, reached, logged_end=None):
+def parse_rid(rid):
+    """PX4 run id -> (config, overrides or None, time limit s): 'fix-all2@T600', 'lplc2-...+goal_gap=0'."""
+    from px4.forest_params import parse_value
+    lim = RULE['limit_s']
+    if '@T' in rid: rid, t = rid.rsplit('@T', 1); lim = float(t)
+    parts = rid.split('+'); ovr = {k: parse_value(v) for k, v in (q.split('=', 1) for q in parts[1:])}
+    return parts[0], ovr or None, lim
+
+
+def rescore(run, dt, exit_y, reached, logged_end=None, limit_s=None):
     y = run['y']; crash_i = debounce(run); best_t, best_p = 0.0, None; n = len(y); stop, reason = n, None
+    limit_s = limit_s or RULE['limit_s']
     for i in range(n):
         t = i * dt
-        if t > RULE['limit_s']: stop, reason = i, 'timeout'; break
+        if t > limit_s: stop, reason = i, 'timeout'; break
         if sum(ci <= i for ci in crash_i) >= RULE['max_coll']: stop, reason = i + 1, 'too_many_collisions'; break
         prog = min(max(y[i], 0.0), exit_y)
         if best_p is None or prog >= best_p + RULE['stall_m']: best_p, best_t = prog, t
@@ -53,7 +65,7 @@ def px4_scores():
             f = RUNS / f'{c}_{w}.json'
             if not f.exists(): continue
             d = json.loads(f.read_text()); exit_y = json.loads((ROOT / f'px4/forest/{w}.json').read_text())['exit_y']
-            S[(c, w)] = rescore(d['run'], d['dt'], exit_y, d['summary']['reached'], d['summary'].get('end_reason'))
+            S[(c, w)] = rescore(d['run'], d['dt'], exit_y, d['summary']['reached'], d['summary'].get('end_reason'), parse_rid(c)[2])
     return S
 
 
@@ -77,6 +89,7 @@ def main():
     ap.add_argument('--reuse', action='store_true', help='score the existing calibration_runs.jsonl instead of running')
     ap.add_argument('--pilot', default='shared', choices=['shared', 'bridge'])
     ap.add_argument('--configs', default=','.join(CONFIGS), help='configs to compare (PX4 runs must exist in px4/runs/forest)')
+    ap.add_argument('--dyn', action='append', default=[], help='flight-model override, e.g. drift_sd=0.06')
     ap.add_argument('--tag', default='', help='suffix for the output files, e.g. _batch3')
     a = ap.parse_args(); OUT.mkdir(parents=True, exist_ok=True); runs_f = OUT / f'calibration_runs{a.tag}.jsonl'
     CONFIGS = a.configs.split(','); TAG = a.tag
@@ -87,14 +100,18 @@ def main():
         res = [json.loads(l) for l in runs_f.read_text().splitlines() if l.strip()]; wall = None; prof = {}
     else:
         if runs_f.exists(): runs_f.unlink()
-        jobs = [(c, w, r) for r in range(a.reps) for (c, w) in pairs]
-        jobs.sort(key=lambda j: (j[0] == 'none-v0.8', 'easy' in j[1]))            # long ones first (better packing)
+        jobs = []
+        for r in range(a.reps):
+            for (c, w) in pairs:
+                cfg, ovr, lim = parse_rid(c); jobs.append(dict(config=cfg, overrides=ovr, duration=lim, world=w, rep=r, tag=c))
         a.workers = a.workers or default_workers()
-        res, wall, prof = run_batch(jobs, a.workers, runs_f, group=a.group, duration=RULE['limit_s'], pilot=a.pilot)
+        dyn = {k: float(v) for k, v in (q.split('=', 1) for q in a.dyn)} or None
+        res, wall, prof = run_batch(jobs, a.workers, runs_f, group=a.group, pilot=a.pilot, dyn_params=dyn)
+    for s_ in res: s_.setdefault('tag', s_['config'])
     rows = []; brain = None
     for c in CONFIGS:
         for w in WORLDS:
-            fs = [s for s in res if s['config'] == c and s['world'] == w]
+            fs = [s for s in res if s['tag'] == c and s['world'] == w]
             if not fs or (c, w) not in px: continue
             P = px[(c, w)]
             rows.append(dict(config=c, world=w, n=len(fs), px4_prog=P['progress_m'], px4_coll=P['collisions'], px4_end=P['end_reason'],
@@ -122,8 +139,8 @@ def main():
                     one, rest = [], []
                     for c in cfgs:
                         for w in WORLDS:
-                            a1 = [s[k] for s in res if s['config'] == c and s['world'] == w and s['rep'] == r0]
-                            a2 = [s[k] for s in res if s['config'] == c and s['world'] == w and s['rep'] != r0]
+                            a1 = [s[k] for s in res if s['tag'] == c and s['world'] == w and s['rep'] == r0]
+                            a2 = [s[k] for s in res if s['tag'] == c and s['world'] == w and s['rep'] != r0]
                             if a1 and a2: one.append(a1[0]); rest.append(np.mean(a2))
                     vals.append(spearman(one, rest))
                 ceil[name][k] = float(np.nanmean(vals))
@@ -133,7 +150,7 @@ def main():
     for k, pk in (('progress_m', 'px4_prog'), ('collisions', 'px4_coll')):
         u = []
         for r in brain:
-            fs = np.array([s[k] for s in res if s['config'] == r['config'] and s['world'] == r['world']])
+            fs = np.array([s[k] for s in res if s['tag'] == r['config'] and s['world'] == r['world']])
             u.append(float((np.sum(fs < r[pk]) + 0.5 * np.sum(fs == r[pk])) / len(fs)))
         pit[k] = dict(mean=float(np.mean(u)), frac_outside_range=float(np.mean([(x == 0) or (x == 1) for x in u])), values=u)
     by_preset = {}
@@ -183,7 +200,7 @@ def write_md(o):
     for k, v in o['split_half_ceiling'].items():
         L.append(f"| ceiling {k}: one fast-sim rep vs mean of the others | {v['progress_m']:.2f} | {v['collisions']:.2f} |")
     pt = o['px4_percentile_in_fastsim']
-    L += ['', '| PX4 run as a percentile of the fast-sim reps (18 brain pairs) | progress | collisions |', '|---|---|---|',
+    L += ['', f"| PX4 run as a percentile of the fast-sim reps ({len(pt['progress_m']['values'])} brain pairs) | progress | collisions |", '|---|---|---|',
           f"| mean (0.5 = centred) | {pt['progress_m']['mean']:.2f} | {pt['collisions']['mean']:.2f} |",
           f"| fraction outside the fast-sim range | {pt['progress_m']['frac_outside_range']:.2f} | {pt['collisions']['frac_outside_range']:.2f} |"]
     L += ['', '| config | world | PX4 progress | fastsim progress (sd) | PX4 coll | fastsim coll (sd) | PX4 end | fastsim ends |', '|---|---|---|---|---|---|---|---|']

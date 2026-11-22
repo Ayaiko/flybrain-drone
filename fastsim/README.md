@@ -103,6 +103,10 @@ Add `record=True` for the per-frame trace and eye images. Batches append one sum
 - **Closed loop** (3 configs x 9 worlds, 10 reps vs the single PX4 runs): Spearman progress 0.89 (gate 0.8 passed),
   collisions 0.74. Both are at the ceiling a single run allows (0.83 / 0.70, measured from rep-to-rep scatter). See
   `results/fastsim/calibration.md`.
+- **Calibration v2** (shared pilot, 6 run ids incl. fix-detour / fix-all / fix-all2@T600, 69 PX4 pairs): Spearman
+  progress 0.76, collisions 0.81, both above the single-run ceiling (0.69 / 0.68). PX4 collides ~1.5x more with
+  fix-detour. Optional `--dyn drift_sd=..` (position-hold drift) and `--pose-tick 0.02` (PX4 pose sampling) are
+  studied in calibration.md section 7; both are off by default.
 - **Speed** (batched): one process runs ~42x real time with groups of 32 (787 µs per drone-frame: render 80%, pilot 13%).
   Full batch: 37.8 episodes/min, 144x real time on 7 workers while PX4 containers used ~7 of the 10 cores. PX4 itself
   manages ~1.8x with 3 containers.

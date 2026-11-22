@@ -1,1 +1,30 @@
 9 flights on 3 worker(s), speed x1
+ff_easy_2    fix-all2@T600                            FAIL    coll  4 prog  62.9 m t 407.2 s end stalled              zones {'trunks': 1, 'lowtex': 3}  [w2 1450s]
+ff_easy_0    fix-all2@T600                            reached coll  3 prog  80.0 m t 472.0 s end exit                 zones {'branches': 1, 'lowtex': 2}  [x4 1628s]
+ff_easy_1    fix-all2@T600                            reached coll  2 prog  80.0 m t 537.6 s end exit                 zones {'trunks': 1, 'branches': 1}  [w1 1640s]
+ff_medium_0  fix-all2@T600                            FAIL    coll  7 prog  18.9 m t 192.7 s end stalled              zones {'trunks': 7}  [w2 1944s]
+ff_medium_2  fix-all2@T600                            FAIL    coll  3 prog  52.6 m t 313.4 s end stalled              zones {'trunks': 1, 'branches': 2}  [w1 2499s]
+ff_medium_1  fix-all2@T600                            FAIL    coll  6 prog  48.3 m t 357.0 s end stalled              zones {'branches': 6}  [x4 2582s]
+ff_hard_1    fix-all2@T600                            FAIL    coll  4 prog  11.4 m t 116.0 s end stalled              zones {'trunks': 4}  [w1 2888s]
+ff_hard_2    fix-all2@T600                            FAIL    coll  6 prog  10.5 m t 118.9 s end stalled              zones {'trunks': 6}  [x4 2959s]
+ff_hard_0    fix-all2@T600                            FAIL    coll  9 prog  44.7 m t 335.5 s end stalled              zones {'branches': 9}  [w2 3138s]
+wall 3143s   compare: python -m px4.forest_compare fix-all2@T600
+3 flights on 3 worker(s), speed x1
+ff_medium_4  fix-all2@T600                            FAIL    coll  9 prog  43.0 m t 297.4 s end stalled              zones {'trunks': 3, 'branches': 6}  [w1 786s]
+ff_medium_5  fix-all2@T600                            FAIL    coll  4 prog  57.7 m t 329.5 s end stalled              zones {'branches': 4}  [w2 798s]
+ff_medium_3  fix-all2@T600                            FAIL    coll 12 prog  50.9 m t 406.0 s end stalled              zones {'trunks': 4, 'branches': 8}  [x4 974s]
+wall 976s   compare: python -m px4.forest_compare fix-all2@T600
+12 flights on 3 worker(s), speed x1
+ff_medium_0  fix-detour-creep                         FAIL    coll  3 prog  18.5 m t 210.6 s end stalled              zones {'trunks': 3}  [w1 799s]
+ff_medium_0  fix-all3                                 FAIL    coll  0 prog  42.8 m t 359.9 s end timeout              zones {}  [x4 1366s]
+ff_medium_1  fix-all3                                 FAIL    coll  1 prog  40.8 m t 360.0 s end timeout              zones {'trunks': 1}  [w2 1443s]
+ff_medium_1  fix-detour-creep                         FAIL    coll  5 prog  15.7 m t 183.8 s end stalled              zones {'trunks': 5}  [w1 1485s]
+ff_medium_2  fix-all3                                 FAIL    coll  2 prog  52.9 m t 360.0 s end timeout              zones {'branches': 2}  [x4 2440s]
+ff_medium_2  fix-detour-creep                         FAIL    coll  5 prog  44.2 m t 360.0 s end timeout              zones {'trunks': 3, 'branches': 2}  [w2 2466s]
+ff_hard_0    fix-all3                                 FAIL    coll  7 prog  42.5 m t 360.0 s end timeout              zones {'trunks': 4, 'branches': 3}  [w1 2879s]
+ff_hard_1    fix-all3                                 FAIL    coll  7 prog  22.2 m t 225.1 s end stalled              zones {'trunks': 7}  [w2 3257s]
+ff_hard_1    fix-detour-creep                         FAIL    coll  5 prog  10.8 m t 139.2 s end stalled              zones {'trunks': 4, 'entry': 1}  [w1 3359s]
+ff_hard_0    fix-detour-creep                         FAIL    coll  6 prog  42.3 m t 341.9 s end stalled              zones {'trunks': 2, 'branches': 4}  [x4 3673s]
+ff_hard_2    fix-detour-creep                         FAIL    coll  9 prog  19.4 m t 252.5 s end stalled              zones {'trunks': 9}  [w1 4048s]
+ff_hard_2    fix-all3                                 FAIL    coll  6 prog  41.2 m t 360.0 s end timeout              zones {'trunks': 5, 'branches': 1}  [w2 4322s]
+wall 4327s   compare: python -m px4.forest_compare fix-all3 fix-detour-creep

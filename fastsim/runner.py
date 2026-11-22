@@ -50,16 +50,23 @@ class _Ep:
         self.reached, self.t_exit, self.end_reason, self.zmin, self.k, self.last = False, None, None, {}, 0, None
 
 
-def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared', record=False, prof=None):
+POSE_TICK = 0.0      # 0.02 = Gazebo 50 Hz pose stream read at 30 Hz frames (see run_group); off: PX4 behaviour matched better without it
+
+
+def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared', record=False, prof=None, pose_tick=POSE_TICK):
     """specs: list of dict(config, rep=0, overrides=None, duration=360, pilot=...) on ONE world -> list of results
-    (dict(summary=..., run=... if record)). prof: optional dict, receives wall time per stage."""
+    (dict(summary=..., run=... if record)). prof: optional dict, receives wall time per stage.
+    pose_tick: the pose the pilot sees is the latest of a pose stream at this period (stale by 0..pose_tick s, phase
+    random per episode), as in PX4 + Gazebo, where frame-to-frame displacements jump between 0.6x and 1.2x of the true
+    step. That noise reaches v_meas (brake exit) and the yaw-rate gates. 0 = exact pose. Truth uses the true pose."""
     t_wall = time.time(); wname = world if isinstance(world, str) else world.name
     w, truth, eyes = _world(wname); meta = w.meta
     if rows not in eyes: eyes[rows] = RayEye(w, rows=rows)
     eye = eyes[rows]; N = len(specs); EXIT = w.exit_y
     E = [_Ep(w, s, pilot) for s in specs]
-    dyn = X500Batch(N, dyn_params); dyn.reset([e.x0 for e in E], np.zeros(N), np.full(N, w.alt - 0.09), [e.h0 for e in E])
+    dyn = X500Batch(N, dyn_params, seeds=[meta['seed'] * 1000 + e.rep for e in E]); dyn.reset([e.x0 for e in E], np.zeros(N), np.full(N, w.alt - 0.09), [e.h0 for e in E])
     hist = [(dyn.x.copy(), dyn.y.copy(), dyn.z.copy(), dyn.h.copy())]       # pose history (for the camera latency)
+    phase = np.array([np.random.default_rng([meta['seed'], e.rep, 99]).uniform(0, pose_tick) if pose_tick else 0.0 for e in E])
     T = prof if prof is not None else {}
     for k_ in ('render', 'pilot', 'truth', 'dynamics', 'book'): T.setdefault(k_, 0.0)
     active = np.arange(N); k = 0
@@ -70,13 +77,15 @@ def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared'
         lp = hist[max(0, len(hist) - 1 - image_lag)]
         LUM = eye.render_batch(lp[0][active], lp[1][active], lp[2][active], lp[3][active]); t1 = time.perf_counter(); T['render'] += t1 - tq
         go, cmd = [], []
+        age = np.mod(now + phase, pose_tick) if pose_tick else np.zeros(N)                    # staleness of the pose sample
         for a, i in enumerate(active):
             e = E[i]; x, y, z, h = float(dyn.x[i]), float(dyn.y[i]), float(dyn.z[i]), float(dyn.h[i])
+            ag = float(age[i]); px_, py_, ph_ = x - float(dyn.vx[i]) * ag, y - float(dyn.vy[i]) * ag, h - float(dyn.r[i]) * ag
             lum = LUM[a] + e.rng.normal(0, .02, 120); e.max_y = max(e.max_y, y)
             if y >= EXIT: e.reached, e.t_exit = True, now; _end(e, 'exit'); continue
             if e.stall.update(now, min(max(y, 0.0), EXIT)): _end(e, 'stalled'); continue
             if e.P['max_coll'] is not None and len(e.crashes) >= e.P['max_coll']: _end(e, 'too_many_collisions'); continue
-            v, yaw, vz, dg = e.pilot.step(now, (x, y, z, h), lum)
+            v, yaw, vz, dg = e.pilot.step(now, (px_, py_, z, ph_), lum)
             go.append(i); cmd.append((v, yaw, vz, dg, lum))
         t2 = time.perf_counter(); T['pilot'] += t2 - t1
         if not go: break
@@ -222,13 +231,17 @@ def main():
     ap.add_argument('--group', type=int, default=None, help='episodes stepped together per process (default auto, <= 32)')
     ap.add_argument('--param', action='append', default=[]); ap.add_argument('--duration', type=float, default=360.0)
     ap.add_argument('--out', default=str(OUT / 'runs.jsonl')); ap.add_argument('--rows', type=int, default=4)
+    ap.add_argument('--dyn', action='append', default=[], help='flight-model override, e.g. drift_sd=0.06 (see dynamics.DEFAULT)')
+    ap.add_argument('--pose-tick', type=float, default=POSE_TICK, help='0.02 = pilot sees a 50 Hz pose stream (PX4/Gazebo-like jitter)')
     ap.add_argument('--pilot', default='shared', choices=['shared', 'bridge'], help='shared = px4/forest_pilot.Pilot (what the PX4 bridge runs); bridge = frozen copy of the 2026-11-22 bridge logic')
     a = ap.parse_args()
     worlds = a.worlds.split(',') if a.worlds else [f'ff_{p}_{s}' for p in a.presets.split(',') for s in a.seeds.split(',')]
     ovr = {k: parse_value(v) for k, v in (p.split('=', 1) for p in a.param)}
     jobs = [(c, w, r) for c in a.configs.split(',') for w in worlds for r in range(a.reps)]
     Path(a.out).parent.mkdir(parents=True, exist_ok=True); workers = min(a.workers or default_workers(), worker_cap() or 10 ** 6)
-    res, wall, prof = run_batch(jobs, workers, a.out, group=a.group, duration=a.duration, overrides=ovr or None, rows=a.rows, pilot=a.pilot)
+    dyn = {k: float(v) for k, v in (q.split('=', 1) for q in a.dyn)} or None
+    res, wall, prof = run_batch(jobs, workers, a.out, group=a.group, duration=a.duration, overrides=ovr or None, rows=a.rows, pilot=a.pilot,
+                                dyn_params=dyn, pose_tick=a.pose_tick)
     print(json.dumps(report_speed(res, wall, prof, workers)))
 
 

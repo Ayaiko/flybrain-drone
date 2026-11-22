@@ -1,0 +1,922 @@
+[
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 80.0,
+    "dist_m": 112.4,
+    "time_s": 386.8,
+    "collisions": 0,
+    "reached": true,
+    "end_reason": "exit",
+    "min_clear_m": 0.436,
+    "turn_kinds": {
+      "looming": 3,
+      "goal": 56,
+      "balance": 29,
+      "tof": 8
+    },
+    "scan_count": 8
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 80.0,
+    "dist_m": 108.1,
+    "time_s": 374.2,
+    "collisions": 1,
+    "reached": true,
+    "end_reason": "exit",
+    "min_clear_m": 0.267,
+    "turn_kinds": {
+      "looming": 5,
+      "goal": 61,
+      "balance": 22,
+      "tof": 7
+    },
+    "scan_count": 7
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 80.0,
+    "dist_m": 106.6,
+    "time_s": 403.0,
+    "collisions": 0,
+    "reached": true,
+    "end_reason": "exit",
+    "min_clear_m": 0.378,
+    "turn_kinds": {
+      "looming": 4,
+      "goal": 65,
+      "balance": 18,
+      "tof": 10
+    },
+    "scan_count": 10
+  },
+  {
+    "world": "ff_easy_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 80.0,
+    "dist_m": 145.2,
+    "time_s": 599.1,
+    "collisions": 2,
+    "reached": true,
+    "end_reason": "exit",
+    "min_clear_m": 0.307,
+    "turn_kinds": {
+      "looming": 20,
+      "goal": 89,
+      "balance": 12,
+      "tof": 12
+    },
+    "scan_count": 12
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 47.6,
+    "dist_m": 80.0,
+    "time_s": 388.2,
+    "collisions": 3,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.217,
+    "turn_kinds": {
+      "looming": 0,
+      "goal": 22,
+      "balance": 24,
+      "tof": 13
+    },
+    "scan_count": 15
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 44.4,
+    "dist_m": 59.0,
+    "time_s": 320.7,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.373,
+    "turn_kinds": {
+      "looming": 3,
+      "goal": 27,
+      "balance": 8,
+      "tof": 8
+    },
+    "scan_count": 16
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 47.9,
+    "dist_m": 59.7,
+    "time_s": 288.1,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.222,
+    "turn_kinds": {
+      "looming": 1,
+      "goal": 35,
+      "balance": 7,
+      "tof": 7
+    },
+    "scan_count": 16
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 0,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 14.7,
+    "dist_m": 25.2,
+    "time_s": 154.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.364,
+    "turn_kinds": {
+      "looming": 3,
+      "goal": 10,
+      "balance": 4,
+      "tof": 5
+    },
+    "scan_count": 7
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "both",
+    "progress_m": 15.2,
+    "dist_m": 29.5,
+    "time_s": 180.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "timeout",
+    "min_clear_m": 0.378,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 10,
+      "balance": 6,
+      "tof": 6
+    },
+    "scan_count": 8
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "confirm3",
+    "progress_m": 1.8,
+    "dist_m": 15.0,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 5.629,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 6,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "confirm5",
+    "progress_m": 1.3,
+    "dist_m": 16.0,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 6.22,
+    "turn_kinds": {
+      "looming": 15,
+      "goal": 10,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "cool",
+    "progress_m": 1.9,
+    "dist_m": 23.1,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 3.765,
+    "turn_kinds": {
+      "looming": 13,
+      "goal": 5,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "goal",
+    "progress_m": 2.5,
+    "dist_m": 14.2,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 6.22,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 6,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "loom35",
+    "progress_m": 15.9,
+    "dist_m": 40.3,
+    "time_s": 180.0,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "timeout",
+    "min_clear_m": 0.344,
+    "turn_kinds": {
+      "looming": 9,
+      "goal": 20,
+      "balance": 4,
+      "tof": 5
+    },
+    "scan_count": 5
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 180,
+    "variant": "ref",
+    "progress_m": 1.3,
+    "dist_m": 15.8,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 5.087,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 6,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 47.7,
+    "dist_m": 76.1,
+    "time_s": 436.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.217,
+    "turn_kinds": {
+      "looming": 8,
+      "goal": 21,
+      "balance": 16,
+      "tof": 17
+    },
+    "scan_count": 19
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 44.4,
+    "dist_m": 91.4,
+    "time_s": 416.8,
+    "collisions": 4,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.187,
+    "turn_kinds": {
+      "looming": 10,
+      "goal": 53,
+      "balance": 7,
+      "tof": 7
+    },
+    "scan_count": 13
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 44.4,
+    "dist_m": 80.4,
+    "time_s": 398.2,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.344,
+    "turn_kinds": {
+      "looming": 9,
+      "goal": 39,
+      "balance": 10,
+      "tof": 10
+    },
+    "scan_count": 15
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "memory",
+    "progress_m": 44.3,
+    "dist_m": 68.7,
+    "time_s": 367.4,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.318,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 21,
+      "balance": 19,
+      "tof": 12
+    },
+    "scan_count": 16
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "memoryoffset",
+    "progress_m": 15.2,
+    "dist_m": 39.1,
+    "time_s": 249.1,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.317,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 10,
+      "balance": 7,
+      "tof": 10
+    },
+    "scan_count": 10
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "offset",
+    "progress_m": 47.6,
+    "dist_m": 75.4,
+    "time_s": 402.5,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.217,
+    "turn_kinds": {
+      "looming": 8,
+      "goal": 21,
+      "balance": 19,
+      "tof": 10
+    },
+    "scan_count": 17
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 1,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 1.3,
+    "dist_m": 15.8,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 5.087,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 6,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 44.4,
+    "dist_m": 60.2,
+    "time_s": 320.7,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.388,
+    "turn_kinds": {
+      "looming": 3,
+      "goal": 19,
+      "balance": 15,
+      "tof": 9
+    },
+    "scan_count": 15
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 14.7,
+    "dist_m": 23.8,
+    "time_s": 170.7,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.372,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 8,
+      "balance": 3,
+      "tof": 7
+    },
+    "scan_count": 9
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 47.5,
+    "dist_m": 63.8,
+    "time_s": 327.8,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.22,
+    "turn_kinds": {
+      "looming": 3,
+      "goal": 32,
+      "balance": 8,
+      "tof": 12
+    },
+    "scan_count": 14
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 2,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 14.8,
+    "dist_m": 25.8,
+    "time_s": 156.4,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.362,
+    "turn_kinds": {
+      "looming": 5,
+      "goal": 11,
+      "balance": 2,
+      "tof": 6
+    },
+    "scan_count": 6
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 14.8,
+    "dist_m": 29.3,
+    "time_s": 179.5,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.33,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 10,
+      "balance": 6,
+      "tof": 6
+    },
+    "scan_count": 9
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 42.2,
+    "dist_m": 65.2,
+    "time_s": 297.6,
+    "collisions": 3,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.295,
+    "turn_kinds": {
+      "looming": 0,
+      "goal": 31,
+      "balance": 10,
+      "tof": 10
+    },
+    "scan_count": 13
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 44.4,
+    "dist_m": 61.3,
+    "time_s": 291.4,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.395,
+    "turn_kinds": {
+      "looming": 1,
+      "goal": 31,
+      "balance": 10,
+      "tof": 8
+    },
+    "scan_count": 12
+  },
+  {
+    "world": "ff_hard_0",
+    "rep": 3,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 14.7,
+    "dist_m": 34.9,
+    "time_s": 183.9,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.358,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 23,
+      "balance": 2,
+      "tof": 5
+    },
+    "scan_count": 7
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 0,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 53.6,
+    "dist_m": 82.0,
+    "time_s": 447.0,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.2,
+    "turn_kinds": {
+      "looming": 0,
+      "goal": 27,
+      "balance": 21,
+      "tof": 14
+    },
+    "scan_count": 21
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 0,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 52.7,
+    "dist_m": 88.9,
+    "time_s": 461.3,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.174,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 47,
+      "balance": 5,
+      "tof": 14
+    },
+    "scan_count": 20
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 0,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 52.6,
+    "dist_m": 99.4,
+    "time_s": 519.1,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.229,
+    "turn_kinds": {
+      "looming": 9,
+      "goal": 50,
+      "balance": 8,
+      "tof": 19
+    },
+    "scan_count": 20
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 51.5,
+    "dist_m": 89.6,
+    "time_s": 459.2,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.247,
+    "turn_kinds": {
+      "looming": 1,
+      "goal": 30,
+      "balance": 19,
+      "tof": 16
+    },
+    "scan_count": 20
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 53.7,
+    "dist_m": 67.7,
+    "time_s": 403.4,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.244,
+    "turn_kinds": {
+      "looming": 0,
+      "goal": 26,
+      "balance": 9,
+      "tof": 17
+    },
+    "scan_count": 23
+  },
+  {
+    "world": "ff_hard_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 55.2,
+    "dist_m": 86.3,
+    "time_s": 506.8,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.245,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 40,
+      "balance": 11,
+      "tof": 16
+    },
+    "scan_count": 25
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 52.5,
+    "dist_m": 75.2,
+    "time_s": 339.3,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.361,
+    "turn_kinds": {
+      "looming": 5,
+      "goal": 33,
+      "balance": 15,
+      "tof": 10
+    },
+    "scan_count": 12
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "far35",
+    "progress_m": 52.5,
+    "dist_m": 68.6,
+    "time_s": 285.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.394,
+    "turn_kinds": {
+      "looming": 5,
+      "goal": 43,
+      "balance": 6,
+      "tof": 8
+    },
+    "scan_count": 9
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 52.5,
+    "dist_m": 76.3,
+    "time_s": 352.1,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.208,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 42,
+      "balance": 9,
+      "tof": 11
+    },
+    "scan_count": 13
+  },
+  {
+    "world": "ff_medium_2",
+    "rep": 1,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 52.5,
+    "dist_m": 99.0,
+    "time_s": 475.9,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.224,
+    "turn_kinds": {
+      "looming": 7,
+      "goal": 57,
+      "balance": 10,
+      "tof": 14
+    },
+    "scan_count": 16
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 0,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 44.3,
+    "dist_m": 75.1,
+    "time_s": 357.2,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.341,
+    "turn_kinds": {
+      "looming": 5,
+      "goal": 36,
+      "balance": 12,
+      "tof": 11
+    },
+    "scan_count": 13
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 0,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 44.0,
+    "dist_m": 69.0,
+    "time_s": 320.7,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.341,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 42,
+      "balance": 8,
+      "tof": 9
+    },
+    "scan_count": 13
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 0,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 42.7,
+    "dist_m": 107.6,
+    "time_s": 508.9,
+    "collisions": 2,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.31,
+    "turn_kinds": {
+      "looming": 18,
+      "goal": 67,
+      "balance": 4,
+      "tof": 13
+    },
+    "scan_count": 14
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 1,
+    "duration": 600,
+    "variant": "both",
+    "progress_m": 42.7,
+    "dist_m": 91.6,
+    "time_s": 380.7,
+    "collisions": 6,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.266,
+    "turn_kinds": {
+      "looming": 2,
+      "goal": 49,
+      "balance": 15,
+      "tof": 7
+    },
+    "scan_count": 10
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 1,
+    "duration": 600,
+    "variant": "loom35",
+    "progress_m": 42.8,
+    "dist_m": 73.0,
+    "time_s": 333.5,
+    "collisions": 1,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 0.236,
+    "turn_kinds": {
+      "looming": 4,
+      "goal": 46,
+      "balance": 6,
+      "tof": 9
+    },
+    "scan_count": 12
+  },
+  {
+    "world": "ff_medium_4",
+    "rep": 1,
+    "duration": 600,
+    "variant": "ref",
+    "progress_m": 2.3,
+    "dist_m": 20.4,
+    "time_s": 90.0,
+    "collisions": 0,
+    "reached": false,
+    "end_reason": "stalled",
+    "min_clear_m": 3.689,
+    "turn_kinds": {
+      "looming": 11,
+      "goal": 14,
+      "balance": 0,
+      "tof": 0
+    },
+    "scan_count": 0
+  }
+]

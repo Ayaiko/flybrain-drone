@@ -1,0 +1,14 @@
+{
+  "start_xy": [
+    1.238,
+    47.676
+  ],
+  "nearest_grid_clearance_m": 0.33352005170125926,
+  "node_spacing_m": 0.05,
+  "goal_y_m": 52,
+  "reachable": {
+    "0.05": true,
+    "0.1": false,
+    "0.2": false
+  }
+}
