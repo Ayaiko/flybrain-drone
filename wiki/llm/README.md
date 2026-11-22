@@ -1,5 +1,11 @@
 # บันทึกสำหรับทำงานต่อใน flybrain-drone
 
+## ต้นแบบ ESP32-C3 บอร์ดเดียว
+
+เริ่มที่ [คู่มือ C3 และเซนเซอร์ 5 ตัว รวม KY-018](../../indoor_poc/8520-66/README.md) สำหรับรายการอุปกรณ์ คำสั่งรันซิม ผลทดสอบ และงานที่ต้องวัดบนบอร์ดจริง
+
+## การทดลองสนามป่าและสิ่งกีดขวาง
+
 - ระบบบินป่าใช้ FlyVision ใน `px4/forest_pilot.py` ร่วมกับ PX4 หรือ shared pilot ใน fastsim
 - ชุด `fly-poc/` มีโมเดล FlyVis pretrained และการทดลองประตู การเปรียบเทียบกับ FlyVision ในสนามป่ายังเปิดอยู่
 - ผล PX4 รายเที่ยวอยู่ใน `results/forest/forest_runs.jsonl` และประวัติการทดลองอยู่ใน [EXPERIMENTS.md](../../EXPERIMENTS.md)
