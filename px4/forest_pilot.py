@@ -47,6 +47,20 @@ class Hazards:
         self.p = self.p[keep]; self.t = [v for v, k in zip(self.t, keep) if k]; self.perm = [v for v, k in zip(self.perm, keep) if k]
 
 
+def corridor_depth(ranges, fresh_bins, bin_width):
+    """Longest sequence of sampled cross-sections with a measured width of at least 0.9 m."""
+    depth_reached = np.zeros(len(ranges))
+    continuous = fresh_bins.copy()
+    for depth in (0.8, 1.4, 2.0, 2.6, 3.2):
+        # Round the body half-width outwards to the next measured ray.
+        half_bins = int(np.ceil(np.arctan2(.45, depth) / bin_width))
+        for k in range(-half_bins, half_bins + 1):
+            reaches_plane = fresh_bins & (ranges * np.cos(k * bin_width) >= depth)
+            continuous &= np.roll(reaches_plane, k)
+        depth_reached[continuous] = depth
+    return depth_reached
+
+
 class Pilot:
     def __init__(self, P, meta, eye, fps=30.0, seed=0):
         self.P, self.fps, self.dt = P, fps, 1.0 / fps
@@ -62,6 +76,8 @@ class Pilot:
         self.prev_h, self.loom_run, self.sac_target, self.brake_target, self.brake_t0 = None, 0, None, None, 0.0
         self.fencing, self.fence_events = False, 0
         self.scan_choices = []
+        self.preview_origin = None
+        self.preview_count = 0
         self.scan_count = self.scan_ticks = self.empty_scans = 0
         self.bin_width = np.radians(10)
         self.rec = None                         # active recovery: dict(kind, phase, ...)
@@ -120,6 +136,12 @@ class Pilot:
             bearing = np.arctan2(goal[1]-xy[1], goal[0]-xy[0])
             choices = headings[corridor]
             cost = np.abs(wrap(choices-bearing))
+            if P.get('corridor_weight'):
+                depths = corridor_depth(r['bins'], now-r['seen'] < 15, self.bin_width)
+                benefit = depths[corridor]
+                if P.get('corridor_forward'):
+                    benefit = benefit * np.maximum(0, np.cos(choices-bearing))
+                cost -= P['corridor_weight'] * benefit
             if P.get('scan_remember'):
                 # Repeated scans at one position can pick the same dead end each time.
                 self.scan_choices = [(t, pt, angle) for t, pt, angle in self.scan_choices if now-t < 90]
@@ -129,6 +151,9 @@ class Pilot:
             target = choices[np.argmin(cost)]
             if P.get('scan_remember'):
                 self.scan_choices.append((now, xy.copy(), target))
+            if P.get('corridor_follow') and P.get('corridor_weight'):
+                chosen_bin = int(round(target / self.bin_width)) % len(depths)
+                r['leg_m'] = float(np.clip(depths[chosen_bin] - .6, .8, 1.6))
             r.update(phase='scan_align', target=target)
         if r['phase'] == 'scan_wait':
             if now >= r['retry']:
@@ -145,7 +170,7 @@ class Pilot:
             if not valid or tof <= P['tof_stop'] + P['tof_t']*v_meas:
                 r.update(phase='side_brake')
                 return 0.0, 0.0, info
-            if np.linalg.norm(xy-r['start']) >= P.get('scan_leg_m', .8) or now-r['t1'] > 5:
+            if np.linalg.norm(xy-r['start']) >= r.get('leg_m', P.get('scan_leg_m', .8)) or now-r['t1'] > 5:
                 r['phase'] = 'scan_end'
             else:
                 probing = now-r['t1'] < P['scan_creep_s']
@@ -266,7 +291,14 @@ class Pilot:
 
         fly.ext_rot = wy; fly.goal_err = self.goal_err(p2, h, goal)
         yaw, v = fly.act(lum); dg = fly.diag; info.update(state=dg.get('state', 'warmup'), looming=bool(dg.get('looming', False)))
-        if P['tof'] and tof is not None and tof < P['tof_stop'] + P.get('tof_t', 0.0) * v_meas and dg.get('state') in ('fixate', 'settling'):
+        stop_distance = P['tof_stop'] + P.get('tof_t', 0.0) * v_meas
+        preview = (P.get('preview_range', 0) > 0 and tof is not None
+                   and stop_distance <= tof < P['preview_range']
+                   and (self.preview_origin is None or np.linalg.norm(p2 - self.preview_origin) >= 1.2))
+        if P['tof'] and tof is not None and (tof < stop_distance or preview) and dg.get('state') in ('fixate', 'settling'):
+            if preview:
+                self.preview_origin = p2.copy()
+                self.preview_count += 1
             # independent range veto: something solid ahead that vision may not see (flat wall, plain surface)
             q = p2 + tof * np.array([np.cos(h), np.sin(h)])
             if self.haz.mark(q, now): self.hazards_log.append([round(float(q[0]), 2), round(float(q[1]), 2), 'tof'])
@@ -299,5 +331,5 @@ class Pilot:
         return v, yaw, info
 
     def stats(self):
-        return dict(scan_count=self.scan_count, scan_rotation_s=round(self.scan_ticks*self.dt, 2), empty_scans=self.empty_scans, geofence_events=self.fence_events, hazards=len(self.hazards_log), turn_kinds=self.turn_kind,
+        return dict(preview_count=self.preview_count, scan_count=self.scan_count, scan_rotation_s=round(self.scan_ticks*self.dt, 2), empty_scans=self.empty_scans, geofence_events=self.fence_events, hazards=len(self.hazards_log), turn_kinds=self.turn_kind,
                     brakes=self.n_brakes, recoveries=self.n_recover)
