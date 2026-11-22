@@ -1,0 +1,8 @@
+tested lplc2 innate
+  run0 gen 1/2: best fitness 24.0
+  run0 gen 2/2: best fitness 30.3
+run 0: 0.75 crashes/min, 37.2 cells, params {'tau_lp': 0.0498, 'tau_hp': 0.3212, 'front': 30.7421, 'balance_thr': 0.2766, 'sac_small': 36.9181, 'sac_big': 72.2034, 'cool': 0.3974, 'slow': 0.6831, 'lplc2_thr': 2.3795, 'lplc2_tau': 5.2576}
+lplc2_innate   crashes/min 0.12 [0.00, 0.38]  crash-free 88%  cells 22.4 [18.1, 27.1]  fitness 21.8
+lplc2_tuned    crashes/min 0.75 [0.00, 1.75]  crash-free 75%  cells 37.2 [29.4, 46.6]  fitness 33.5
+per run: [{'crashes_per_min': 0.75, 'cells': 37.2}]
+wall 3s

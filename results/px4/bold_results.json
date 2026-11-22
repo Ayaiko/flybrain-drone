@@ -1,0 +1,16 @@
+{
+ "lplc2-cov-v1.0": {
+  "n": 4,
+  "coverage": 8.1,
+  "post_per_min": 1.5899999999999999,
+  "hazards": 82.25,
+  "dist_m": 112.55000000000001
+ },
+ "lplc2-cov-bold-v1.0": {
+  "n": 4,
+  "coverage": 9.925,
+  "post_per_min": 1.6675,
+  "hazards": 45.75,
+  "dist_m": 104.875
+ }
+}

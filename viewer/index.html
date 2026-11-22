@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flybrain Drone Viewer</title>
+<style>
+  :root { --bg:#0f1115; --panel:#171a21; --ink:#e6e8ee; --mute:#8a90a0; --line:#2a2f3a; --accent:#4c8dff; --bad:#ff5a5a; --ok:#3ecf7a; --warn:#f5b941; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.4 -apple-system, system-ui, sans-serif; }
+  header { display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:10px 16px; border-bottom:1px solid var(--line); }
+  header h1 { font-size:15px; margin:0 12px 0 0; }
+  select, button { background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:5px 9px; font:inherit; }
+  button.on { border-color:var(--accent); color:var(--accent); }
+  #scrub { flex:1; min-width:160px; }
+  #time { font-variant-numeric:tabular-nums; min-width:90px; color:var(--mute); }
+  main { display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:14px; padding:14px 16px; }
+  .pane { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:10px; }
+  .pane .top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:8px; }
+  .stat { display:flex; gap:12px; font-variant-numeric:tabular-nums; color:var(--mute); font-size:13px; }
+  .stat b { color:var(--ink); }
+  .badge { padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid var(--line); }
+  canvas { width:100%; display:block; border-radius:6px; }
+  .lbl { color:var(--mute); font-size:12px; margin:8px 0 3px; display:flex; justify-content:space-between; }
+  footer { padding:0 16px 16px; color:var(--mute); font-size:12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🪰 Flybrain drone — replay</h1>
+  <label>โหมด <select id="mode"><option value="episodes.json">บินอิสระ 60 s</option><option value="episodes_nav.json">สำรวจพื้นที่ (GPS + วางแผน) 180 s</option><option value="episodes_webots.json">Webots 3D (Mavic จริง) 60 s</option><option value="episodes_px4.json">PX4 + Gazebo (x500) 60 s</option><option value="episodes_px4_cov.json">PX4 สำรวจพื้นที่ 180 s</option><option value="episodes_px4_flowmap.json">PX4 สำรวจ: ก่อน vs แผนที่ flow</option><option value="episodes_px4_bold.json">PX4 สำรวจ: LPLC2 ก่อน vs กล้าขึ้น</option></select></label>
+  <label>โลก <select id="world"></select></label>
+  <button id="play">⏸ หยุด</button>
+  <span id="speeds"></span>
+  <input id="scrub" type="range" min="0" max="2999" value="0">
+  <span id="time">0.0 s</span>
+</header>
+<main id="panes"></main>
+<footer>เล่นซ้ำจากซิม Python จริง (sim.py, 50 ก้าว/วินาที, ความเร็ว 1× = เวลาจริง) · แผนที่: เส้นเทา = เส้นทาง, ✕ = จุดชน, พัดสีฟ้า = ช่วงหน้า ±35° ที่ตัวตรวจ looming ดู · โหมดสำรวจ: กรอบเขียวประ = ขอบพื้นที่ (geofence), ช่องเขียว = สำรวจแล้ว, ★ = จุดที่ planner สั่งให้ไป, ✕ = ชนเสา · แถบตา = ภาพที่ตา 120 จุดเห็น (ซ้าย→ขวา ของโดรน) · กราฟ = สัญญาณ looming (ฟ้า) vs threshold (ส้ม), แดง = ยิง → หักหนี</footer>
+<script>
+let D, W, step = 0, playing = true, speed = 1, last = null, panes = [];
+const STATE_TH = {warmup:'เริ่ม', settling:'ตาบอดหลังหัก', fixate:'บินตรง/วัด', saccade:'กำลังหัก', saccade_start:'เริ่มหัก'};
+const STATE_C = {warmup:'#8a90a0', settling:'#f5b941', fixate:'#3ecf7a', saccade:'#4c8dff', saccade_start:'#4c8dff'};
+
+const FILE = new URLSearchParams(location.search).get('f') || 'episodes.json';
+fetch(FILE).then(r => r.json()).then(d => { D = d; init(); });
+
+function decode(b64) { const s = atob(b64), a = new Uint8Array(s.length); for (let i = 0; i < s.length; i++) a[i] = s.charCodeAt(i); return a; }
+
+function init() {
+  const md = document.getElementById('mode'); md.value = FILE; md.onchange = () => { location.search = '?f=' + md.value; };
+  const ws = document.getElementById('world');
+  D.worlds.forEach((w, i) => ws.add(new Option('โลก #' + w.seed, i)));
+  ws.onchange = () => loadWorld(+ws.value);
+  const sp = document.getElementById('speeds');
+  [0.25, 0.5, 1, 2, 4].forEach(v => { const b = document.createElement('button'); b.textContent = v + '×'; b.onclick = () => { speed = v; [...sp.children].forEach(c => c.classList.toggle('on', c === b)); }; if (v === 1) b.classList.add('on'); sp.appendChild(b); });
+  document.getElementById('play').onclick = () => { playing = !playing; document.getElementById('play').textContent = playing ? '⏸ หยุด' : '▶ เล่น'; last = null; };
+  document.getElementById('scrub').oninput = e => { step = +e.target.value; draw(); };
+  loadWorld(0); requestAnimationFrame(tick);
+}
+
+function loadWorld(i) {
+  W = D.worlds[i]; step = 0;
+  const names = Object.keys(W.runs);
+  for (const n of names) if (!W.runs[n].pix) W.runs[n].pix = decode(W.runs[n].img);
+  if (!D.dt) D.dt = 0.02;
+  const host = document.getElementById('panes'); host.innerHTML = ''; panes = [];
+  names.forEach(n => {
+    const el = document.createElement('div'); el.className = 'pane';
+    el.innerHTML = `<div class="top"><b>${n}</b><span class="badge"></span></div>
+      <div class="stat"><span>ชน <b class="cr">0</b> ครั้ง</span><span>บินไป <b class="dist">0</b> ม.</span><b class="cov" style="color:#3ecf7a"></b></div>
+      <canvas class="map" width="600" height="600"></canvas>
+      <div class="lbl"><span>ภาพที่ตาเห็น (330°)</span><span>← ซ้าย · หน้า · ขวา →</span></div>
+      <canvas class="eye" width="600" height="46"></canvas>
+      <div class="lbl"><span>looming 5 วินาทีล่าสุด</span><span class="lm"></span></div>
+      <canvas class="loom" width="600" height="110"></canvas>`;
+    host.appendChild(el);
+    const run = W.runs[n], N = run.x.length, cum = new Float32Array(N);
+    for (let k = 1; k < N; k++) cum[k] = cum[k - 1] + Math.hypot(run.x[k] - run.x[k - 1], run.y[k] - run.y[k - 1]);
+    let firstVisit = null;
+    if (D.cells && run.goal) {           // step at which each 2x2 m cell inside the geofence was first visited
+      const m = D.cells.margin, cs = D.cells.cell, nC = Math.floor((W.size - 2 * m) / cs); firstVisit = new Int32Array(nC * nC).fill(-1);
+      for (let k = 0; k < N; k++) { const i = Math.floor((run.x[k] - m) / cs), j = Math.floor((run.y[k] - m) / cs);
+        if (i >= 0 && j >= 0 && i < nC && j < nC && firstVisit[i * nC + j] < 0) firstVisit[i * nC + j] = k; }
+      firstVisit.nC = nC;
+    }
+    panes.push({n, el, run, cum, firstVisit});
+  });
+  document.getElementById('scrub').max = Math.max(...names.map(n => W.runs[n].x.length)) - 1;
+  draw();
+}
+
+function tick(ts) {
+  if (playing && W) {
+    if (last != null) step += (ts - last) / 1000 / D.dt * speed;
+    const N = Math.max(...Object.values(W.runs).map(r => r.x.length));
+    if (step >= N - 1) step = 0;
+    document.getElementById('scrub').value = Math.floor(step);
+    draw();
+  }
+  last = ts; requestAnimationFrame(tick);
+}
+
+function draw() {
+  const k = Math.floor(step), N = Math.max(...Object.values(W.runs).map(r => r.x.length));
+  document.getElementById('time').textContent = (k * D.dt).toFixed(1) + ' / ' + (N * D.dt).toFixed(0) + ' s';
+  panes.forEach(p => drawPane(p, Math.min(k, p.run.x.length - 1)));
+}
+
+function drawPane(p, k) {
+  const {el, run} = p, L = W.size;
+  const st = D.states[run.state[k]], recentCrash = run.crashes.some(c => c[0] <= k && k - c[0] < 25);
+  const badge = el.querySelector('.badge');
+  if (p.n.startsWith('oracle')) { badge.textContent = 'ใช้ระยะจริง (lidar)'; badge.style.color = '#8a90a0'; }
+  else { badge.textContent = STATE_TH[st] || st; badge.style.color = STATE_C[st]; badge.style.borderColor = STATE_C[st]; }
+  el.querySelector('.cr').textContent = run.crashes.filter(c => c[0] <= k).length;
+  el.querySelector('.dist').textContent = p.cum[k].toFixed(0);
+  const cvEl = el.querySelector('.cov');
+  if (p.firstVisit) { let c = 0; for (const v of p.firstVisit) if (v >= 0 && v <= k) c++; cvEl.textContent = 'สำรวจ ' + (100 * c / p.firstVisit.length).toFixed(0) + '%'; }
+  // map
+  const cv = el.querySelector('.map'), g = cv.getContext('2d'), S = cv.width / L, Y = y => cv.height - y * S;
+  g.fillStyle = recentCrash ? '#3a1518' : '#12151b'; g.fillRect(0, 0, cv.width, cv.height);
+  g.strokeStyle = '#555c6b'; g.lineWidth = 3; g.strokeRect(1.5, 1.5, cv.width - 3, cv.height - 3);
+  if (p.firstVisit) {                  // geofence + covered cells
+    const m = D.cells.margin, cs = D.cells.cell, nC = p.firstVisit.nC;
+    g.fillStyle = 'rgba(62,207,122,.18)';
+    for (let i = 0; i < nC; i++) for (let j = 0; j < nC; j++) { const v = p.firstVisit[i * nC + j]; if (v >= 0 && v <= k) g.fillRect((m + i * cs) * S, Y(m + (j + 1) * cs), cs * S, cs * S); }
+    g.setLineDash([6, 5]); g.strokeStyle = '#3ecf7a'; g.lineWidth = 1.5; g.strokeRect(m * S, Y(W.size - m), (W.size - 2 * m) * S, (W.size - 2 * m) * S); g.setLineDash([]);
+  }
+  for (const [cx, cy, r, kk, ph] of W.obstacles) {   // striped posts, same texture as the sim
+    const seg = 24;
+    for (let i = 0; i < seg; i++) {
+      const a0 = i / seg * 2 * Math.PI, a1 = (i + 1) / seg * 2 * Math.PI, v = 0.5 + 0.4 * Math.sin(kk * (a0 + a1) / 2 + ph);
+      g.beginPath(); g.moveTo(cx * S, Y(cy)); g.arc(cx * S, Y(cy), r * S, -a1, -a0); g.closePath();
+      const c = Math.round(60 + v * 170); g.fillStyle = `rgb(${c},${c},${c})`; g.fill();
+    }
+  }
+  // trail
+  g.strokeStyle = 'rgba(160,170,190,.35)'; g.lineWidth = 1.5; g.beginPath();
+  for (let i = Math.max(0, k - 1500); i <= k; i++) { const x = run.x[i] * S, y = Y(run.y[i]); if (i && Math.hypot(run.x[i] - run.x[i - 1], run.y[i] - run.y[i - 1]) > .5) g.moveTo(x, y); else g.lineTo(x, y); }
+  g.stroke();
+  // crashes
+  g.strokeStyle = '#ff5a5a'; g.lineWidth = 2.5;
+  for (const [ci, cx, cy] of run.crashes) if (ci <= k) { const x = cx * S, y = Y(cy); g.beginPath(); g.moveTo(x - 6, y - 6); g.lineTo(x + 6, y + 6); g.moveTo(x + 6, y - 6); g.lineTo(x - 6, y + 6); g.stroke(); }
+  if (run.hazards && run.hazards.length) {   // planner's hazard memory (from looming + crashes), as known at this time
+    g.fillStyle = 'rgba(255,90,90,.55)';
+    for (const [hx, hy, hk] of run.hazards) if (hk <= k) { g.beginPath(); g.arc(hx * S, Y(hy), 3, 0, 2 * Math.PI); g.fill(); }
+  }
+  if (run.goal && run.goal[k]) {      // current waypoint from the planner
+    const [gx, gy] = run.goal[k]; g.strokeStyle = 'rgba(255,209,102,.5)'; g.setLineDash([3, 4]); g.beginPath(); g.moveTo(run.x[k] * S, Y(run.y[k])); g.lineTo(gx * S, Y(gy)); g.stroke(); g.setLineDash([]);
+    g.fillStyle = '#ffd166'; g.font = '16px sans-serif'; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('★', gx * S, Y(gy));
+  }
+  // drone + frontal looming field
+  const x = run.x[k] * S, y = Y(run.y[k]), h = run.h[k], fr = 35 * Math.PI / 180;
+  g.fillStyle = run.looming[k] ? 'rgba(255,90,90,.35)' : 'rgba(76,141,255,.18)';
+  g.beginPath(); g.moveTo(x, y); g.arc(x, y, 4 * S, -h - fr, -h + fr); g.closePath(); g.fill();
+  g.fillStyle = recentCrash ? '#ff5a5a' : '#ffd166'; g.beginPath(); g.arc(x, y, Math.max(4, D.drone_r * S), 0, 2 * Math.PI); g.fill();
+  g.strokeStyle = '#ffd166'; g.lineWidth = 2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(h) * 14, y - Math.sin(h) * 14); g.stroke();
+  // eye strip: index 0 = right edge (-165 deg) ... 119 = left (+165). Show left on the left.
+  const ec = el.querySelector('.eye'), eg = ec.getContext('2d'), n = D.n_eye, cw = ec.width / n;
+  for (let i = 0; i < n; i++) { const v = run.pix[k * n + i]; eg.fillStyle = `rgb(${v},${v},${v})`; eg.fillRect((n - 1 - i) * cw, 0, Math.ceil(cw), ec.height); }
+  const fx0 = ec.width / 2 - 35 / 330 * ec.width, fx1 = ec.width / 2 + 35 / 330 * ec.width;
+  eg.strokeStyle = run.looming[k] ? '#ff5a5a' : '#4c8dff'; eg.lineWidth = 2; eg.strokeRect(fx0, 1, fx1 - fx0, ec.height - 2);
+  // looming plot
+  const lc = el.querySelector('.loom'), lg = lc.getContext('2d'), Wn = 250, a = Math.max(0, k - Wn);
+  lg.fillStyle = '#12151b'; lg.fillRect(0, 0, lc.width, lc.height);
+  let mx = 1e-6; for (let i = a; i <= k; i++) { mx = Math.max(mx, run.loom[i] || 0, run.thr[i] || 0); }
+  const px = i => (i - a) / Wn * lc.width, py = v => lc.height - 6 - v / mx * (lc.height - 14);
+  for (let i = a; i <= k; i++) if (run.looming[i]) { lg.fillStyle = 'rgba(255,90,90,.25)'; lg.fillRect(px(i), 0, lc.width / Wn + 1, lc.height); }
+  for (const [ci] of run.crashes) if (ci >= a && ci <= k) { lg.fillStyle = '#ff5a5a'; lg.fillRect(px(ci) - 1, 0, 3, lc.height); }
+  const line = (arr, col) => { lg.strokeStyle = col; lg.lineWidth = 1.8; lg.beginPath(); let pen = false;
+    for (let i = a; i <= k; i++) { const v = arr[i]; if (v == null || run.state[i] !== 2) { pen = false; continue; } pen ? lg.lineTo(px(i), py(v)) : lg.moveTo(px(i), py(v)); pen = true; } lg.stroke(); };
+  if (!p.n.startsWith('oracle')) { line(run.loom, '#4c8dff'); line(run.thr, '#f5b941'); }
+  el.querySelector('.lm').textContent = p.n.startsWith('oracle') ? 'ไม่ใช้ (oracle)' : (run.looming[k] ? '⚠️ looming!' : '');
+}
+</script>
+</body>
+</html>

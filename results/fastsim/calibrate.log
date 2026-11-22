@@ -1,0 +1,105 @@
+[13/270   163s] group of 13 on ff_hard_1 done in 162s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: stalled prog 22.5 coll 15
+[26/270   189s] group of 13 on ff_easy_0 done in 189s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 38.1 coll 7
+[39/270   191s] group of 13 on ff_hard_2 done in 190s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: stalled prog 19.6 coll 15
+[52/270   194s] group of 13 on ff_medium_0 done in 193s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 55.0 coll 13
+[65/270   222s] group of 13 on ff_hard_0 done in 221s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: too_many_collisions prog 44.8 coll 20
+[78/270   232s] group of 13 on ff_medium_2 done in 232s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 52.9 coll 14
+[91/270   242s] group of 13 on ff_medium_1 done in 242s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 53.3 coll 18
+[104/270   327s] group of 13 on ff_medium_0 done in 136s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: stalled prog 49.8 coll 10
+[117/270   338s] group of 13 on ff_hard_1 done in 96s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: too_many_collisions prog 20.2 coll 20
+[130/270   342s] group of 13 on ff_medium_1 done in 148s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 55.3 coll 14
+[143/270   347s] group of 13 on ff_easy_1 done in 184s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 55.0 coll 6
+[156/270   358s] group of 13 on ff_hard_0 done in 125s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: too_many_collisions prog 10.7 coll 20
+[169/270   363s] group of 13 on ff_medium_2 done in 141s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 53.5 coll 13
+[182/270   364s] group of 13 on ff_easy_2 done in 174s; e.g. lplc2-bold-gate-sv0-v0.8 rep0: timeout prog 72.7 coll 8
+[186/270   375s] group of 4 on ff_medium_0 done in 17s; e.g. none-v0.8 rep6: exit prog 80.0 coll 3
+[190/270   380s] group of 4 on ff_medium_1 done in 17s; e.g. none-v0.8 rep6: exit prog 80.0 coll 5
+[194/270   380s] group of 4 on ff_medium_2 done in 16s; e.g. none-v0.8 rep6: exit prog 80.0 coll 3
+[198/270   395s] group of 4 on ff_hard_0 done in 20s; e.g. none-v0.8 rep6: exit prog 80.0 coll 8
+[202/270   399s] group of 4 on ff_hard_1 done in 19s; e.g. none-v0.8 rep6: exit prog 80.0 coll 10
+[206/270   399s] group of 4 on ff_hard_2 done in 19s; e.g. none-v0.8 rep6: exit prog 80.0 coll 12
+[210/270   409s] group of 4 on ff_easy_0 done in 14s; e.g. none-v0.8 rep6: exit prog 80.0 coll 0
+[214/270   412s] group of 4 on ff_easy_2 done in 13s; e.g. none-v0.8 rep6: exit prog 80.0 coll 2
+[218/270   412s] group of 4 on ff_easy_1 done in 13s; e.g. none-v0.8 rep6: exit prog 80.0 coll 1
+[231/270   421s] group of 13 on ff_easy_1 done in 79s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 67.2 coll 7
+[244/270   425s] group of 13 on ff_easy_0 done in 87s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 49.2 coll 7
+[257/270   425s] group of 13 on ff_hard_2 done in 99s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 41.7 coll 16
+[270/270   429s] group of 13 on ff_easy_2 done in 81s; e.g. lplc2-bold-gate-sv0-gg0-v0.8 rep6: timeout prog 65.8 coll 5
+{
+ "corr": {
+  "all_27": {
+   "progress": 0.8924100888453096,
+   "collisions": 0.7352006942330817
+  },
+  "none-v0.8": {
+   "progress": NaN,
+   "collisions": 0.9873949579831934
+  },
+  "lplc2-bold-gate-sv0-v0.8": {
+   "progress": 0.6333333333333333,
+   "collisions": 0.18565566109853687
+  },
+  "lplc2-bold-gate-sv0-gg0-v0.8": {
+   "progress": 0.5166666666666667,
+   "collisions": 0.8001811389132237
+  },
+  "brain_18": {
+   "progress": 0.6494580111746732,
+   "collisions": 0.5560357465842422
+  }
+ },
+ "ceiling": {
+  "all_27": {
+   "progress_m": 0.8283819447191932,
+   "collisions": 0.6999927085321213
+  },
+  "brain_18": {
+   "progress_m": 0.4510410524315655,
+   "collisions": 0.5224582444265921
+  }
+ },
+ "pit": {
+  "progress_m": {
+   "mean": 0.47777777777777775,
+   "frac_outside_range": 0.1111111111111111
+  },
+  "collisions": {
+   "mean": 0.5416666666666667,
+   "frac_outside_range": 0.1111111111111111
+  }
+ },
+ "speed": {
+  "episodes": 270,
+  "sim_s_total": 61599,
+  "worker_wall_s_total": 2927.3,
+  "rtf_per_core": 21.0,
+  "batch_wall_s": 428.6,
+  "episodes_per_min": 37.8,
+  "rtf_total": 143.7,
+  "workers": 7,
+  "cpu": "arm",
+  "batched": {
+   "episodes": 270,
+   "workers": 7,
+   "wall_s": 428.6,
+   "episodes_per_min": 37.8,
+   "rtf_total": 143.7,
+   "rtf_per_worker": 21.0,
+   "us_per_drone_frame": {
+    "render": 1270.0,
+    "pilot": 158.5,
+    "truth": 73.0,
+    "dynamics": 40.1,
+    "book": 39.7
+   },
+   "share": {
+    "render": 0.803,
+    "pilot": 0.1,
+    "truth": 0.046,
+    "dynamics": 0.025,
+    "book": 0.025
+   }
+  },
+  "px4_reference": "PX4 + Gazebo Docker: ~1x real time per container, 3 containers ~1.8x total (forest-test-field notes)"
+ }
+}

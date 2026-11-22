@@ -1,0 +1,381 @@
+{
+ "summary": {
+  "no avoidance (straight) [PX4]": {
+   "n": 10,
+   "post_per_min": 3.7139999999999995,
+   "ci": [
+    2.401,
+    5.326
+   ],
+   "dist_m": 48.95,
+   "m_per_crash": 13.22972972972973,
+   "crash_free": 0.0,
+   "geofence_per_min": 1.5,
+   "cells": 13.0
+  },
+  "fly old looming [PX4]": {
+   "n": 10,
+   "post_per_min": 0.6,
+   "ci": [
+    0.2,
+    1.0
+   ],
+   "dist_m": 41.440000000000005,
+   "m_per_crash": 69.06666666666668,
+   "crash_free": 0.5,
+   "geofence_per_min": 2.9,
+   "cells": 15.3
+  },
+  "fly LPLC2 [PX4]": {
+   "n": 10,
+   "post_per_min": 0.2,
+   "ci": [
+    0.0,
+    0.5
+   ],
+   "dist_m": 37.48,
+   "m_per_crash": 187.39999999999998,
+   "crash_free": 0.8,
+   "geofence_per_min": 3.4,
+   "cells": 14.0
+  }
+ },
+ "runs": {
+  "none-v1.0": [
+   {
+    "mode": "none-v1.0",
+    "seed": 0,
+    "flown_s": 60.0,
+    "dist_m": 53.2,
+    "cells": 20,
+    "post_crashes": 2,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 2.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 1,
+    "flown_s": 59.9,
+    "dist_m": 40.5,
+    "cells": 3,
+    "post_crashes": 4,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 4.01
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 2,
+    "flown_s": 60.0,
+    "dist_m": 53.6,
+    "cells": 21,
+    "post_crashes": 3,
+    "wall_crashes": 0,
+    "geofence_events": 0,
+    "post_per_min": 3.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 3,
+    "flown_s": 60.0,
+    "dist_m": 44.1,
+    "cells": 8,
+    "post_crashes": 4,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 4.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 4,
+    "flown_s": 60.0,
+    "dist_m": 53.8,
+    "cells": 11,
+    "post_crashes": 2,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 2.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 5,
+    "flown_s": 60.0,
+    "dist_m": 56.4,
+    "cells": 21,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 6,
+    "flown_s": 60.0,
+    "dist_m": 47.1,
+    "cells": 6,
+    "post_crashes": 3,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 3.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 7,
+    "flown_s": 60.0,
+    "dist_m": 48.2,
+    "cells": 18,
+    "post_crashes": 7,
+    "wall_crashes": 0,
+    "geofence_events": 0,
+    "post_per_min": 7.0
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 8,
+    "flown_s": 59.2,
+    "dist_m": 39.1,
+    "cells": 10,
+    "post_crashes": 9,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 9.12
+   },
+   {
+    "mode": "none-v1.0",
+    "seed": 9,
+    "flown_s": 59.7,
+    "dist_m": 53.5,
+    "cells": 12,
+    "post_crashes": 2,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 2.01
+   }
+  ],
+  "old-v1.0": [
+   {
+    "mode": "old-v1.0",
+    "seed": 0,
+    "flown_s": 60.0,
+    "dist_m": 41.8,
+    "cells": 14,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 1,
+    "flown_s": 59.7,
+    "dist_m": 38.3,
+    "cells": 9,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 2,
+    "flown_s": 60.0,
+    "dist_m": 39.4,
+    "cells": 10,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 3,
+    "flown_s": 60.0,
+    "dist_m": 37.0,
+    "cells": 10,
+    "post_crashes": 2,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 2.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 4,
+    "flown_s": 60.0,
+    "dist_m": 41.5,
+    "cells": 14,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 5,
+    "flown_s": 60.0,
+    "dist_m": 47.7,
+    "cells": 27,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 1,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 6,
+    "flown_s": 60.0,
+    "dist_m": 41.9,
+    "cells": 14,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 7,
+    "flown_s": 60.0,
+    "dist_m": 42.2,
+    "cells": 25,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 8,
+    "flown_s": 60.0,
+    "dist_m": 41.6,
+    "cells": 11,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "old-v1.0",
+    "seed": 9,
+    "flown_s": 57.3,
+    "dist_m": 43.0,
+    "cells": 19,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 0.0
+   }
+  ],
+  "lplc2-v1.0": [
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 0,
+    "flown_s": 59.9,
+    "dist_m": 37.4,
+    "cells": 15,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 1,
+    "flown_s": 59.8,
+    "dist_m": 34.8,
+    "cells": 10,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 5,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 2,
+    "flown_s": 60.0,
+    "dist_m": 36.6,
+    "cells": 10,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 3,
+    "flown_s": 60.0,
+    "dist_m": 36.1,
+    "cells": 10,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 4,
+    "flown_s": 60.0,
+    "dist_m": 37.4,
+    "cells": 12,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 5,
+    "flown_s": 60.0,
+    "dist_m": 40.9,
+    "cells": 22,
+    "post_crashes": 1,
+    "wall_crashes": 0,
+    "geofence_events": 0,
+    "post_per_min": 1.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 6,
+    "flown_s": 60.0,
+    "dist_m": 36.4,
+    "cells": 10,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 7,
+    "flown_s": 60.0,
+    "dist_m": 41.1,
+    "cells": 21,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 3,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 8,
+    "flown_s": 59.9,
+    "dist_m": 35.9,
+    "cells": 11,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 4,
+    "post_per_min": 0.0
+   },
+   {
+    "mode": "lplc2-v1.0",
+    "seed": 9,
+    "flown_s": 59.1,
+    "dist_m": 38.2,
+    "cells": 19,
+    "post_crashes": 0,
+    "wall_crashes": 0,
+    "geofence_events": 2,
+    "post_per_min": 0.0
+   }
+  ]
+ }
+}

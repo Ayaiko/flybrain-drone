@@ -1,0 +1,120 @@
+{
+ "validation": {
+  "LPLC2 mem d1.5 line0": {
+   "coverage": 33.449074074074076,
+   "posts_per_min": 5.499999999999441
+  },
+  "LPLC2 mem d1.5 line1": {
+   "coverage": 33.53395061728395,
+   "posts_per_min": 5.549999999999436
+  },
+  "LPLC2 mem d2.5 line0": {
+   "coverage": 33.58796296296297,
+   "posts_per_min": 5.616666666666097
+  },
+  "LPLC2 mem d2.5 line1": {
+   "coverage": 33.98148148148148,
+   "posts_per_min": 4.6749999999995255
+  },
+  "old mem d1.5": {
+   "coverage": 45.81018518518518,
+   "posts_per_min": 9.866666666665665
+  },
+  "old mem d2.5": {
+   "coverage": 45.78703703703704,
+   "posts_per_min": 9.624999999999023
+  },
+  "LPLC2 no mem": {
+   "coverage": 32.18364197530864,
+   "posts_per_min": 4.5916666666662005
+  },
+  "old no mem": {
+   "coverage": 45.67901234567901,
+   "posts_per_min": 10.149999999998968
+  }
+ },
+ "picked": [
+  "LPLC2 mem d2.5 line1",
+  "old mem d2.5"
+ ],
+ "test": {
+  "LPLC2 no memory": {
+   "coverage": 30.37037037037037,
+   "coverage_ci": [
+    28.688078703703702,
+    31.960262345679006
+   ],
+   "posts_per_min": 5.158333333332809,
+   "posts_ci": [
+    4.108124999999584,
+    6.258333333332698
+   ],
+   "hazards": 0.0
+  },
+  "LPLC2 + hazard memory": {
+   "coverage": 33.91975308641975,
+   "coverage_ci": [
+    32.507716049382715,
+    35.44020061728395
+   ],
+   "posts_per_min": 5.233333333332802,
+   "posts_ci": [
+    4.349999999999558,
+    6.13333333333271
+   ],
+   "hazards": 193.7
+  },
+  "LPLC2 + memory + heading veto 4 m": {
+   "coverage": 28.047839506172842,
+   "coverage_ci": [
+    26.813271604938272,
+    29.20543981481481
+   ],
+   "posts_per_min": 2.8749999999997082,
+   "posts_ci": [
+    2.316666666666431,
+    3.466874999999647
+   ],
+   "hazards": 189.125
+  },
+  "fly old no memory": {
+   "coverage": 45.17746913580247,
+   "coverage_ci": [
+    44.19753086419753,
+    46.157407407407405
+   ],
+   "posts_per_min": 11.299999999998851,
+   "posts_ci": [
+    9.941458333332324,
+    12.767083333332035
+   ],
+   "hazards": 0.0
+  },
+  "fly old + hazard memory": {
+   "coverage": 45.17746913580247,
+   "coverage_ci": [
+    44.25115740740741,
+    46.095679012345684
+   ],
+   "posts_per_min": 10.833333333332234,
+   "posts_ci": [
+    9.533333333332365,
+    12.141666666665433
+   ],
+   "hazards": 22.375
+  },
+  "oracle + nav": {
+   "coverage": 53.96604938271605,
+   "coverage_ci": [
+    52.27604166666666,
+    55.73341049382716
+   ],
+   "posts_per_min": 0.0,
+   "posts_ci": [
+    0.0,
+    0.0
+   ],
+   "hazards": 0.0
+  }
+ }
+}

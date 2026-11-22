@@ -1,0 +1,20 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# PX4 is its own git repository (8 GB with the SITL build)
+px4/PX4-Autopilot/
+
+# generated / reproducible data (regenerate with the scripts; see README)
+webots/runs/
+# raw flight logs (per-frame pose and eye images, ~2 MB each)
+px4/runs/
+# generated forest worlds: python -m px4.make_forest / python -m px4.make_pool
+px4/forest/
+# viewer data exported by the eval scripts
+viewer/episodes*.json
+# replay videos: viz/replay2d.py, viz/chasecam.py
+results/videos/
+*.mp4
+fastsim/cache/

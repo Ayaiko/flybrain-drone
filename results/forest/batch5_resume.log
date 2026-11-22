@@ -1,0 +1,27 @@
+2 flights on 3 worker(s), speed x1
+ff_medium_0  fix-all                                  FAIL    coll  0 prog  14.1 m t 167.8 s end stalled              zones {}  [w1 9072s]
+ff_medium_0  fix-detour                               FAIL    coll 16 prog  55.7 m t 360.0 s end timeout              zones {'trunks': 7, 'branches': 9}  [x4 15210s]
+wall 15217s   compare: python -m px4.forest_compare fix-detour fix-all
+11 flights on 3 worker(s), speed x1
+ff_medium_3  fix-all                                  FAIL    coll  5 prog  47.7 m t 268.3 s end stalled              zones {'branches': 5}  [w2 4027s]
+ff_medium_3  lplc2-bold-gate-sv0-v0.8                 FAIL    coll 19 prog  44.8 m t 311.7 s end stalled              zones {'trunks': 7, 'branches': 12}  [x4 4106s]
+ff_medium_3  fix-detour                               FAIL    coll 19 prog  29.4 m t 360.0 s end timeout              zones {'trunks': 19}  [w1 4178s]
+ff_medium_4  none-v0.8                                reached coll  4 prog  80.0 m t 101.5 s end exit                 zones {'trunks': 1, 'branches': 2, 'lowtex': 1}  [w2 4247s]
+ff_medium_4  fix-all                                  FAIL    coll  2 prog  20.3 m t 140.6 s end stalled              zones {'trunks': 2}  [w2 4556s]
+ff_medium_5  none-v0.8                                reached coll  3 prog  80.0 m t 101.6 s end exit                 zones {'branches': 2, 'lowtex': 1}  [w2 4763s]
+ff_medium_4  fix-detour                               FAIL    coll 10 prog  43.4 m t 281.7 s end stalled              zones {'trunks': 3, 'branches': 7}  [w1 4822s]
+ff_medium_4  lplc2-bold-gate-sv0-v0.8                 FAIL    coll 16 prog  52.6 m t 360.0 s end timeout              zones {'trunks': 7, 'branches': 9}  [x4 4918s]
+ff_medium_5  fix-detour                               FAIL    coll  7 prog  19.7 m t 151.4 s end stalled              zones {'trunks': 7}  [w1 5153s]
+ff_medium_5  lplc2-bold-gate-sv0-v0.8                 FAIL    coll 14 prog  63.9 m t 360.0 s end timeout              zones {'trunks': 6, 'branches': 5, 'lowtex': 3}  [w2 5515s]
+ff_medium_5  fix-all                                  FAIL    coll  0 prog  42.4 m t 298.0 s end stalled              zones {}  [x4 5539s]
+wall 5541s   compare: python -m px4.forest_compare none-v0.8 lplc2-bold-gate-sv0-v0.8 fix-detour fix-all
+27 flights on 3 worker(s), speed x1
+ff_easy_0    fix-detour-creep                         FAIL    coll  6 prog  45.4 m t 360.0 s end timeout              zones {'trunks': 5, 'branches': 1}  [w2 624s]
+ff_easy_0    fix-all2                                 FAIL    coll  0 prog  73.2 m t 360.0 s end timeout              zones {}  [x4 627s]
+ff_easy_0    fix-all3                                 FAIL    coll  2 prog  49.5 m t 360.0 s end timeout              zones {'trunks': 1, 'branches': 1}  [w1 636s]
+ff_easy_1    fix-all3                                 FAIL    coll  3 prog  44.5 m t 360.0 s end timeout              zones {'trunks': 2, 'branches': 1}  [x4 1221s]
+ff_easy_1    fix-all2                                 FAIL    coll  0 prog  73.2 m t 360.0 s end timeout              zones {}  [w2 1227s]
+ff_easy_1    fix-detour-creep                         FAIL    coll  2 prog  52.4 m t 360.0 s end timeout              zones {'trunks': 1, 'branches': 1}  [w1 1234s]
+ff_easy_2    fix-all2                                 FAIL    coll  3 prog  70.0 m t 360.0 s end timeout              zones {'trunks': 1, 'branches': 2}  [x4 1855s]
+ff_easy_2    fix-all3                                 FAIL    coll  1 prog  60.2 m t 360.0 s end timeout              zones {'trunks': 1}  [w2 1869s]
+ff_easy_2    fix-detour-creep                         FAIL    coll  1 prog  48.9 m t 360.0 s end timeout              zones {'trunks': 1}  [w1 1875s]

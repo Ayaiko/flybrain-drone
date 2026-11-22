@@ -1,0 +1,10 @@
+8 flights on 3 worker(s), speed x1
+ff_easy_1    lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll  6 prog  14.6 m t 153.2 s end stalled              zones {'trunks': 6}  [x4 261s]
+ff_medium_0  lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 11 prog  14.9 m t 153.5 s end stalled              zones {'trunks': 11}  [w2 396s]
+ff_easy_2    lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll  7 prog  68.2 m t 360.0 s end timeout              zones {'trunks': 2, 'lowtex': 5}  [w1 601s]
+ff_medium_1  lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 20 prog  54.6 m t 338.9 s end too_many_collisions  zones {'trunks': 1, 'branches': 19}  [x4 1076s]
+ff_medium_2  lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 11 prog  53.2 m t 357.2 s end stalled              zones {'trunks': 4, 'branches': 7}  [w2 1249s]
+ff_hard_1    lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 14 prog  15.3 m t 144.5 s end stalled              zones {'trunks': 14}  [x4 1530s]
+ff_hard_0    lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 20 prog  48.8 m t 357.8 s end too_many_collisions  zones {'trunks': 5, 'branches': 15}  [w1 1779s]
+ff_hard_2    lplc2-bold-gate-sv0-gg0-v0.8             FAIL    coll 20 prog  20.6 m t 237.1 s end too_many_collisions  zones {'trunks': 20}  [w2 1911s]
+wall 1916s   compare: python -m px4.forest_compare lplc2-bold-gate-sv0-gg0-v0.8

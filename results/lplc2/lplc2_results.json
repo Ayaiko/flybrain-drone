@@ -1,0 +1,134 @@
+{
+ "summary": {
+  "no_avoidance": {
+   "crashes_per_min": 11.84,
+   "crashes_ci": [
+    10.86,
+    12.98025
+   ],
+   "cells": 47.34,
+   "cells_ci": [
+    45.829499999999996,
+    48.8405
+   ],
+   "crash_free": 0.0,
+   "m_per_crash": 10.13513513513576
+  },
+  "fly_old_looming": {
+   "crashes_per_min": 2.11,
+   "crashes_ci": [
+    1.76,
+    2.49
+   ],
+   "cells": 44.08,
+   "cells_ci": [
+    42.03975,
+    46.0605
+   ],
+   "crash_free": 0.21,
+   "m_per_crash": 55.022862559244956
+  },
+  "lplc2_direction_only": {
+   "crashes_per_min": 2.18,
+   "crashes_ci": [
+    1.81,
+    2.58
+   ],
+   "cells": 44.07,
+   "cells_ci": [
+    42.0,
+    46.03025
+   ],
+   "crash_free": 0.2,
+   "m_per_crash": 53.26278899082883
+  },
+  "lplc2_threshold_only": {
+   "crashes_per_min": 0.5,
+   "crashes_ci": [
+    0.24,
+    0.81
+   ],
+   "cells": 23.53,
+   "cells_ci": [
+    22.18,
+    24.92
+   ],
+   "crash_free": 0.82,
+   "m_per_crash": 215.50376000001012
+  },
+  "lplc2_full": {
+   "crashes_per_min": 0.7,
+   "crashes_ci": [
+    0.39,
+    1.1
+   ],
+   "cells": 24.02,
+   "cells_ci": [
+    22.74975,
+    25.390249999999998
+   ],
+   "crash_free": 0.75,
+   "m_per_crash": 153.30588571429283
+  },
+  "lplc2_full_bolder": {
+   "crashes_per_min": 1.19,
+   "crashes_ci": [
+    0.8,
+    1.62
+   ],
+   "cells": 31.3,
+   "cells_ci": [
+    29.4895,
+    33.13
+   ],
+   "crash_free": 0.61,
+   "m_per_crash": 94.86467226891276
+  },
+  "oracle_depth": {
+   "crashes_per_min": 0.0,
+   "crashes_ci": [
+    0.0,
+    0.0
+   ],
+   "cells": 25.96,
+   "cells_ci": [
+    23.78,
+    28.1205
+   ],
+   "crash_free": 1.0,
+   "m_per_crash": 11703.651246615344
+  }
+ },
+ "paired": {
+  "mean_diff": -1.41,
+  "ci": [
+   -1.88025,
+   -0.95
+  ],
+  "worlds_better": 0.66,
+  "worlds_worse": 0.07
+ },
+ "cfg": {
+  "no_avoidance": {},
+  "fly_old_looming": {},
+  "lplc2_direction_only": {
+   "loom_mode": "lplc2",
+   "lplc2_base": false
+  },
+  "lplc2_threshold_only": {
+   "loom_mode": "lplc2",
+   "lplc2_dir": false
+  },
+  "lplc2_full": {
+   "loom_mode": "lplc2",
+   "lplc2_thr": 2.0,
+   "front": 35
+  },
+  "lplc2_full_bolder": {
+   "loom_mode": "lplc2",
+   "lplc2_thr": 2.5,
+   "front": 35
+  },
+  "oracle_depth": {}
+ }
+}

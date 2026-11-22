@@ -1,0 +1,165 @@
+{
+ "goal": {
+  "beeline (no avoidance)": {
+   "success": 1.0,
+   "success_ci": [
+    1.0,
+    1.0
+   ],
+   "time": 18.119999999999703,
+   "path_eff": 0.907207424745702,
+   "posts_per_min": 36.6289947732027,
+   "posts_ci": [
+    29.81763384187375,
+    43.86843909605849
+   ],
+   "no_post_crash": 0.07
+  },
+  "fly old + nav": {
+   "success": 1.0,
+   "success_ci": [
+    1.0,
+    1.0
+   ],
+   "time": 22.069999999999617,
+   "path_eff": 0.7856619152807317,
+   "posts_per_min": 2.8435507396171444,
+   "posts_ci": [
+    2.119221830789407,
+    3.585188019249075
+   ],
+   "no_post_crash": 0.49
+  },
+  "LPLC2 + nav (direct goal turns)": {
+   "success": 0.74,
+   "success_ci": [
+    0.65,
+    0.83
+   ],
+   "time": 34.5199999999998,
+   "path_eff": 0.5431502906917329,
+   "posts_per_min": 5.8434145232794945,
+   "posts_ci": [
+    4.53710716429848,
+    7.164108197413451
+   ],
+   "no_post_crash": 0.27
+  },
+  "LPLC2 + nav (gap-aware)": {
+   "success": 0.78,
+   "success_ci": [
+    0.7,
+    0.86
+   ],
+   "time": 33.51999999999964,
+   "path_eff": 0.5379575393631407,
+   "posts_per_min": 1.6375765047097548,
+   "posts_ci": [
+    1.1079573498431188,
+    2.2141128800278858
+   ],
+   "no_post_crash": 0.57
+  },
+  "oracle + nav": {
+   "success": 1.0,
+   "success_ci": [
+    1.0,
+    1.0
+   ],
+   "time": 18.409999999999698,
+   "path_eff": 0.9452745610484866,
+   "posts_per_min": 0.0,
+   "posts_ci": [
+    0.0,
+    0.0
+   ],
+   "no_post_crash": 1.0
+  }
+ },
+ "coverage": {
+  "beeline (no avoidance)": {
+   "coverage": 63.41820987654321,
+   "coverage_ci": [
+    62.36111111111111,
+    64.375
+   ],
+   "posts_per_min": 46.01666666666199,
+   "posts_ci": [
+    42.032083333329076,
+    50.22499999999489
+   ],
+   "walls_per_min": 0.0,
+   "no_post_crash": 0.0
+  },
+  "fly old + nav": {
+   "coverage": 45.17746913580247,
+   "coverage_ci": [
+    44.22048611111111,
+    46.10358796296296
+   ],
+   "posts_per_min": 11.299999999998851,
+   "posts_ci": [
+    9.882916666665663,
+    12.766666666665369
+   ],
+   "walls_per_min": 0.016666666666664977,
+   "no_post_crash": 0.0
+  },
+  "LPLC2 + nav (direct goal turns)": {
+   "coverage": 32.654320987654316,
+   "coverage_ci": [
+    31.033757716049383,
+    34.128472222222214
+   ],
+   "posts_per_min": 12.841666666665361,
+   "posts_ci": [
+    11.266249999998857,
+    14.408541666665203
+   ],
+   "walls_per_min": 0.05833333333332742,
+   "no_post_crash": 0.0
+  },
+  "LPLC2 + nav (gap-aware)": {
+   "coverage": 30.37037037037037,
+   "coverage_ci": [
+    28.672839506172842,
+    31.98321759259259
+   ],
+   "posts_per_min": 5.158333333332809,
+   "posts_ci": [
+    4.124999999999581,
+    6.25041666666603
+   ],
+   "walls_per_min": 0.0,
+   "no_post_crash": 0.05
+  },
+  "oracle + nav": {
+   "coverage": 53.96604938271605,
+   "coverage_ci": [
+    52.21450617283951,
+    55.63271604938272
+   ],
+   "posts_per_min": 0.0,
+   "posts_ci": [
+    0.0,
+    0.0
+   ],
+   "walls_per_min": 0.0,
+   "no_post_crash": 1.0
+  },
+  "LPLC2 thr2.0 wander (no nav)": {
+   "coverage": 11.203703703703704,
+   "coverage_ci": [
+    9.96875,
+    12.37673611111111
+   ],
+   "posts_per_min": 0.4499999999999543,
+   "posts_ci": [
+    0.22499999999997716,
+    0.7083333333332614
+   ],
+   "walls_per_min": 0.008333333333332488,
+   "no_post_crash": 0.6
+  }
+ }
+}

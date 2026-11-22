@@ -1,0 +1,17 @@
+{
+ "controllers": {
+  "fly (EMD + flow balance + looming)": {
+   "us_per_frame_python": 6.8,
+   "mac_per_frame": 1214
+  },
+  "linear read-out (EMD + 98 weights)": {
+   "us_per_frame_python": 28.6,
+   "mac_per_frame": 1173
+  },
+  "oracle (needs depth sensor)": {
+   "us_per_frame_python": 5.4,
+   "mac_per_frame": 740
+  }
+ },
+ "sim_raycast_us": 129.8
+}

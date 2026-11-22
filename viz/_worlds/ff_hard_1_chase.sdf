@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sdf version="1.9">
+  <world name="ff_hard_1_chase">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
+    <physics type="ode">
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <gravity>0 0 0</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic"/>
+    <scene>
+      <grid>false</grid>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>false</shadows>
+    </scene>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>1 1</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode/>
+            </friction>
+            <bounce/>
+            <contact/>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>500 500</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.8 0.8 0.8 1</specular>
+          </material>
+        </visual>
+        <pose>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+        <enable_wind>false</enable_wind>
+      </link>
+      <pose>0 0 0 0 -0 0</pose>
+      <self_collide>false</self_collide>
+    </model>
+    <light name="sunUTC" type="directional">
+      <pose>0 0 500 0 -0 0</pose>
+      <cast_shadows>false</cast_shadows>
+      <intensity>1</intensity>
+      <direction>0.001 0.625 -0.78</direction>
+      <diffuse>0.904 0.904 0.904 1</diffuse>
+      <specular>0.271 0.271 0.271 1</specular>
+      <attenuation>
+        <range>2000</range>
+        <linear>0</linear>
+        <constant>1</constant>
+        <quadratic>0</quadratic>
+      </attenuation>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <world_frame_orientation>ENU</world_frame_orientation>
+      <latitude_deg>47.397971057728974</latitude_deg>
+      <longitude_deg> 8.546163739800146</longitude_deg>
+      <elevation>0</elevation>
+    </spherical_coordinates>
+  <model name="forest"><static>true</static><pose>0 0 0 0 0 0</pose><link name="l">
+  <visual name="bark0"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/bark0.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/bark0.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+  <visual name="bark1"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/bark1.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/bark1.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+  <visual name="bark2"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/bark2.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/bark2.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+  <visual name="bark3"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/bark3.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/bark3.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+  <visual name="plain"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/plain.obj</uri></mesh></geometry><material><ambient>0.66 0.66 0.66 1</ambient><diffuse>0.66 0.66 0.66 1</diffuse><specular>0 0 0 1</specular></material></visual>
+  <visual name="leaves"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/leaves.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/leaves.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+  <visual name="crown"><geometry><mesh><uri>file:///work/px4/forest/ff_hard_1/meshes/crown.obj</uri></mesh></geometry><material><diffuse>1 1 1 1</diffuse><specular>0 0 0 1</specular><pbr><metal><albedo_map>/work/px4/forest/textures/crown.png</albedo_map><roughness>1</roughness><metalness>0</metalness></metal></pbr></material></visual>
+</link></model>
+  
+    <include><uri>model://x500_base</uri><name>drone</name><pose>0 0 1.5 0 0 1.5708</pose></include>
+    <model name="chasecam"><pose>0 -3 2.5 0 0.3 1.5708</pose><link name="l"><gravity>false</gravity>
+      <inertial><mass>0.1</mass><inertia><ixx>1e-3</ixx><iyy>1e-3</iyy><izz>1e-3</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+      <sensor name="c" type="camera"><camera><horizontal_fov>1.45</horizontal_fov><image><width>640</width><height>360</height></image>
+        <clip><near>1.1</near><far>150</far></clip></camera><always_on>1</always_on><update_rate>250</update_rate><topic>chase/cam</topic></sensor>
+    </link></model>
+  </world>
+</sdf>

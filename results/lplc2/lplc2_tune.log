@@ -1,0 +1,44 @@
+tested lplc2 innate
+  run0 gen 1/12: best fitness 26.2
+  run0 gen 2/12: best fitness 24.9
+  run0 gen 3/12: best fitness 26.2
+  run0 gen 4/12: best fitness 27.4
+  run0 gen 5/12: best fitness 26.4
+  run0 gen 6/12: best fitness 28.5
+  run0 gen 7/12: best fitness 28.5
+  run0 gen 8/12: best fitness 28.9
+  run0 gen 9/12: best fitness 30.1
+  run0 gen 10/12: best fitness 28.6
+  run0 gen 11/12: best fitness 28.0
+  run0 gen 12/12: best fitness 27.9
+run 0: 1.21 crashes/min, 46.9 cells, params {'tau_lp': 0.08, 'tau_hp': 0.2684, 'front': 43.1204, 'balance_thr': 0.307, 'sac_small': 32.576, 'sac_big': 66.1013, 'cool': 0.4521, 'slow': 0.6542, 'lplc2_thr': 2.4816, 'lplc2_tau': 2.9101}
+  run1 gen 1/12: best fitness 25.8
+  run1 gen 2/12: best fitness 24.8
+  run1 gen 3/12: best fitness 27.1
+  run1 gen 4/12: best fitness 30.6
+  run1 gen 5/12: best fitness 28.8
+  run1 gen 6/12: best fitness 29.4
+  run1 gen 7/12: best fitness 28.0
+  run1 gen 8/12: best fitness 27.8
+  run1 gen 9/12: best fitness 29.2
+  run1 gen 10/12: best fitness 28.1
+  run1 gen 11/12: best fitness 28.3
+  run1 gen 12/12: best fitness 28.2
+run 1: 1.85 crashes/min, 52.1 cells, params {'tau_lp': 0.0293, 'tau_hp': 0.1791, 'front': 39.3852, 'balance_thr': 0.2985, 'sac_small': 34.2244, 'sac_big': 44.896, 'cool': 0.543, 'slow': 0.5311, 'lplc2_thr': 2.4783, 'lplc2_tau': 1.3149}
+  run2 gen 1/12: best fitness 21.3
+  run2 gen 2/12: best fitness 26.8
+  run2 gen 3/12: best fitness 30.2
+  run2 gen 4/12: best fitness 27.8
+  run2 gen 5/12: best fitness 28.1
+  run2 gen 6/12: best fitness 29.6
+  run2 gen 7/12: best fitness 29.1
+  run2 gen 8/12: best fitness 30.2
+  run2 gen 9/12: best fitness 30.0
+  run2 gen 10/12: best fitness 29.2
+  run2 gen 11/12: best fitness 28.3
+  run2 gen 12/12: best fitness 27.8
+run 2: 1.47 crashes/min, 48.3 cells, params {'tau_lp': 0.0367, 'tau_hp': 0.3383, 'front': 42.371, 'balance_thr': 0.2752, 'sac_small': 25.9209, 'sac_big': 44.2234, 'cool': 0.338, 'slow': 0.4672, 'lplc2_thr': 2.4281, 'lplc2_tau': 2.3493}
+lplc2_innate   crashes/min 0.70 [0.37, 1.09]  crash-free 75%  cells 24.0 [22.7, 25.4]  fitness 20.5
+lplc2_tuned    crashes/min 1.51 [1.33, 1.69]  crash-free 29%  cells 49.1 [48.1, 50.1]  fitness 41.6
+per run: [{'crashes_per_min': 1.21, 'cells': 46.9}, {'crashes_per_min': 1.85, 'cells': 52.1}, {'crashes_per_min': 1.47, 'cells': 48.3}]
+wall 584s

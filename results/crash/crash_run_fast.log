@@ -1,0 +1,24 @@
+tested no_avoidance
+tested oracle_depth
+tested fly_innate_saccade
+tested fly_innate_continuous
+tested fly tuned for exploration only (previous runs)
+  run0 fly gen 1/2: best fitness 23.3
+  run0 fly gen 2/2: best fitness 24.0
+  run0 lin gen 1/2: best fitness 6.7
+  run0 lin gen 2/2: best fitness 9.3
+run 0: fly crash-penalty 3.12 crashes/min, linear 8.00
+  run1 fly gen 1/2: best fitness 28.7
+  run1 fly gen 2/2: best fitness 25.0
+  run1 lin gen 1/2: best fitness 10.3
+  run1 lin gen 2/2: best fitness 11.7
+run 1: fly crash-penalty 4.50 crashes/min, linear 7.50
+no_avoidance               crashes/min  9.88 [7.75, 12.00]  m/crash    12.2  crash-free   0%  cells  48.4 [41.9, 54.8]  fitness   -1.0
+oracle_depth               crashes/min  0.00 [0.00, 0.00]  m/crash   926.2  crash-free 100%  cells  19.5 [12.5, 26.5]  fitness   19.5
+fly_innate_saccade         crashes/min  2.00 [1.25, 2.75]  m/crash    58.3  crash-free  12%  cells  44.1 [35.2, 52.1]  fitness   34.1
+fly_innate_continuous      crashes/min  3.38 [0.25, 8.62]  m/crash    33.6  crash-free  62%  cells  10.1 [7.8, 12.4]  fitness   -6.8
+fly_tuned_explore_only     crashes/min  2.62 [1.94, 3.38]  m/crash    44.5  crash-free  12%  cells  52.8 [49.9, 56.2]  fitness   39.7
+fly_tuned_crash_penalty    crashes/min  3.81 [2.69, 4.94]  m/crash    30.7  crash-free  12%  cells  47.5 [43.2, 51.3]  fitness   28.4
+linear_crash_penalty       crashes/min  7.75 [5.69, 9.94]  m/crash    14.9  crash-free   0%  cells  42.2 [38.8, 45.4]  fitness    3.4
+per-run crashes/min: {'fly_tuned_explore_only': [2.75, 2.5], 'fly_tuned_crash_penalty': [3.12, 4.5], 'linear_crash_penalty': [8.0, 7.5]}
+wall time 16s

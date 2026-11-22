@@ -1,0 +1,93 @@
+{
+ "none-v1.0": {
+  "n": 10,
+  "post_per_min": 4.1,
+  "ci": [
+   3.4,
+   4.8
+  ],
+  "dist_m": 50.2,
+  "m_per_crash": 12.24390243902439,
+  "crash_free": 0.0,
+  "flips": 0,
+  "cells": 31.1
+ },
+ "lplc2": {
+  "n": 10,
+  "post_per_min": 2.499,
+  "ci": [
+   1.2,
+   3.997
+  ],
+  "dist_m": 70.09,
+  "m_per_crash": 28.036000000000005,
+  "crash_free": 0.3,
+  "flips": 3,
+  "cells": 40.1
+ },
+ "lplc2-v1.0": {
+  "n": 10,
+  "post_per_min": 1.4,
+  "ci": [
+   0.6,
+   2.2
+  ],
+  "dist_m": 40.339999999999996,
+  "m_per_crash": 28.814285714285713,
+  "crash_free": 0.4,
+  "flips": 0,
+  "cells": 16.8
+ },
+ "lplc2-g": {
+  "n": 10,
+  "post_per_min": 0.5,
+  "ci": [
+   0.1,
+   1.0
+  ],
+  "dist_m": 11.010000000000002,
+  "m_per_crash": 22.020000000000003,
+  "crash_free": 0.6,
+  "flips": 0,
+  "cells": 5.1
+ },
+ "lplc2-g-v1.0": {
+  "n": 10,
+  "post_per_min": 0.5,
+  "ci": [
+   0.1,
+   0.9
+  ],
+  "dist_m": 10.509999999999998,
+  "m_per_crash": 21.019999999999996,
+  "crash_free": 0.6,
+  "flips": 0,
+  "cells": 5.3
+ },
+ "lplc2-g-v0.5": {
+  "n": 10,
+  "post_per_min": 0.0,
+  "ci": [
+   0.0,
+   0.0
+  ],
+  "dist_m": 5.34,
+  "m_per_crash": 53.4,
+  "crash_free": 1.0,
+  "flips": 0,
+  "cells": 3.1
+ },
+ "old-g-v1.0": {
+  "n": 10,
+  "post_per_min": 0.0,
+  "ci": [
+   0.0,
+   0.0
+  ],
+  "dist_m": 15.020000000000001,
+  "m_per_crash": 150.20000000000002,
+  "crash_free": 1.0,
+  "flips": 0,
+  "cells": 6.8
+ }
+}

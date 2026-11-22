@@ -1,0 +1,148 @@
+{
+ "none-v0.8 | easy": {
+  "n": 3,
+  "success": 1,
+  "reached": 3,
+  "collisions": 1.3333333333333333,
+  "progress_m": 80.0,
+  "dist_m": 80.03333333333333,
+  "time_s": 100.90000000000002,
+  "min_clear_m": 0.102,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 1,
+   "clearing": 0,
+   "branches": 0,
+   "lowtex": 3,
+   "exit": 0
+  },
+  "by_kind": {
+   "rock": 1,
+   "trunk": 1,
+   "trunk_plain": 2
+  }
+ },
+ "none-v0.8 | medium": {
+  "n": 3,
+  "success": 0,
+  "reached": 3,
+  "collisions": 5.333333333333333,
+  "progress_m": 80.0,
+  "dist_m": 80.7,
+  "time_s": 101.5,
+  "min_clear_m": -0.416,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 4,
+   "clearing": 0,
+   "branches": 8,
+   "lowtex": 4,
+   "exit": 0
+  },
+  "by_kind": {
+   "boulder": 2,
+   "branch": 2,
+   "foliage": 6,
+   "rock": 1,
+   "trunk": 4,
+   "trunk_plain": 1
+  }
+ },
+ "none-v0.8 | hard": {
+  "n": 3,
+  "success": 0,
+  "reached": 3,
+  "collisions": 14.333333333333334,
+  "progress_m": 80.0,
+  "dist_m": 82.03333333333333,
+  "time_s": 103.10000000000001,
+  "min_clear_m": -0.7,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 12,
+   "clearing": 0,
+   "branches": 23,
+   "lowtex": 8,
+   "exit": 0
+  },
+  "by_kind": {
+   "boulder": 3,
+   "branch": 8,
+   "foliage": 14,
+   "shrub": 1,
+   "trunk": 12,
+   "trunk_plain": 5
+  }
+ },
+ "lplc2-bold-gate-sv0-v0.8 | easy": {
+  "n": 3,
+  "success": 0,
+  "reached": 0,
+  "collisions": 8.666666666666666,
+  "progress_m": 55.800000000000004,
+  "dist_m": 135.03333333333333,
+  "time_s": 359.90000000000003,
+  "min_clear_m": -0.128,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 8,
+   "clearing": 0,
+   "branches": 7,
+   "lowtex": 11,
+   "exit": 0
+  },
+  "by_kind": {
+   "foliage": 2,
+   "rock": 8,
+   "shrub": 1,
+   "trunk": 12,
+   "trunk_plain": 3
+  }
+ },
+ "lplc2-bold-gate-sv0-v0.8 | medium": {
+  "n": 3,
+  "success": 0,
+  "reached": 0,
+  "collisions": 16.666666666666668,
+  "progress_m": 49.366666666666674,
+  "dist_m": 134.33333333333334,
+  "time_s": 360.0,
+  "min_clear_m": -0.048,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 20,
+   "clearing": 1,
+   "branches": 29,
+   "lowtex": 0,
+   "exit": 0
+  },
+  "by_kind": {
+   "branch": 3,
+   "foliage": 6,
+   "shrub": 2,
+   "trunk": 39
+  }
+ },
+ "lplc2-bold-gate-sv0-v0.8 | hard": {
+  "n": 3,
+  "success": 0,
+  "reached": 0,
+  "collisions": 31.0,
+  "progress_m": 16.400000000000002,
+  "dist_m": 125.8,
+  "time_s": 360.0,
+  "min_clear_m": -0.083,
+  "by_zone": {
+   "entry": 0,
+   "trunks": 93,
+   "clearing": 0,
+   "branches": 0,
+   "lowtex": 0,
+   "exit": 0
+  },
+  "by_kind": {
+   "shrub": 2,
+   "trunk": 91
+  }
+ }
+}

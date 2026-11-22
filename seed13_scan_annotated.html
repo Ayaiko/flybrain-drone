@@ -1,0 +1,95 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#fff;}
+  .wrap{position:relative;width:1380px;height:915px;overflow:hidden;font-family:"Sukhumvit Set","Thonburi",sans-serif;}
+  .wrap img{position:absolute;left:-450px;top:-320px;width:2000px;height:1301px;}
+  svg{position:absolute;left:0;top:0;}
+</style></head>
+<body>
+<div class="wrap">
+  <img src="seed13_scan_raw.webp">
+  <svg width="1380" height="915" viewBox="0 0 1380 915" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#111"/>
+      </marker>
+      <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+        <path d="M0,0 L10,5 L0,10 z" fill="#1A978C"/>
+      </marker>
+      <filter id="sh" x="-10%" y="-10%" width="120%" height="140%">
+        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-opacity="0.25"/>
+      </filter>
+    </defs>
+
+    <!-- dead-end corridor outline (left corridor, closed at the far end) -->
+    <polygon points="145,195 400,178 470,880 40,880" fill="#F6A15B" fill-opacity="0.14"
+             stroke="#E8871E" stroke-width="5" stroke-dasharray="16 10" stroke-linejoin="round"/>
+    <!-- the closing end wall -->
+    <line x1="150" y1="198" x2="398" y2="180" stroke="#DC3A36" stroke-width="10" stroke-linecap="round"/>
+
+    <!-- label: dead end -->
+    <g filter="url(#sh)">
+      <rect x="20" y="40" width="370" height="96" rx="12" fill="#fff"/>
+    </g>
+    <text x="40" y="80" font-size="30" font-weight="700" fill="#9A4A1E">Dead end</text>
+    <text x="40" y="114" font-size="21" fill="#333">closed on 3 sides — never entered</text>
+    <line x1="230" y1="136" x2="262" y2="182" stroke="#111" stroke-width="3" marker-end="url(#ar)"/>
+
+    <!-- label: scan reaches next corridor -->
+    <g filter="url(#sh)">
+      <rect x="20" y="560" width="350" height="96" rx="12" fill="#fff"/>
+    </g>
+    <text x="40" y="598" font-size="24" font-weight="700" fill="#DC3A36">Height scan (red dots)</text>
+    <text x="40" y="632" font-size="21" fill="#333">reaches over the wall</text>
+    <line x1="300" y1="560" x2="330" y2="470" stroke="#111" stroke-width="3" marker-end="url(#ar)"/>
+
+    <!-- robot label -->
+    <g filter="url(#sh)">
+      <rect x="640" y="250" width="270" height="62" rx="12" fill="#004AAD"/>
+    </g>
+    <text x="660" y="291" font-size="24" font-weight="700" fill="#fff">G1 walking here</text>
+    <line x1="660" y1="312" x2="600" y2="380" stroke="#004AAD" stroke-width="3" marker-end="url(#ar)"/>
+
+    <!-- inset mini map -->
+    <g filter="url(#sh)">
+      <rect x="1040" y="20" width="320" height="330" rx="14" fill="#fff"/>
+    </g>
+    <text x="1060" y="56" font-size="20" font-weight="700" fill="#111">What the map stores</text>
+    <!-- 2x3 cells: left column = dead end corridor, right column = robot corridor -->
+    <g transform="translate(1090,76)">
+      <rect x="0" y="0" width="220" height="210" fill="#F4F6F9"/>
+      <rect x="0" y="0" width="110" height="70" fill="#F6DCCB"/>
+      <rect x="0" y="70" width="110" height="140" fill="#FBEEDF"/>
+      <!-- mapped walls -->
+      <g stroke="#DC3A36" stroke-width="7" stroke-linecap="round">
+        <line x1="0" y1="0" x2="110" y2="0"/>
+        <line x1="0" y1="0" x2="0" y2="210"/>
+        <line x1="110" y1="0" x2="110" y2="210"/>
+        <line x1="220" y1="0" x2="220" y2="210"/>
+      </g>
+      <g stroke="#B8BEC6" stroke-width="2" stroke-dasharray="6 5">
+        <line x1="110" y1="0" x2="220" y2="0"/>
+        <line x1="0" y1="70" x2="110" y2="70"/>
+        <line x1="0" y1="140" x2="110" y2="140"/>
+        <line x1="110" y1="70" x2="220" y2="70"/>
+        <line x1="110" y1="140" x2="220" y2="140"/>
+        <line x1="0" y1="210" x2="220" y2="210"/>
+      </g>
+      <text x="55" y="42" font-size="15" font-weight="700" fill="#9A4A1E" text-anchor="middle">Dead end</text>
+      <circle cx="165" cy="140" r="16" fill="#004AAD" stroke="#fff" stroke-width="3"/>
+      <text x="165" y="146" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">G1</text>
+      <line x1="165" y1="120" x2="165" y2="10" stroke="#1A978C" stroke-width="6" marker-end="url(#ag)"/>
+    </g>
+    <text x="1060" y="316" font-size="16" fill="#333">red = wall seen by scan</text>
+    <text x="1060" y="338" font-size="16" fill="#333">left corridor is known to be closed</text>
+
+    <!-- bottom caption -->
+    <g filter="url(#sh)">
+      <rect x="430" y="820" width="930" height="72" rx="12" fill="#fff" fill-opacity="0.96"/>
+    </g>
+    <text x="450" y="852" font-size="22" font-weight="700" fill="#111">Walking one corridor maps the walls of the next one too.</text>
+    <text x="450" y="880" font-size="20" fill="#333">After a fall and reset, the planner already knows that corridor is a dead end and skips it.</text>
+  </svg>
+</div>
+</body></html>

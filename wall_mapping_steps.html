@@ -1,0 +1,151 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#fff;}
+  svg{display:block;font-family:"Sukhumvit Set","Thonburi",sans-serif;}
+</style></head>
+<body>
+<svg id="s" width="1500" height="660" viewBox="0 0 1500 660" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1A978C"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9AA3AE"/>
+    </marker>
+  </defs>
+  <rect width="1500" height="660" fill="#fff"/>
+  <g id="content"></g>
+</svg>
+<script>
+const NS="http://www.w3.org/2000/svg", root=document.getElementById("content");
+function el(tag, attrs, text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!==undefined)e.textContent=text;root.appendChild(e);return e;}
+const RED="#DC3A36", BLUE="#004AAD", GREEN="#1A978C", GRAY="#5B6470", LIGHT="#B8BEC6", CARD="#F4F6F9", BROWN="#F6DCCB";
+
+// ---------- panel headers ----------
+function header(x, n, title, sub, color){
+  el("circle",{cx:x+18,cy:52,r:18,fill:color});
+  el("text",{x:x+18,y:60,"font-size":22,"font-weight":700,fill:"#fff","text-anchor":"middle"},n);
+  el("text",{x:x+46,y:60,"font-size":26,"font-weight":700,fill:"#111"},title);
+  el("text",{x:x+46,y:88,"font-size":18,fill:"#5B6470"},sub);
+}
+header(40,"1","Scan around the robot","height scan: 33×33 points, ~3.2 m", BLUE);
+header(530,"2","Check each cell edge","count points in a thin strip on the edge", RED);
+header(1020,"3","Build the wall map","dead ends are known before entering", GREEN);
+
+// ---------- maze geometry (4 cols x 3 rows) ----------
+const C=105;
+// walls as [type, col, row]: V = edge on the right side of (col,row); H = edge below (col,row)
+const walls=[["V",0,0],["V",1,0],["H",0,0],["H",2,0],["H",0,1],["H",1,1],["V",1,2],["H",3,0],["H",3,1]];
+function seg(ox,oy,w){ if(w[0]==="V"){const x=ox+(w[1]+1)*C;return [x,oy+w[2]*C,x,oy+(w[2]+1)*C];}
+  const y=oy+(w[2]+1)*C;return [ox+w[1]*C,y,ox+(w[1]+1)*C,y]; }
+const scanned=w=> (w[0]==="V" ? w[1]<=1 : w[1]<=2);   // scan covers cols 0..2
+
+// ---------- panel 1 ----------
+{
+  const ox=50, oy=130;
+  el("rect",{x:ox,y:oy,width:4*C,height:3*C,fill:CARD});
+  for(let c=1;c<4;c++) el("line",{x1:ox+c*C,y1:oy,x2:ox+c*C,y2:oy+3*C,stroke:"#E1E5EA","stroke-width":1.5});
+  for(let r=1;r<3;r++) el("line",{x1:ox,y1:oy+r*C,x2:ox+4*C,y2:oy+r*C,stroke:"#E1E5EA","stroke-width":1.5});
+  // physical walls (real maze)
+  walls.forEach(w=>{const s=seg(ox,oy,w);el("line",{x1:s[0],y1:s[1],x2:s[2],y2:s[3],stroke:"#3F4650","stroke-width":10,"stroke-linecap":"round"});});
+  el("rect",{x:ox,y:oy,width:4*C,height:3*C,fill:"none",stroke:"#3F4650","stroke-width":6});
+  // scan footprint (cols 0..2)
+  el("rect",{x:ox+2,y:oy+2,width:3*C-4,height:3*C-4,fill:BLUE,"fill-opacity":0.05,stroke:BLUE,"stroke-width":2.5,"stroke-dasharray":"10 6",rx:4});
+  // scan points
+  const sw=walls.filter(scanned).map(w=>seg(ox,oy,w));
+  function near(px,py){return sw.some(s=>{ if(s[0]===s[2]) return Math.abs(px-s[0])<7 && py>=Math.min(s[1],s[3])-4 && py<=Math.max(s[1],s[3])+4;
+                                           return Math.abs(py-s[1])<7 && px>=Math.min(s[0],s[2])-4 && px<=Math.max(s[0],s[2])+4;});}
+  const step=3*C/21;
+  for(let i=0;i<=21;i++)for(let j=0;j<=21;j++){
+    const px=ox+i*step, py=oy+j*step; const hit=near(px,py)||px<=ox+1||py<=oy+1||py>=oy+3*C-1||px<=ox+1;
+    el("circle",{cx:px,cy:py,r:hit?3.6:2.3,fill:hit?RED:"#9DB4D6","fill-opacity":hit?1:0.75});
+  }
+  // robot
+  const rx=ox+1.5*C, ry=oy+1.5*C;
+  el("circle",{cx:rx,cy:ry,r:20,fill:BLUE,stroke:"#fff","stroke-width":4});
+  el("text",{x:rx,y:ry+7,"font-size":17,"font-weight":700,fill:"#fff","text-anchor":"middle"},"G1");
+  el("text",{x:ox+3*C+52,y:oy+1.5*C-8,"font-size":16,fill:GRAY,"text-anchor":"middle"},"not");
+  el("text",{x:ox+3*C+52,y:oy+1.5*C+12,"font-size":16,fill:GRAY,"text-anchor":"middle"},"scanned");
+  el("text",{x:ox+3*C+52,y:oy+1.5*C+32,"font-size":16,fill:GRAY,"text-anchor":"middle"},"yet");
+  // mini legend
+  el("circle",{cx:ox+10,cy:oy+3*C+40,r:5,fill:RED});
+  el("text",{x:ox+24,y:oy+3*C+46,"font-size":18,fill:"#333"},"tall point > 0.55 m (wall)");
+  el("circle",{cx:ox+10,cy:oy+3*C+72,r:4,fill:"#9DB4D6"});
+  el("text",{x:ox+24,y:oy+3*C+78,"font-size":18,fill:"#333"},"floor / low hazard (spikes < 0.45 m)");
+}
+
+// ---------- panel 2 ----------
+function example(ox,oy,isWall){
+  // two cells
+  el("rect",{x:ox,y:oy,width:110,height:110,fill:CARD,stroke:"#E1E5EA"});
+  el("rect",{x:ox+110,y:oy,width:110,height:110,fill:CARD,stroke:"#E1E5EA"});
+  if(isWall) el("line",{x1:ox+110,y1:oy,x2:ox+110,y2:oy+110,stroke:"#3F4650","stroke-width":10});
+  // strip
+  el("rect",{x:ox+96,y:oy+14,width:28,height:82,fill:"#fff","fill-opacity":0.35,stroke:BLUE,"stroke-width":2.5,"stroke-dasharray":"6 4",rx:3});
+  for(let a=0;a<3;a++)for(let b=0;b<6;b++){
+    const px=ox+102+a*8, py=oy+22+b*13.5; const tall=isWall && a===1;
+    el("circle",{cx:px,cy:py,r:tall?3.6:2.6,fill:tall?RED:"#9DB4D6"});
+  }
+  el("text",{x:ox+55,y:oy+62,"font-size":15,fill:GRAY,"text-anchor":"middle"},"cell A");
+  el("text",{x:ox+165,y:oy+62,"font-size":15,fill:GRAY,"text-anchor":"middle"},"cell B");
+  // verdict
+  const tx=ox+240;
+  el("text",{x:tx,y:oy+24,"font-size":17,fill:"#333"},"points in strip: 18  ✓ ≥ 8");
+  el("text",{x:tx,y:oy+50,"font-size":17,fill:"#333"},"tall points: "+(isWall?"6  ✓ ≥ 3":"0  ✗"));
+  el("rect",{x:tx,y:oy+66,width:isWall?150:150,height:38,rx:8,fill:isWall?RED:GREEN});
+  el("text",{x:tx+75,y:oy+92,"font-size":20,"font-weight":700,fill:"#fff","text-anchor":"middle"},isWall?"WALL (1)":"OPEN (0)");
+}
+example(540,128,true);
+example(540,268,false);
+// unknown + sticky notes
+el("rect",{x:540,y:405,width:430,height:40,rx:8,fill:"#EEF0F3"});
+el("text",{x:556,y:431,"font-size":17,fill:"#333"},"fewer than 8 points  →  UNKNOWN (−1), keep old value");
+el("rect",{x:540,y:452,width:430,height:40,rx:8,fill:"#FBE7E6"});
+el("text",{x:556,y:478,"font-size":17,fill:"#9B2421"},"once marked WALL it stays a wall (even after a fall)");
+el("text",{x:540,y:528,"font-size":16,fill:GRAY},"strip ≈ 0.32 m wide × 1.16 m long, centred on the edge");
+
+// ---------- panel 3 ----------
+{
+  const ox=1030, oy=130;
+  el("rect",{x:ox,y:oy,width:4*C,height:3*C,fill:CARD});
+  // dead end (1,0)
+  el("rect",{x:ox+C,y:oy,width:C,height:C,fill:BROWN});
+  el("text",{x:ox+1.5*C,y:oy+50,"font-size":18,"font-weight":700,fill:"#9A4A1E","text-anchor":"middle"},"Dead end");
+  el("text",{x:ox+1.5*C,y:oy+72,"font-size":14,fill:"#9A4A1E","text-anchor":"middle"},"3 walls");
+  // unknown column edges
+  const ux=ox+3*C;
+  el("line",{x1:ux,y1:oy,x2:ux,y2:oy+3*C,stroke:LIGHT,"stroke-width":2.5,"stroke-dasharray":"8 6"});
+  el("line",{x1:ux,y1:oy+C,x2:ox+4*C,y2:oy+C,stroke:LIGHT,"stroke-width":2.5,"stroke-dasharray":"8 6"});
+  el("line",{x1:ux,y1:oy+2*C,x2:ox+4*C,y2:oy+2*C,stroke:LIGHT,"stroke-width":2.5,"stroke-dasharray":"8 6"});
+  el("text",{x:ux+52,y:oy+1.5*C+6,"font-size":18,fill:GRAY,"text-anchor":"middle"},"?");
+  // mapped walls
+  walls.filter(scanned).forEach(w=>{const s=seg(ox,oy,w);el("line",{x1:s[0],y1:s[1],x2:s[2],y2:s[3],stroke:RED,"stroke-width":8,"stroke-linecap":"round"});});
+  el("rect",{x:ox,y:oy,width:4*C,height:3*C,fill:"none",stroke:GRAY,"stroke-width":5});
+  // robot + decisions
+  const rx=ox+1.5*C, ry=oy+1.5*C;
+  el("line",{x1:rx,y1:ry-24,x2:rx,y2:oy+C-6,stroke:RED,"stroke-width":4,"stroke-dasharray":"7 6"});
+  el("line",{x1:rx-12,y1:oy+C+4,x2:rx+12,y2:oy+C+28,stroke:RED,"stroke-width":6,"stroke-linecap":"round"});
+  el("line",{x1:rx+12,y1:oy+C+4,x2:rx-12,y2:oy+C+28,stroke:RED,"stroke-width":6,"stroke-linecap":"round"});
+  el("polyline",{points:`${rx+24},${ry} ${ox+3.5*C},${ry} ${ox+3.5*C},${oy+C*0.35}`,fill:"none",stroke:GREEN,"stroke-width":8,"stroke-linejoin":"round","marker-end":"url(#ag)"});
+  el("circle",{cx:rx,cy:ry,r:20,fill:BLUE,stroke:"#fff","stroke-width":4});
+  el("text",{x:rx,y:ry+7,"font-size":17,"font-weight":700,fill:"#fff","text-anchor":"middle"},"G1");
+  // legend
+  el("line",{x1:ox,y1:oy+3*C+40,x2:ox+40,y2:oy+3*C+40,stroke:RED,"stroke-width":8,"stroke-linecap":"round"});
+  el("text",{x:ox+52,y:oy+3*C+46,"font-size":18,fill:"#333"},"wall in map");
+  el("line",{x1:ox+190,y1:oy+3*C+40,x2:ox+230,y2:oy+3*C+40,stroke:LIGHT,"stroke-width":3,"stroke-dasharray":"8 6"});
+  el("text",{x:ox+242,y:oy+3*C+46,"font-size":18,fill:"#333"},"unknown (still allowed)");
+  el("line",{x1:ox,y1:oy+3*C+72,x2:ox+40,y2:oy+3*C+72,stroke:GREEN,"stroke-width":8});
+  el("text",{x:ox+52,y:oy+3*C+78,"font-size":18,fill:"#333"},"flood-fill skips the dead end");
+}
+
+// arrows between panels
+el("line",{x1:478,y1:290,x2:520,y2:290,stroke:"#9AA3AE","stroke-width":5,"marker-end":"url(#ab)"});
+el("line",{x1:985,y1:290,x2:1018,y2:290,stroke:"#9AA3AE","stroke-width":5,"marker-end":"url(#ab)"});
+
+// footer
+el("rect",{x:40,y:590,width:1420,height:50,rx:10,fill:"#EAF1FB"});
+el("text",{x:750,y:622,"font-size":20,fill:BLUE,"text-anchor":"middle","font-weight":700},
+  "Every 2 control ticks: scan → classify all cell edges → update the map → planner re-plans if a new wall blocks the chosen exit");
+</script>
+</body></html>

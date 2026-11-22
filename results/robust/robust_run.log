@@ -1,0 +1,88 @@
+tested no_avoidance
+tested oracle_depth
+tested fly_innate_saccade
+tested fly_innate_continuous
+  run0 fly gen 1/12: best 22.8
+  run0 fly gen 2/12: best 25.3
+  run0 fly gen 3/12: best 23.8
+  run0 fly gen 4/12: best 26.2
+  run0 fly gen 5/12: best 26.2
+  run0 fly gen 6/12: best 27.1
+  run0 fly gen 7/12: best 25.8
+  run0 fly gen 8/12: best 27.8
+  run0 fly gen 9/12: best 27.8
+  run0 fly gen 10/12: best 26.2
+  run0 fly gen 11/12: best 29.4
+  run0 fly gen 12/12: best 28.2
+  run0 lin gen 1/12: best 9.8
+  run0 lin gen 2/12: best 12.2
+  run0 lin gen 3/12: best 12.3
+  run0 lin gen 4/12: best 15.2
+  run0 lin gen 5/12: best 15.4
+  run0 lin gen 6/12: best 17.2
+  run0 lin gen 7/12: best 18.4
+  run0 lin gen 8/12: best 18.3
+  run0 lin gen 9/12: best 19.5
+  run0 lin gen 10/12: best 20.2
+  run0 lin gen 11/12: best 19.8
+  run0 lin gen 12/12: best 19.8
+run 0: fly tuned 31.1 cells, linear 15.9 cells
+  run1 fly gen 1/12: best 25.1
+  run1 fly gen 2/12: best 24.8
+  run1 fly gen 3/12: best 29.8
+  run1 fly gen 4/12: best 27.5
+  run1 fly gen 5/12: best 29.0
+  run1 fly gen 6/12: best 29.3
+  run1 fly gen 7/12: best 29.3
+  run1 fly gen 8/12: best 28.3
+  run1 fly gen 9/12: best 31.6
+  run1 fly gen 10/12: best 29.6
+  run1 fly gen 11/12: best 31.7
+  run1 fly gen 12/12: best 31.3
+  run1 lin gen 1/12: best 11.8
+  run1 lin gen 2/12: best 11.2
+  run1 lin gen 3/12: best 18.0
+  run1 lin gen 4/12: best 15.5
+  run1 lin gen 5/12: best 17.2
+  run1 lin gen 6/12: best 19.9
+  run1 lin gen 7/12: best 22.5
+  run1 lin gen 8/12: best 19.6
+  run1 lin gen 9/12: best 17.7
+  run1 lin gen 10/12: best 18.9
+  run1 lin gen 11/12: best 22.7
+  run1 lin gen 12/12: best 20.0
+run 1: fly tuned 30.6 cells, linear 17.4 cells
+  run2 fly gen 1/12: best 21.7
+  run2 fly gen 2/12: best 25.6
+  run2 fly gen 3/12: best 26.6
+  run2 fly gen 4/12: best 30.3
+  run2 fly gen 5/12: best 32.0
+  run2 fly gen 6/12: best 30.4
+  run2 fly gen 7/12: best 31.8
+  run2 fly gen 8/12: best 33.0
+  run2 fly gen 9/12: best 32.0
+  run2 fly gen 10/12: best 32.3
+  run2 fly gen 11/12: best 31.9
+  run2 fly gen 12/12: best 34.0
+  run2 lin gen 1/12: best 9.4
+  run2 lin gen 2/12: best 10.4
+  run2 lin gen 3/12: best 12.2
+  run2 lin gen 4/12: best 13.8
+  run2 lin gen 5/12: best 13.8
+  run2 lin gen 6/12: best 13.6
+  run2 lin gen 7/12: best 13.5
+  run2 lin gen 8/12: best 14.6
+  run2 lin gen 9/12: best 14.4
+  run2 lin gen 10/12: best 14.1
+  run2 lin gen 11/12: best 14.5
+  run2 lin gen 12/12: best 14.9
+run 2: fly tuned 33.2 cells, linear 13.0 cells
+no_avoidance             cells   8.9 [7.9, 10.1]  collisions  100% [100, 100]  m/collision    14.2  survival  7.1s
+oracle_depth             cells  26.0 [23.9, 28.1]  collisions    0% [0, 0]  m/collision 11703.7  survival 60.0s
+fly_innate_saccade       cells  26.3 [23.2, 29.6]  collisions   79% [70, 87]  m/collision    70.6  survival 28.9s
+fly_innate_continuous    cells   7.4 [6.8, 8.1]  collisions   26% [17, 35]  m/collision   376.4  survival 51.7s
+fly_tuned_saccade        cells  31.6 [29.7, 33.6]  collisions   84% [80, 88]  m/collision    67.1  survival 29.0s
+linear_scratch_tuned     cells  15.4 [14.4, 16.5]  collisions   90% [87, 93]  m/collision    41.8  survival 19.3s
+per-run cells: {'fly_tuned_saccade': [31.06, 30.61, 33.25], 'linear_scratch_tuned': [15.88, 17.42, 12.99]}
+paired fly_tuned - linear: +16.2 cells, 95% CI [+14.0, +18.4], fly better on 90% of worlds
+wall time 661s

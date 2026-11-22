@@ -1,0 +1,103 @@
+{
+ "lplc2-cov-bold-gate-fm2-v1.0": [
+  {
+   "seed": 1,
+   "cat": "during turn",
+   "bearing": 1.3,
+   "goal_behind_post": false,
+   "turn_frac_1s": 0.9,
+   "gated": false,
+   "wy": 29.2
+  },
+  {
+   "seed": 1,
+   "cat": "late",
+   "bearing": -4.9,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.58,
+   "gated": false,
+   "wy": 1.7
+  },
+  {
+   "seed": 1,
+   "cat": "side",
+   "bearing": -58.4,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.0,
+   "gated": false,
+   "wy": 1.1
+  },
+  {
+   "seed": 2,
+   "cat": "during turn",
+   "bearing": -12.7,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.32,
+   "gated": false,
+   "wy": 40.2
+  },
+  {
+   "seed": 2,
+   "cat": "during turn",
+   "bearing": -67.6,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.97,
+   "gated": false,
+   "wy": 71.7
+  },
+  {
+   "seed": 2,
+   "cat": "late",
+   "bearing": -9.8,
+   "goal_behind_post": false,
+   "turn_frac_1s": 0.0,
+   "gated": false,
+   "wy": 1.7
+  },
+  {
+   "seed": 2,
+   "cat": "late",
+   "bearing": 3.5,
+   "goal_behind_post": false,
+   "turn_frac_1s": 0.26,
+   "gated": false,
+   "wy": 0.8
+  },
+  {
+   "seed": 2,
+   "cat": "recovery/fence",
+   "bearing": -2.1,
+   "goal_behind_post": false,
+   "turn_frac_1s": 0.0,
+   "gated": false,
+   "wy": 9.2
+  },
+  {
+   "seed": 2,
+   "cat": "side",
+   "bearing": -69.4,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.45,
+   "gated": false,
+   "wy": 3.0
+  },
+  {
+   "seed": 2,
+   "cat": "recrash",
+   "bearing": -21.6,
+   "goal_behind_post": true,
+   "turn_frac_1s": 0.0,
+   "gated": false,
+   "wy": 66.9
+  },
+  {
+   "seed": 2,
+   "cat": "during turn",
+   "bearing": -51.6,
+   "goal_behind_post": false,
+   "turn_frac_1s": 0.26,
+   "gated": false,
+   "wy": 15.4
+  }
+ ]
+}

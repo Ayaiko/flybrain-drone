@@ -1,0 +1,110 @@
+{
+ "old": {
+  "n_crashes": 26,
+  "categories": [
+   [
+    "saccade",
+    8
+   ],
+   [
+    "recrash (<3.5 s, during/after recovery)",
+    6
+   ],
+   [
+    "side",
+    6
+   ],
+   [
+    "missed",
+    5
+   ],
+   [
+    "late",
+    1
+   ]
+  ],
+  "bearing_abs_median": 51.27112829728172,
+  "auc_loom_vs_crash_0p5s": 0.8224436737332881,
+  "auc_loom_vs_obstacle_within_1p5m": 0.4445336044966131,
+  "corr_loom_with_yaw_rate": 0.3433107900565831,
+  "corr_loom_with_pitch": 0.3930650533302766,
+  "corr_loom_with_nearness": -0.1078881337919423,
+  "fixation_yaw_rate_deg_s_median": 0.0,
+  "fixation_pitch_deg_median": 0.08594366926962349,
+  "worst_flights": [
+   {
+    "seed": 3,
+    "dist": 11.3,
+    "frac_saccade": 0.026378896882494004,
+    "frac_looming": 0.01533457249070632,
+    "frac_recover": 0.10391686650679456
+   },
+   {
+    "seed": 9,
+    "dist": 26.5,
+    "frac_saccade": 0.09072741806554756,
+    "frac_looming": 0.006481481481481481,
+    "frac_recover": 0.036370903277378096
+   },
+   {
+    "seed": 8,
+    "dist": 26.7,
+    "frac_saccade": 0.12390087929656275,
+    "frac_looming": 0.023785425101214574,
+    "frac_recover": 0.07673860911270983
+   }
+  ]
+ },
+ "lplc2": {
+  "n_crashes": 30,
+  "categories": [
+   [
+    "saccade",
+    18
+   ],
+   [
+    "side",
+    6
+   ],
+   [
+    "late",
+    4
+   ],
+   [
+    "recrash (<3.5 s, during/after recovery)",
+    2
+   ]
+  ],
+  "bearing_abs_median": 37.840997579415216,
+  "auc_loom_vs_crash_0p5s": 0.7245957554050562,
+  "auc_loom_vs_obstacle_within_1p5m": 0.8186977720834223,
+  "corr_loom_with_yaw_rate": 0.46663155192096123,
+  "corr_loom_with_pitch": 0.14320166836199458,
+  "corr_loom_with_nearness": 0.35714814519648846,
+  "fixation_yaw_rate_deg_s_median": 15.52715624804531,
+  "fixation_pitch_deg_median": 7.855251371243586,
+  "worst_flights": [
+   {
+    "seed": 1,
+    "dist": 7.5,
+    "frac_saccade": 0.2114308553157474,
+    "frac_looming": 0.03403565640194489,
+    "frac_recover": 0.03916866506794564
+   },
+   {
+    "seed": 6,
+    "dist": 33.3,
+    "frac_saccade": 0.2637889688249401,
+    "frac_looming": 0.2619047619047619,
+    "frac_recover": 0.22302158273381295
+   },
+   {
+    "seed": 8,
+    "dist": 56.9,
+    "frac_saccade": 0.3689048760991207,
+    "frac_looming": 0.444,
+    "frac_recover": 0.22182254196642687
+   }
+  ]
+ }
+}
