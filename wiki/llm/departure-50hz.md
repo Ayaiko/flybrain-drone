@@ -54,3 +54,5 @@ LPLC2 เปรียบเทียบการขยายในภาพด�
 SHA256 fastsim/runner.py `bb10faf0b2cf273cb5f33b6e28fb60070c461254819eae9e222bee09fcb6f3c5`
 
 SHA256 fastsim/dynamics.py `19b8e905c435da883a1120a5817be21a5eb699a0921e547a9c34e8eb99814c97`
+
+สร้างแผนที่ระยะห่างจากไฟล์ที่เก็บใน repo ได้ด้วย `.venv/bin/python viz/departure_clearance.py wiki/llm/departure-50hz-replay.json.gz`

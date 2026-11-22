@@ -1,5 +1,6 @@
 """Offline clearance map around the stalled route, using simulation geometry only."""
 from collections import deque
+import gzip
 import json
 from pathlib import Path
 import sys
@@ -69,4 +70,10 @@ def make(run,output):
 
 
 if __name__=='__main__':
-    make(json.loads(Path(sys.argv[1]).read_text())['run'],ROOT/'wiki/llm')
+    source = Path(sys.argv[1])
+    if source.suffix == '.gz':
+        with gzip.open(source, 'rt') as f:
+            run = json.load(f)['target']['both']
+    else:
+        run = json.loads(source.read_text())['run']
+    make(run, ROOT/'wiki/llm')

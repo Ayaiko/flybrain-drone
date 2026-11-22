@@ -27,11 +27,13 @@ def parse_mode(s):
 
 def resolve(name, overrides=None):
     C = load_configs(); P = dict(C['defaults'])
-    def apply(n, depth=0):
-        if depth > 10: raise ValueError('config base loop at ' + n)
+    seen = set()
+    def apply(n):
+        if n in seen: raise ValueError('config base loop at ' + n)
+        seen.add(n)
         if n in C and not n.startswith('_') and n != 'defaults':
             c = dict(C[n]); b = c.pop('base', None)
-            if b: apply(b, depth + 1)
+            if b: apply(b)
             P.update(c)
         else:
             P.update(parse_mode(n))
