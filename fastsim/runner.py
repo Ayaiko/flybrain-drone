@@ -45,7 +45,7 @@ class _Ep:
         self.pilot_kind = spec.get('pilot', pilot_kind); self.pilot = make_pilot(w, self.P, self.rng, self.pilot_kind)
         self.x0, self.h0 = (0.03, np.pi / 2) if self.rep == 0 else (0.03 + self.rng.normal(0, 0.05), np.pi / 2 + self.rng.normal(0, np.radians(1)))
         self.stall = Stall(self.P['stall_s'], self.P['stall_m']); self.duration = spec.get('duration', 360.0)
-        self.rec = dict(x=[], y=[], z=[], h=[], state=[], looming=[], gap=[], yawc=[], v=[]); self.img = []
+        self.rec = dict(x=[], y=[], z=[], h=[], state=[], phase=[], looming=[], gap=[], yawc=[], v=[]); self.img = []
         self.crashes, self.hit_ids, self.in_contact, self.max_y, self.dist = [], set(), False, -99.0, 0.0
         self.reached, self.t_exit, self.end_reason, self.zmin, self.k, self.last = False, None, None, {}, 0, None
 
@@ -88,12 +88,12 @@ def run_group(world, specs, rows=4, image_lag=1, dyn_params=None, pilot='shared'
             if g < 0 and not e.in_contact:
                 kind, oid = truth.label(int(ty[a]), int(oi[a]))
                 e.crashes.append(dict(i=e.k, t=round(now, 2), x=round(x, 2), y=round(y, 2), z=round(z, 2), zone=zn, kind=kind, oid=oid,
-                                      rehit=oid in e.hit_ids, state=dg.get('state', 'warmup')))
+                                      rehit=oid in e.hit_ids, state=dg.get('state', 'warmup'), phase=dg.get('phase', dg.get('state', 'warmup'))))
                 e.hit_ids.add(oid); e.pilot.on_collision(now, (x, y, z, h))
             e.in_contact = g < 0 or (e.in_contact and g < 0.05)
             st = dg.get('state', 'warmup'); r = e.rec
             r['x'].append(round(x, 3)); r['y'].append(round(y, 3)); r['z'].append(round(z, 3)); r['h'].append(round(h, 3))
-            r['state'].append(STATES.index(st) if st in STATES else 0); r['looming'].append(int(bool(dg.get('looming', False))))
+            r['phase'].append(dg.get('phase', st)); r['state'].append(STATES.index(st) if st in STATES else 0); r['looming'].append(int(bool(dg.get('looming', False))))
             r['gap'].append(round(g, 3)); r['yawc'].append(round(yaw, 3)); r['v'].append(round(v, 3))
             if record: e.img.append(np.clip(lum * 255, 0, 255).astype(np.uint8))
             if e.last is not None: e.dist += float(np.hypot(x - e.last[0], y - e.last[1]))
@@ -123,6 +123,8 @@ def _summary(e, w, wall, record):
              min_clear_m=round(float(min(z_[0] for z_ in e.zmin.values())), 3) if e.zmin else None,
              min_gap_m=round(float(np.nanmin(gaps)), 3), frac_time_gap_lt_0p2=round(float(np.mean(gaps < 0.2)), 3),
              min_clear_by_zone={kk: round(float(vv[0]), 2) for kk, vv in e.zmin.items()}, centreline_hits=meta['stats']['centreline_hits'],
+             first_contact_y_m=e.crashes[0]['y'] if e.crashes else None,
+             contacts_by_phase={p: sum(c['phase'] == p for c in e.crashes) for p in sorted({c['phase'] for c in e.crashes})},
              first_hits=len(e.hit_ids), rehits=sum(bool(c['rehit']) for c in e.crashes), frames=e.k, wall_s=round(wall, 3),
              rtf=round(sim_t / max(wall, 1e-9), 1), **e.pilot.stats())
     if e.tag is not None: s['tag'] = e.tag

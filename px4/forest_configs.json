@@ -22,6 +22,7 @@
     "recovery": "after a contact: flip (old: back off 0.6 s, turn ~180 deg) | detour (back off rec_back_s at rec_back_v, turn 90 deg to the freer side, slide rec_side_m, turn back, shift the route carrot sideways bypass_m for bypass_len m)",
     "brake": "off | loom | all: stop forward motion (speed < brake_v, max brake_max_s) before looming / all turns",
     "flow_speed / flow_ref / v_min": "speed governor: forward speed x clip(flow_ref / lateral optic flow, v_min, 1) (slow down in clutter, like bees and flies)",
+    "guard_side": "during a forward detour leg, brake to a stop and abandon the leg if the forward range crosses the stop threshold",
     "tof / tof_stop / tof_fov / tof_max": "forward 1D range finder failsafe (VL53L1X-like cone): closer than tof_stop m -> brake + 90 deg escape turn",
     "tof_t / tof_action": "stop distance grows tof_t s x speed; tof_action turn (90 deg) | detour (brake, sidestep, bypass)",
     "reacquire": "outside the corridor by > half its width: carrot 2 m ahead on the route to get back in",
@@ -33,7 +34,7 @@
                "recovery": "flip", "rec_back_s": 1.5, "rec_back_v": 0.5, "rec_side_m": 1.0, "bypass_m": 1.0, "bypass_len": 4.0,
                "brake": "off", "brake_v": 0.15, "brake_max_s": 1.5,
                "flow_speed": false, "flow_ref": null, "v_min": 0.35,
-               "tof": false, "tof_stop": 1.2, "tof_fov": 27, "tof_max": 4.0, "tof_t": 0.0, "tof_action": "turn", "reacquire": false, "creep_s": 0.0, "creep_v": 0.3},
+               "guard_side": false, "tof": false, "tof_stop": 1.2, "tof_fov": 27, "tof_max": 4.0, "tof_t": 0.0, "tof_action": "turn", "reacquire": false, "creep_s": 0.0, "creep_v": 0.3},
   "none-v0.8": {"brain": "none", "speed": 0.8},
   "lplc2-bold-gate-sv0-v0.8": {"brain": "lplc2", "speed": 0.8, "sac_v": 0.0, "lplc2_thr": 2.5, "persist": 3, "haz_expire": 20,
                                "rot_gate": 15, "sac_speed": 1.0, "sac_end_wy": 12},
@@ -43,6 +44,7 @@
   "fix-detour-brake-flow": {"base": "fix-detour-brake", "flow_speed": true, "flow_ref": 0.08},
   "fix-all": {"base": "fix-detour-brake-flow", "tof": true},
   "fix-all2": {"base": "fix-all", "tof_action": "detour", "tof_stop": 0.45, "tof_t": 1.0, "reacquire": true},
+  "fix-all2-side-guard": {"base": "fix-all2", "guard_side": true},
   "fix-all3": {"base": "fix-all2", "creep_s": 0.8, "creep_v": 0.3},
   "fix-detour-creep": {"base": "fix-detour", "creep_s": 0.8, "creep_v": 0.3}
 }

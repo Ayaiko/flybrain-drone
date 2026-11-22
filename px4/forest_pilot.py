@@ -124,10 +124,12 @@ class Pilot:
         if inside < 1.5 and not self.fencing: self.fencing = True; self.fence_events += 1
         if self.fencing and inside >= 2.5 and abs(to_g) < np.radians(60): self.fencing = False; fresh(fly); self.t_settle = now
         if self.fencing:
+            info['phase'] = 'geofence'
             return (0.6 if abs(to_g) < np.radians(30) else 0.0), float(np.clip(3.0 * to_g, -2.0, 2.0)), info
 
         if self.rec is not None:
             r = self.rec
+            info['phase'] = r.get('phase', 'flip')
             if r['kind'] == 'flip':                         # old: back off 0.6 s, turn ~180 deg in place
                 r['left'] -= self.dt; v, yaw = (-0.6, 0.0) if r['left'] > 1.6 else (0.0, r['sign'] * 2.0)
                 if r['left'] <= 0: self.rec = None; fresh(fly); self.t_settle = now
@@ -139,25 +141,40 @@ class Pilot:
                 if now - r['t0'] < P['rec_back_s']: return -P['rec_back_v'], 0.0, info
                 s = self._side_choice(p2, r['h0']); r.update(phase='turn1', side=s, target=r['h0'] + s * np.pi / 2)
             if r['phase'] == 'turn1':
+                info['phase'] = 'turn1'
                 v, yaw, done = self._turn(r['target'], h, wy, 0.0)
                 if not done: return v, yaw, info
                 r.update(phase='side', start=p2.copy(), t1=now)
+            if r['phase'] == 'side' and P.get('guard_side') and tof is not None:
+                if tof < P['tof_stop'] + P['tof_t'] * v_meas:
+                    r.update(phase='side_brake')
+                    self.n_brakes += 1
+            if r['phase'] == 'side_brake':
+                info['phase'] = 'side_brake'
+                if v_meas > P['brake_v']:
+                    return 0.0, 0.0, info
+                # Abort this leg. Reorient toward the route before selecting a new leg.
+                self.bypass = None
+                r.update(phase='turn2')
             if r['phase'] == 'side':
+                info['phase'] = 'side'
                 if np.linalg.norm(p2 - r['start']) < P['rec_side_m'] and now - r['t1'] < 4.0: return 0.4, 0.0, info
                 r.update(phase='turn2')
                 dx = P['bypass_m'] * np.cos(r['h0'] + r['side'] * np.pi / 2)
                 self.bypass = (float(dx), y + P['bypass_len'])
             if r['phase'] == 'turn2':
+                info['phase'] = 'turn2'
                 tgt = np.arctan2(goal[1] - y, goal[0] - x)
                 v, yaw, done = self._turn(tgt, h, wy, 0.0)
                 if not done: return v, yaw, info
                 self.rec = None; fresh(fly); self.t_settle = now
 
+        info.pop('phase', None)
         if self.brake_target is not None:                    # stop first, then turn
             if v_meas < P['brake_v'] or now - self.brake_t0 > P['brake_max_s']:
                 self.sac_target, self.brake_target = self.brake_target, None
             else:
-                info['state'] = 'saccade'; return 0.0, 0.0, info
+                info['phase'] = 'brake'; info['state'] = 'saccade'; return 0.0, 0.0, info
         if self.sac_target is not None:
             info['state'] = 'saccade'
             v, yaw, done = self._turn(self.sac_target, h, wy, P['sac_v'] * P['speed'])

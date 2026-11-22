@@ -105,7 +105,7 @@ async def main():
     except OffboardError as e: print('offboard failed', e); return
     print('offboard started', flush=True)
 
-    rec = dict(x=[], y=[], z=[], h=[], state=[], looming=[], gap=[], img=[], yawc=[], v=[], tof=[])
+    rec = dict(x=[], y=[], z=[], h=[], state=[], phase=[], looming=[], gap=[], img=[], yawc=[], v=[], tof=[])
     crashes, in_contact, bump, hit_ids = [], False, False, set()
     t_last, t0, dist, last_xy, reached, t_exit, max_y = 0.0, None, 0.0, None, False, None, -99.0
     zmin = {}                                       # per zone: min surface distance / min body gap
@@ -137,11 +137,11 @@ async def main():
         bump = gap < 0 and not in_contact
         if bump:
             crashes.append(dict(i=len(rec['x']), t=round(now, 2), x=round(x, 2), y=round(y, 2), z=round(z, 2), zone=zn, kind=kind, oid=oid,
-                                rehit=oid in hit_ids, v=round(v_meas, 2), state=dg.get('state', 'warmup')))
+                                rehit=oid in hit_ids, v=round(v_meas, 2), state=dg.get('state', 'warmup'), phase=dg.get('phase', dg.get('state', 'warmup'))))
             hit_ids.add(oid)
         in_contact = gap < 0 or (in_contact and gap < 0.05)      # 5 cm hysteresis: a graze counts once
         rec['x'].append(round(x, 3)); rec['y'].append(round(y, 3)); rec['z'].append(round(z, 3)); rec['h'].append(round(h, 3))
-        st = dg.get('state', 'warmup'); rec['state'].append(STATES.index(st) if st in STATES else 0)
+        st = dg.get('state', 'warmup'); rec['phase'].append(dg.get('phase', st)); rec['state'].append(STATES.index(st) if st in STATES else 0)
         rec['looming'].append(int(bool(dg.get('looming', False)))); rec['gap'].append(round(gap, 3)); rec['yawc'].append(round(float(yaw), 3))
         rec['v'].append(round(v_meas, 3)); rec['tof'].append(None if tof is None else round(tof, 2))
         rec['img'].append(np.clip(lum * 255, 0, 255).astype(np.uint8).tobytes())
